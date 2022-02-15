@@ -28,6 +28,3 @@ Mako = "==1.1.4"
 
 [dev-packages]
 psycopg2-binary = "==2.9.3"
-
-[requires]
-python_version = "3.9"
