@@ -11,8 +11,8 @@ class Song(db.Model):
     moodlistId = db.Column(db.Integer, db.ForeignKey("moodlists.id"), nullable=False)
 
 
-    user = db.relationship("User", back_populates="songs")
-    moodlist= db.relationship("Moodlist", back_populates="songs")
+    user = db.relationship("User", back_populates="song")
+    moodlist= db.relationship("Moodlist", back_populates="song")
 
     def to_dict(self):
         return {
