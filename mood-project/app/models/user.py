@@ -11,6 +11,9 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
 
+    moodlist=db.relationship("Moodlist", back_populates="users")
+    song=db.relationship("Song", back_populates="users")
+
     @property
     def password(self):
         return self.hashed_password
