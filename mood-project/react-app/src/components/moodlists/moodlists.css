@@ -1,0 +1,72 @@
+
+
+:root {
+    --base-font: blue;
+}
+
+
+.moodlists {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+.moodlists p {
+    display: flex;
+    justify-content: center;
+}
+
+.moodlists div {
+    border: 1px solid black;
+}
+
+.moodlists div:hover {
+    background-color: red;
+}
+
+
+.deletebutton {
+    border-radius: 5px;
+    margin-bottom: 10px;
+    height: 40px;
+
+}
+
+.editbutton {
+    border-radius: 5px;
+    margin-bottom: 10px;
+    height: 40px;
+}
+
+.eachmoodlist {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    background-color: purple;
+    margin-bottom: 30px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+
+#moodname {
+    color: white;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+#end{
+    color:white;
+}
+
+#addamood {
+    position: top;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 50%;
+    margin-bottom: 30px;
+
+}

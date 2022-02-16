@@ -6,8 +6,10 @@ moodlist_routes = Blueprint("moodlists", __name__)
 
 
 
-@moodlist_routes.route("/")
+@moodlist_routes.route("/<int:id>")
+@login_required
 def get_all_moodlists(id):
+    # print('USER ID:', id)
     """This route will return all fo the moodlists in the database"""
     moodlists = Moodlist.query.filter(Moodlist.userId == id).all()#id = current id of the user
     return jsonify(list(mood.to_dict() for mood in moodlists))
