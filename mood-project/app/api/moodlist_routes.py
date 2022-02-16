@@ -23,3 +23,24 @@ def create_new_moodlist(): # pass in the payload
     db.session.add(new_moodlist)
     db.session.commit()
     return new_moodlist.to_dict()
+
+@moodlist_routes.route("/edit", methods=["PUT"])
+def edit_moodlist():
+    '''this route passes in the new moodlist data AND the moodlist id'''
+    data = request.json
+    id = data["id"]
+    moodlist = Moodlist.query.get(id)
+    moodlist.name = data["name"]
+    moodlist.color = data["color"]
+
+    db.session.commit()
+    return {"message": "Successful"}
+
+@moodlist_routes.route("/delete", methods=["DELETE"])
+def delete_moodlist():
+    '''this route deletes a specific watchlist by passing in the moodlist id'''
+    id = request.json['id']
+    moodlist = Moodlist.query.get(id)
+    db.session.delete(moodlist)
+    db.session.commit()
+    return moodlist.to_dict()
