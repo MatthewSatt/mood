@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {Link} from 'react-router-dom'
 import { loadUserMoods, deleteMoodlist, editMoodlist } from "../../store/moodlist";
+import AddFormModel from "../AddMood";
 import EditFormModal from "../EditMoodlist";
+import { addMoodList } from "../../store/moodlist";
 import EditForm from "../EditMoodlist/EditModal";
 import './moodlists.css'
 
@@ -26,17 +28,11 @@ useEffect(() => {
     dispatch(loadUserMoods(userId));
 }, [dispatch, userId])
 
-const addNewMood = (e) => {
-    e.preventDefault()
-    console.log("Open Model to create MoodList")
-    // return <AddMoodModel />
-}
 
-const handleEdit = (e) => {
-    e.preventDefault()
-    const id = e.target.id
-    console.log(`Open Modal to edit moodlist.id ${id}`)
-}
+useEffect(() => {
+    dispatch(addMoodList)
+}, [dispatch])
+
 
 const handleDelete = (e) => {
     e.preventDefault()
@@ -47,7 +43,7 @@ const handleDelete = (e) => {
 
 return (
     <>
-    <button onClick={addNewMood} id='addamood'>Add New Mood</button>
+    <a id='addamood'><AddFormModel userId={userId} /></a>
         <div className="moodlists">
             {moodlists?.map((mood) => (
                 <div className='eachmoodlist' key={mood.id}>

@@ -17,14 +17,16 @@ def get_all_moodlists(id):
 @moodlist_routes.route("/new", methods=['POST'])
 @login_required
 def create_new_moodlist(): # pass in the payload
-    incoming = request.json
-    name = incoming["name"]
-    color = incoming["color"]
-    userId = incoming["userId"]
+    mood = request.json['mood']
+    # print('MOOOOOOOOOD', mood)
+    name = mood["name"]
+    color = mood["color"]
+    userId = mood["userId"]
     new_moodlist = Moodlist(name=name, color=color, userId=userId)
     db.session.add(new_moodlist)
     db.session.commit()
-    return new_moodlist.to_dict()
+    print(new_moodlist.to_dict())
+    return {"mood": new_moodlist.to_dict()}
 
 @moodlist_routes.route("/edit", methods=["PUT"])
 # @login_required
