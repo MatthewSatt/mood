@@ -1,7 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {useDispatch, useSelector} from "react-redux";
+import {Link} from 'react-router-dom'
 import { loadUserMoods, deleteMoodlist, editMoodlist } from "../../store/moodlist";
-
+import EditFormModal from "../EditMoodlist";
+import EditForm from "../EditMoodlist/EditModal";
 import './moodlists.css'
 
 
@@ -16,15 +18,12 @@ useEffect(() => {
     dispatch(deleteMoodlist)
 }, [dispatch])
 
+useEffect(() => {
+    dispatch(editMoodlist)
+}, [dispatch])
 
 useEffect(() => {
     dispatch(loadUserMoods(userId));
-    // let data = {
-    //     "id": 2,
-    //     "name": "Matthew",
-    //     "color": "blue",
-    // }
-    // dispatch(editMoodlist(data))
 }, [dispatch, userId])
 
 const addNewMood = (e) => {
@@ -57,7 +56,7 @@ return (
                 <p id='end'>mood.id = {mood.id}</p>
                 <p id='end'>user.id = {userId}</p>
                 <button onClick={handleDelete} id={mood.id} className="deletebutton">Delete</button>
-                <button onClick={handleEdit} id={mood.id} className="editbutton">Edit</button>
+                <a className="editbutton"><EditFormModal id={mood.id} /></a>
             </div>
             ))}
         </div>

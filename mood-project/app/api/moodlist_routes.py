@@ -32,14 +32,13 @@ def edit_moodlist():
     '''this route passes in the new moodlist data AND the moodlist id'''
     data = request.json
     obj = data["moodlist"]
-    print("...............................", obj['id'])
-    # id = data["id"]
+    print("........................................NEW", obj)
     moodlist = Moodlist.query.get(obj['id'])
     moodlist.name = obj["name"]
     moodlist.color = obj["color"]
-
     db.session.commit()
-    return moodlist.to_dict()
+
+    return { "moodlists": moodlist.to_dict() }
 
 @moodlist_routes.route("/<int:id>/delete", methods=["DELETE"])
 @login_required
