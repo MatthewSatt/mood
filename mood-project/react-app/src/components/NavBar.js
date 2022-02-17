@@ -2,8 +2,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
+
 import './NavBar.css'
-// import '.../public/logo.jpeg'
 
 const NavBar = () => {
   return (
@@ -11,7 +11,7 @@ const NavBar = () => {
       <ul className='navbar-main'>
         <li className='home-page-logo'>
           <NavLink to='/home' exact={true} activeClassName='active'>
-           <img className="moodlogoimage" src="/logo.png"></img>
+           <img className="moodlogoimage" src="./images/logo.png" />
           </NavLink>
         </li>
         <h1 className='title'>mood</h1>

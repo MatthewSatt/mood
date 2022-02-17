@@ -1,0 +1,4 @@
+docker buildx build --platform linux/amd64 -t appmood .
+docker tag appmood registry.heroku.com/appmood/web
+docker push registry.heroku.com/appmood/web
+heroku container:release web -a appmood
