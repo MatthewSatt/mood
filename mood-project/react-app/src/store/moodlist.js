@@ -71,19 +71,24 @@ export const editMoodlist = (mood) => async (dispatch) =>{
 //-------------------------------------------------------------------//
 const REMOVE_MOODLIST = 'moodlist/REMOVE_MOODLIST';
 
-const deleteMood = (mood) => {
+const deleteMood = (moodlist) => {
     return {
         type: REMOVE_MOODLIST,
-        mood,
+        payload: moodlist,
     }
 }
-export const deleteMoodlist = (mood) => async (dispatch) => {
-    const res = await fetch(`/api/moodlists/delete`, {
+export const deleteMoodlist = (id) => async (dispatch) => {
+    console.log("IDDDDDDDD FROM STORE", id)
+    const res = await fetch(`/api/moodlists/${id}/delete`, {
         method: 'DELETE',
         headers: {'Content-Type': 'application/json'}
     })
     if(res.ok){
-        dispatch(deleteMood(mood))
+        const moodlist = await res.json();
+        dispatch(deleteMood(moodlist))
+        return
+    } else {
+        return null;
     }
 }
 //-------------------------------------------------------------------//
@@ -93,6 +98,17 @@ export default function moodlistReducer(state = initialState, action) {
     switch (action.type) {
         case GET_ALL_MOODLISTS:
             return action.moodlists
+        case ADD_MOODLIST:
+            return [...state, action.payload];
+        case REMOVE_MOODLIST:
+            return state.filter((moodlist) => moodlist.id !== action.payload.id);
+        case EDIT_MOODLIST:
+            return state.map((e) => {
+                if (e.id === action.payload.id) {
+                    return action.payload;
+                }
+                return e;
+                })
         default:
             return state
     }
