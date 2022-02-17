@@ -1,13 +1,14 @@
 import React, { useEffect } from "react";
 import {useDispatch, useSelector} from "react-redux";
-import { loadUserMoods, deleteMoodlist } from "../../store/moodlist";
+import { loadUserMoods, deleteMoodlist, editMoodlist } from "../../store/moodlist";
 
 import './moodlists.css'
 
 
 const Moodlists = () => {
     const dispatch = useDispatch();
-    const moodlists = useSelector((state) => state.moodlists)
+    // const moodlists = useSelector((state) => state.moodlists)
+    const moodlists = useSelector((state) => Object.values(state.moodlists))
     const userId = useSelector(state => state.session.user.id)
 
 
@@ -18,6 +19,12 @@ useEffect(() => {
 
 useEffect(() => {
     dispatch(loadUserMoods(userId));
+    // let data = {
+    //     "id": 2,
+    //     "name": "Matthew",
+    //     "color": "blue",
+    // }
+    // dispatch(editMoodlist(data))
 }, [dispatch, userId])
 
 const addNewMood = (e) => {
