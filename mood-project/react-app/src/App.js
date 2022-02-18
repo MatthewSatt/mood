@@ -8,7 +8,8 @@ import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 // import UsersList from './components/UsersList';
 // import User from './components/User';
-import MoodLists from './components/moodlists'
+import Songs from './components/Songs'
+import MoodLists from './components/Moodlists'
 import { authenticate } from './store/session';
 
 function App() {
@@ -30,24 +31,27 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
+        
         <Route path="/home" >
           <HomePage />
         </Route>
+
         <Route path='/login' exact={true}>
           <LoginForm />
         </Route>
+
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
-        {/* <ProtectedRoute path='/users' exact={true} >
-          {/* <UsersList/> */}
-        {/* </ProtectedRoute> */}
-        {/* <ProtectedRoute path='/users/:userId' exact={true} > */}
-          {/* <User /> */}
-        {/* </ProtectedRoute> */} */
+
+        <ProtectedRoute path='/moodlists/:moodId' exact={true} >
+          <Songs />
+        </ProtectedRoute>
+
         <ProtectedRoute path='/' exact={true} >
           <MoodLists />
         </ProtectedRoute>
+
       </Switch>
     </BrowserRouter>
   );

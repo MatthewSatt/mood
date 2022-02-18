@@ -39,7 +39,8 @@ export const addMoodList = (mood) => async (dispatch) =>{
     })
     if (res.ok){
         const newMood = await res.json();
-        dispatch(addMood(newMood))
+        console.log('NEW MOOD', newMood.mood)
+        dispatch(addMood(newMood.mood))
         return newMood
     }
 }
@@ -100,7 +101,7 @@ export default function moodlistReducer(state = initialState, action) {
         case GET_ALL_MOODLISTS:
             return action.moodlists
         case ADD_MOODLIST:
-            return [...state, action.payload];
+            return [...state, action.mood];
         case REMOVE_MOODLIST:
             return state.filter((moodlist) => moodlist.id !== action.payload.id);
         case EDIT_MOODLIST:
