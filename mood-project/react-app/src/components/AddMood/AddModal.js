@@ -1,11 +1,13 @@
 import './AddModel.css'
-import React, { useState, useSelector } from "react";
-import { useDispatch } from "react-redux";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { addMoodList} from "../../store/moodlist";
+
 // import "./EditForm.css"
 
-function AddForm({ userId }) {
-
+function AddForm({ setShowModal, showModal }) {
+    const userId = useSelector(state => state.session.user.id)
+    console.log('............USERID',userId)
     const dispatch = useDispatch();
     const [name, setName] = useState("");
     const [color, setColor] = useState("");
@@ -20,7 +22,7 @@ function AddForm({ userId }) {
     }
 
     await dispatch(addMoodList(newmoodlist))
-
+    setShowModal(false)
   };
 
   return (

@@ -5,23 +5,24 @@ import {editMoodlist} from "../../store/moodlist";
 import { StoreEnhancer } from "redux";
 import "./EditForm.css"
 
-function EditForm({ id }) {
+function EditForm({ setShowEditModal, mood}) {
     const dispatch = useDispatch();
     const history = useHistory()
-    const [name, setName] = useState();
+    const [name, setName] = useState("");
     const [color, setColor] = useState("");
 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const newmoodlist = {
-        "id": id,
+        "id": mood,
         'name': name,
         'color': color,
     }
+    console.log('THIS IS WHAT YOUR LOOKING FOR', newmoodlist)
 
-    await dispatch(editMoodlist(newmoodlist, id))
-
+    await dispatch(editMoodlist(newmoodlist))
+    setShowEditModal(false)
   };
 
   return (
