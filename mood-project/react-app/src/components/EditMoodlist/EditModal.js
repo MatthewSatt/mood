@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import {useHistory} from 'react-router-dom'
 import { useDispatch } from "react-redux";
 import {editMoodlist} from "../../store/moodlist";
+import { StoreEnhancer } from "redux";
 import "./EditForm.css"
 
 function EditForm({ id }) {
     const dispatch = useDispatch();
     const history = useHistory()
-    const [name, setName] = useState("");
+    const [name, setName] = useState();
     const [color, setColor] = useState("");
-    console.log('HELLO1', id)
 
 
   const handleSubmit = async (e) => {

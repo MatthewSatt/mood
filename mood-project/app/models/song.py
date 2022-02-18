@@ -7,6 +7,8 @@ class Song(db.Model):
     name = db.Column(db.String(40), nullable=False)
     artist = db.Column(db.String(40), nullable=False)
     rating = db.Column(db.Integer, nullable=False)
+    song_url= db.Column(db.String)
+    song_image=db.Column(db.String)
     userId = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     moodlistId = db.Column(db.Integer, db.ForeignKey("moodlists.id"), nullable=False)
 
@@ -20,6 +22,8 @@ class Song(db.Model):
             'name': self.name,
             'artist': self.artist,
             'rating': self.rating,
+            'song_url': self.song_url,
+            'song_img': self.song_image,
             'userId': self.userId,
             'moodlistId': self.moodlistId
         }

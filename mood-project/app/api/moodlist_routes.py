@@ -1,6 +1,7 @@
 from flask import Blueprint, jsonify, request
 from app.models import db, Moodlist
 from flask_login import login_required
+from app.forms import AddMoodForm, EditMoodForm
 
 moodlist_routes = Blueprint("moodlists", __name__)
 
