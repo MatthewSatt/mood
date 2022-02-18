@@ -103,15 +103,7 @@ export default function moodlistReducer(state = initialState, action) {
             return [...state, action.payload];
         case REMOVE_MOODLIST:
             return state.filter((moodlist) => moodlist.id !== action.payload.id);
-        // case EDIT_MOODLIST:
-        //     return state.map((e) => {
-        //         if (e.id === action.payload.id) {
-        //             return action.payload;
-        //         }
-        //         return e;
-        //         })
         case EDIT_MOODLIST:
-            console.log("...................+",action.moodlists.id)
             return{
                 ...state,
                 [action.moodlists.id]: action.moodlists

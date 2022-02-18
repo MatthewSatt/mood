@@ -7,6 +7,7 @@ import EditFormModal from "../EditMoodlist";
 import { addMoodList } from "../../store/moodlist";
 import EditForm from "../EditMoodlist/EditModal";
 import './moodlists.css'
+import { render } from "react-dom";
 
 
 const Moodlists = () => {
@@ -34,11 +35,11 @@ useEffect(() => {
 }, [dispatch])
 
 
-const handleDelete = (e) => {
+const handleDelete = async (e) => {
     e.preventDefault()
     const id = e.target.id
-    dispatch(deleteMoodlist(id))
-    return
+    await dispatch(deleteMoodlist(id))
+    
 }
 
 return (
@@ -46,13 +47,13 @@ return (
     <a id='addamood'><AddFormModel userId={userId} /></a>
         <div className="moodlists">
             {moodlists?.map((mood) => (
-                <div className='eachmoodlist' key={mood.id}>
-                <p id='moodname'>{mood.name}</p>
-                <p>{mood.color}</p>
+                <div className='eachmoodlist' key={mood?.id}>
+                <p id='moodname'>{mood?.name}</p>
+                {/* <p>{mood.color}</p>
                 <p id='end'>mood.id = {mood.id}</p>
-                <p id='end'>user.id = {userId}</p>
-                <button onClick={handleDelete} id={mood.id} className="deletebutton">Delete</button>
-                <a className="editbutton"><EditFormModal id={mood.id} /></a>
+                <p id='end'>user.id = {userId}</p> */}
+                <button onClick={handleDelete} id={mood?.id} className="deletebutton">Delete</button>
+                <a className="editbutton"><EditFormModal id={mood?.id} /></a>
             </div>
             ))}
         </div>

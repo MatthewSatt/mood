@@ -11,18 +11,15 @@ function AddForm({ userId }) {
     const [color, setColor] = useState("");
 
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const newmoodlist = {
         'name': name,
         'color': color,
         "userId": userId
     }
-    console.log(name)
-    console.log(color)
-    console.log(newmoodlist)
 
-    dispatch(addMoodList(newmoodlist))
+    await dispatch(addMoodList(newmoodlist))
 
   };
 

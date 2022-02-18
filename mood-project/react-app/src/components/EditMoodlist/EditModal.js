@@ -12,7 +12,7 @@ function EditForm({ id }) {
     console.log('HELLO1', id)
 
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const newmoodlist = {
         "id": id,
@@ -20,7 +20,7 @@ function EditForm({ id }) {
         'color': color,
     }
 
-    dispatch(editMoodlist(newmoodlist, id))
+    await dispatch(editMoodlist(newmoodlist, id))
 
   };
 
