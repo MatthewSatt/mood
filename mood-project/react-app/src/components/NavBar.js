@@ -11,7 +11,7 @@ const NavBar = () => {
       <ul className='navbar-main'>
         <li className='home-page-logo'>
           <NavLink to='/home' exact={true} activeClassName='active'>
-           <img className="moodlogoimage" src="./images/logo.png" />
+           <img className="moodlogoimage" src="logo.jpeg" />
           </NavLink>
         </li>
         <h1 className='title'>mood</h1>
