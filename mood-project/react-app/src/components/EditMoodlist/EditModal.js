@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import {useHistory} from 'react-router-dom'
-import { useDispatch } from "react-redux";
-import {editMoodlist} from "../../store/moodlist";
+import { useDispatch, useSelector } from "react-redux";
+import {editMoodlist, loadUserMoods} from "../../store/moodlist";
 import { StoreEnhancer } from "redux";
 import "./EditForm.css"
 
-function EditForm({ setShowEditModal, mood}) {
+function EditForm({ setShowEditModal, mood, catcher}) {
+    console.log(mood)
+    const user = useSelector((state) => state.session.user)
     const dispatch = useDispatch();
-    const history = useHistory()
+
     const [name, setName] = useState("");
     const [color, setColor] = useState("");
 
@@ -19,10 +21,12 @@ function EditForm({ setShowEditModal, mood}) {
         'name': name,
         'color': color,
     }
-  
+
 
     await dispatch(editMoodlist(newmoodlist))
+    // await dispatch(loadUserMoods(user.id))
     setShowEditModal(false)
+
   };
 
   return (

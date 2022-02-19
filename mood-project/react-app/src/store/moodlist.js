@@ -48,10 +48,10 @@ export const addMoodList = (mood) => async (dispatch) =>{
 //-------------------------------------------------------------------//
 const EDIT_MOODLIST = 'moodlist/EDIT_MOODLIST';
 
-export const editMood = (moodlists) => {
+export const editMood = (payload) => {
     return {
         type: EDIT_MOODLIST,
-        moodlists,
+        payload,
     }
 }
 
@@ -60,12 +60,13 @@ export const editMoodlist = (moodlist) => async (dispatch) =>{
     const res = await fetch(`/api/moodlists/edit`, {
         method: 'PUT',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({
-            moodlist,
-        })
+        body: JSON.stringify(
+            moodlist
+        )
     })
     if (res.ok){
         const changedMood = await res.json();
+        console.log('FRONTENDDDDDDDDDDDD', changedMood)
         dispatch(editMood(changedMood))
         return changedMood
     }
@@ -105,9 +106,10 @@ export default function moodlistReducer(state = initialState, action) {
         case REMOVE_MOODLIST:
             return state.filter((moodlist) => moodlist.id !== action.payload.id);
         case EDIT_MOODLIST:
+            console.log('REDUCERRRRRRRRR', state)
             return{
                 ...state,
-                [action.moodlists.id]: action.moodlists
+                [action.payload.id]: action.payload
             }
         default:
             return state

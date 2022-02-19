@@ -1,7 +1,9 @@
 .moodlist-songs {
     display: flex;
     flex-direction: column;
+    align-items: center;
     flex-wrap: row;
+    width: 100vw;
     height: 100vh;
     background-color: whitesmoke;
 }
@@ -9,6 +11,7 @@
 .grow:hover { transform: scale(1.1); }
 
 .eachsong {
+    width: 80vw;
     display: flex;
     background-color: rgb(114, 146, 250);
     color:white;
@@ -35,4 +38,22 @@
 .eachsong:hover p {
     cursor: pointer;
     font-size: larger;
+}
+
+
+.addsongbutton{
+    margin-top: 20px;
+    border: 2px solid black;
+    font-size: 30px;
+    padding: 5px;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+
+.moodlistsongtitle{
+    font-weight: bold;
+    font-size: 50px;
 }

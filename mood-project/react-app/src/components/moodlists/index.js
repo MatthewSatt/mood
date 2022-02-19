@@ -18,6 +18,7 @@ const Moodlists = () => {
   const [showEditModal, setShowEditModal] = useState(false);
 
 
+
   useEffect(() => {
     dispatch(loadUserMoods(userId));
   }, [dispatch, showEditModal, showModal]);
@@ -31,7 +32,6 @@ const Moodlists = () => {
     const id = e.target.id;
     await dispatch(deleteMoodlist(id));
   };
-
   return (
     <>
       <div className="moodlists">
@@ -56,8 +56,10 @@ const Moodlists = () => {
               >
               Delete
             </button>
+
             <a className="moodlistedit-delete">
               <EditFormModal
+              
                 mood={mood?.id}
                 setShowEditModal={setShowEditModal}
                 showEditModal={showEditModal}
