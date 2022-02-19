@@ -1,3 +1,11 @@
+.moodlists {
+    background-color: antiquewhite;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
 .moodlistcontent {
     display: flex;
     flex-wrap: wrap;
@@ -57,4 +65,10 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
+}
+
+
+.moodlistheader {
+    font-size: 50px;
+    margin-top: 20px;
 }

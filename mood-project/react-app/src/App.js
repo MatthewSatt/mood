@@ -32,10 +32,6 @@ function App() {
       <NavBar />
       <Switch>
 
-        <Route path="/home" >
-          <HomePage />
-        </Route>
-
         <Route path='/login' exact={true}>
           <LoginForm />
         </Route>
@@ -51,6 +47,10 @@ function App() {
         <ProtectedRoute path='/' exact={true} >
           <MoodLists />
         </ProtectedRoute>
+
+        <Route path="/home" >
+          <HomePage />
+        </Route>
 
       </Switch>
     </BrowserRouter>

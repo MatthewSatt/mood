@@ -35,6 +35,7 @@ const Moodlists = () => {
   return (
     <>
       <div className="moodlists">
+        <h1 className="moodlistheader">Moodlists</h1>
         <a id="addamood">
           <AddFormModal setShowModal={setShowModal} showModal={showModal} />
         </a>
