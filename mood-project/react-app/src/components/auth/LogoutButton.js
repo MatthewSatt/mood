@@ -5,6 +5,8 @@ import "./Logout.css"
 
 const LogoutButton = () => {
   const dispatch = useDispatch()
+  // import { useSelector } from 'react-redux';
+  // const user = useSelector((state) => state.session.user);
   const onLogout = async (e) => {
     await dispatch(logout());
   };
