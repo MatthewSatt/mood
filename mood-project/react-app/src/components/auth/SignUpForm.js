@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
+import './SignupForm.css'
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
@@ -43,14 +44,17 @@ const SignUpForm = () => {
   }
 
   return (
-    <form onSubmit={onSignUp}>
-      <div>
+    <form onSubmit={onSignUp} className='signupuserform'>
+      <div className='signupuser'>
+      <div className='loginerrors'>
         {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
+          <div className='loginerror' key={ind}>{error}</div>
         ))}
       </div>
       <div>
+        <div className='namecontainer'>
         <label>User Name</label>
+        </div>
         <input
           type='text'
           name='username'
@@ -59,7 +63,11 @@ const SignUpForm = () => {
         ></input>
       </div>
       <div>
-        <label>Email</label>
+        <div className='namecontainer'>
+          <div>
+            <label>Email</label>
+          </div>
+        </div>
         <input
           type='text'
           name='email'
@@ -67,17 +75,22 @@ const SignUpForm = () => {
           value={email}
         ></input>
       </div>
-      <div>
-        <label>Password</label>
+      <div className='namecontainer'>
+        <div>
+          <label>Password</label>
+        </div>
+        </div>
         <input
           type='password'
           name='password'
           onChange={updatePassword}
           value={password}
-        ></input>
-      </div>
+          ></input>
       <div>
-        <label>Repeat Password</label>
+          <div className='namecontainer'>
+            <label>Repeat Password</label>
+
+          </div>
         <input
           type='password'
           name='repeat_password'
@@ -86,7 +99,8 @@ const SignUpForm = () => {
           required={true}
         ></input>
       </div>
-      <button type='submit'>Sign Up</button>
+      <button id="loginbutton2" type='submit'>Sign Up</button>
+      </div>
     </form>
   );
 };

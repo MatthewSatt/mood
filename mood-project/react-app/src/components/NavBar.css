@@ -12,6 +12,7 @@
     background-color: black;
     margin: 0px;
     height: 200px;
+    border-bottom: 2px solid white;
 }
 
 .logo {
