@@ -1,0 +1,38 @@
+.moodlist-songs {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: row;
+    height: 100vh;
+    background-color: whitesmoke;
+}
+
+.grow:hover { transform: scale(1.1); }
+
+.eachsong {
+    display: flex;
+    background-color: rgb(114, 146, 250);
+    color:white;
+    margin: 10px;
+    justify-content: space-around;
+    font-size: 20px;
+    height: 20%;
+    align-items: center;
+   /* border: 2px solid red; */
+   margin-left: 5%;
+   margin-right: 5%;
+
+}
+
+.eachsong:hover{
+    height:25%;
+    transition: 1s;
+    box-shadow: 0px 0px 10px 5px rgb(0, 38, 255);
+    color: black;
+    font-family: bold;
+    cursor: pointer;
+}
+
+.eachsong:hover p {
+    cursor: pointer;
+    font-size: larger;
+}

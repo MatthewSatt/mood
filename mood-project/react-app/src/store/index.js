@@ -2,10 +2,12 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import session from './session'
 import moodlistReducer from './moodlist';
+import songReducer from './songs';
 
 const rootReducer = combineReducers({
   session,
   "moodlists": moodlistReducer,
+  "songs": songReducer
 });
 
 

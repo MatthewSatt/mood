@@ -7,10 +7,10 @@ song_routes = Blueprint("songs", __name__)
 
 
 # GET ALL SONGS FOR SPECFIC MOOD LIST
-@song_routes.route("/")
-def getMoodlistSongs(): # pass in MOODLIST.Id ONLY
-    id = 1
-    songs = Song.query.filter(Song.moodlistId == id).all() #id OF MOODLIST
+@song_routes.route("/moodlists/<int:moodlistId>")
+def getMoodlistSongs(moodlistId): # pass in MOODLIST.Id ONLY
+    print("REQUESSSSSSSSSSSSSST", request.json)
+    songs = Song.query.filter(Song.moodlistId == moodlistId).all() #id OF MOODLIST
     return jsonify(list(song.to_dict() for song in songs))
     # return jsonify(list(songs.to_dict() for song in songs))
 
