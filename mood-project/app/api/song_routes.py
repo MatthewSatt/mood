@@ -9,14 +9,13 @@ song_routes = Blueprint("songs", __name__)
 # GET ALL SONGS FOR SPECFIC MOOD LIST
 @song_routes.route("/moodlists/<int:moodlistId>")
 def getMoodlistSongs(moodlistId): # pass in MOODLIST.Id ONLY
-    print("REQUESSSSSSSSSSSSSST", request.json)
     songs = Song.query.filter(Song.moodlistId == moodlistId).all() #id OF MOODLIST
     return jsonify(list(song.to_dict() for song in songs))
     # return jsonify(list(songs.to_dict() for song in songs))
 
 
 
-@song_routes.route("/new", methods=['POST'])
+@song_routes.route("new", methods=['POST'])
 def newSong():
     '''
     Passes in object:
@@ -42,7 +41,7 @@ def newSong():
 
 
 
-# @song_routes.route("/edit")
+# @song_routes.route("edit")
 # def changeSong():
 #         '''
 #         Passes in Song.Id
@@ -56,3 +55,19 @@ def newSong():
 
 #         db.session.commit()
 #         return current_song.to_dict()
+
+@song_routes.route("/delete/<int:songId>", methods=["DELETE"])
+def removeSonge(songId):
+    print('BACKEND SONG ID...............', songId)
+    deleted_song = Song.query.filter(Song.id == songId).first()
+    print(deleted_song)
+    db.session.delete(deleted_song)
+    db.session.commit()
+    return deleted_song.to_dict()
+
+
+"""pass in song id
+
+    url = `api/songs/delete/${songId}`
+    pass in id of song to url and as the payload
+"""

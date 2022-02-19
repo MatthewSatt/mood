@@ -13,10 +13,7 @@ export const loadSongs = (payload) => { // returned from server
 }
 
 export const loadMoodSongs = (moodlistId) => async (dispatch) => {
-    console.log('MOODID IN STORE', moodlistId)
-
     const res = await fetch(`/api/songs/moodlists/${moodlistId}`, {
-
     })
     if (res.ok) {
         const songs = await res.json();
@@ -32,6 +29,28 @@ const ADD_SONG = 'songs/ADD_SONG';
 const EDIT_SONG = 'songs/EDIT_SONG';
 //-------------------------------------------------------------------//
 const REMOVE_SONG = 'songs/REMOVE_SONG';
+
+export const removeSong = (song) => {
+    return {
+        type: REMOVE_SONG,
+        song
+    }
+}
+
+export const removeMoodSong = (songId) => async (dispatch) => {
+    console.log("STOOORRRRE SONG ID", songId)
+    const res = await fetch(`/api/songs/delete/${songId}`, {
+        method: 'DELETE',
+        headers: {'Content-Type': 'application/json'}
+    })
+    if(res.ok) {
+        const song = await res.json()
+        dispatch(removeSong(song))
+        return song
+    } else {
+        return null
+    }
+}
 //-------------------------------------------------------------------//
 const initialState = []
 export default function songReducer(state = initialState, action) {
@@ -39,6 +58,8 @@ export default function songReducer(state = initialState, action) {
     switch(action.type) {
         case LOAD_SONGS:
             return action.payload
+        case REMOVE_SONG:
+                return state.filter((song) => song.id !== action.song.id);
 
         default:
             return state
