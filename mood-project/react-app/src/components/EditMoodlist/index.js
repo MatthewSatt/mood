@@ -8,7 +8,7 @@ function EditFormModal({ mood, showEditModal, setShowEditModal }) {
 
   return (
     <>
-      <button className='login-button' onClick={() => setShowEditModal(true)}>Edit</button>
+      <button className='moodlistedit-delete' onClick={() => setShowEditModal(true)}>Edit</button>
       {showEditModal && (
         <Modal onClose={() => setShowEditModal(false)}>
           <EditForm setShowEditModal={setShowEditModal} mood={mood} />

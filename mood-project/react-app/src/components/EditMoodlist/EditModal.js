@@ -19,7 +19,7 @@ function EditForm({ setShowEditModal, mood}) {
         'name': name,
         'color': color,
     }
-    console.log('THIS IS WHAT YOUR LOOKING FOR', newmoodlist)
+  
 
     await dispatch(editMoodlist(newmoodlist))
     setShowEditModal(false)

@@ -31,7 +31,7 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
-        
+
         <Route path="/home" >
           <HomePage />
         </Route>

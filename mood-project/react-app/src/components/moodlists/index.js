@@ -4,30 +4,19 @@ import { Link } from "react-router-dom";
 import {
   loadUserMoods,
   deleteMoodlist,
-  editMoodlist,
 } from "../../store/moodlist";
 import AddFormModal from "../AddMood";
 import EditFormModal from "../EditMoodlist";
-import { addMoodList } from "../../store/moodlist";
-import EditForm from "../EditMoodlist/EditModal";
+
 import "./moodlists.css";
-import { render } from "react-dom";
 
 const Moodlists = () => {
   const dispatch = useDispatch();
-  // const moodlists = useSelector((state) => state.moodlists)
   const moodlists = useSelector((state) => Object.values(state.moodlists));
   const userId = useSelector((state) => state.session.user.id);
   const [showModal, setShowModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
 
-  // useEffect(() => {
-  //     dispatch(deleteMoodlist)
-  // }, [dispatch])
-
-  // useEffect(() => {
-  //     dispatch(editMoodlist)
-  // }, [dispatch, showModal])
 
   useEffect(() => {
     dispatch(loadUserMoods(userId));
@@ -49,34 +38,37 @@ const Moodlists = () => {
         <a id="addamood">
           <AddFormModal setShowModal={setShowModal} showModal={showModal} />
         </a>
+        <div className="moodlistcontent">
         {moodlists?.map((mood) => (
           <>
+          <div className="moodboxes">
             <Link to={`/moodlists/${mood.id}`}>
               <div className="eachmoodlist" key={mood?.id}>
                 <p id="moodname">{mood?.name}</p>
-                <p>{mood?.color}</p>
-                <p id="end">mood.id = {mood?.id}</p>
-                <p id="end">user.id = {userId}</p>
               </div>
             </Link>
+            <div className="buttons-for-moodlists">
             <button
               onClick={handleDelete}
               id={mood?.id}
-              className="deletebutton"
-            >
+              className="moodlistedit-delete"
+              >
               Delete
             </button>
-            <a className="editbutton">
+            <a className="moodlistedit-delete">
               <EditFormModal
                 mood={mood?.id}
                 setShowEditModal={setShowEditModal}
                 showEditModal={showEditModal}
-              />
+                />
             </a>
+        </div>
+                </div>
           </>
         ))}
+        </div>
       </div>
-    </>
+      </>
   );
 };
 export default Moodlists;

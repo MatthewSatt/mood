@@ -56,3 +56,19 @@ border: 1px solid #000000;
     background-color: #dad7cd;
     margin: 20px;
 }
+
+
+.addmoodbutton {
+    margin: 15px;
+    border-radius: 8px;
+    height: 100px;
+    width: 100px;
+    background-color: black;
+    color: white;
+    font-size: 20px;
+}
+
+.addmoodbutton:hover {
+    background-color: green;
+    transition: 5s;
+}

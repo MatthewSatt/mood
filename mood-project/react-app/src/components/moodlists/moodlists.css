@@ -1,67 +1,60 @@
-/* 
-
-.moodlists {
+.moodlistcontent {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
-    margin-left: 10%;
-    margin-right: 10%;
-}
-.moodlists p {
-    display: flex;
     justify-content: center;
-}
-
-.moodlists div {
-    border: 1px solid black;
-}
-
-.moodlists div:hover {
-    background-color: red;
+    align-items: center;
 }
 
 
-.deletebutton {
-    border-radius: 5px;
-    margin-bottom: 10px;
-    height: 40px;
-
-}
-
-.editbutton {
-    border-radius: 5px;
-    margin-bottom: 10px;
-    height: 40px;
+.moodboxes {
+    height: 100vw;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+   border: 2px solid blue;
+   margin: 20px;
+   width: 25%;
+   background-color: rgb(4, 186, 183);
 }
 
 .eachmoodlist {
-    width: 30%;
+    color: white;
+    text-decoration: none;
     display: flex;
+    justify-content: center;
     flex-direction: column;
-    border-radius: 20px;
-    background-color: black;
-    margin-bottom: 30px;
-    margin-right: 5px;
+    align-items: center;
+    margin: 10%;
+    font-size: 50px;
+    height: 200px;
+}
+
+.moodlistedit-delete {
+    display: flex;
+    align-self: auto;
+    display: flex;
+    font-size: 30px;
+    justify-content: space-evenly;
+    height: 100%;
+    width: 100%;
+    margin: 5px;
+}
+
+
+.moodboxes:hover {
+    transition: 1s;
+    box-shadow: 0px 0px 10px 5px rgba(242, 3, 3, 0.892);
+    color: black;
+    font-family: bold;
     cursor: pointer;
 }
 
-
-#moodname {
-    color: white;
-    font-weight: bold;
-    font-size: 30px;
-}
-
-#end{
-    color:white;
-}
-
-#addamood {
-    position: top;
+.buttons-for-moodlists{
     display: flex;
-    justify-content: center;
+    width: auto;
+    justify-content: space-between;
     align-items: center;
-    margin-left: 50%;
-    margin-bottom: 30px;
-
-} */
+    width: 100%;
+}

@@ -8,7 +8,7 @@ function AddFormModal({setShowModal, showModal}) {
 
   return (
     <>
-      <button className='login-button' onClick={() => setShowModal(true)}>Add new mood</button>
+      <button className='addmoodbutton' onClick={() => setShowModal(true)}>Add new mood</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <AddForm setShowModal={setShowModal}/>
