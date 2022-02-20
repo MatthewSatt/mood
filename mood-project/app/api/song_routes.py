@@ -15,29 +15,33 @@ def getMoodlistSongs(moodlistId): # pass in MOODLIST.Id ONLY
 
 
 
-@song_routes.route("new", methods=['POST'])
+@song_routes.route("/new", methods=['POST'])
 def newSong():
     '''
     Passes in object:
     {
-    "name": "Matthew",
-    "artist": "Satterwhite",
-    "rating": 10,
-    "userId": 1,
-    "moodlistId": 1
-}
+            'name': self.name,
+            'artist': self.artist,
+            'rating': self.rating,
+            'song_url': self.song_url,
+            'song_image': self.song_image
+    }
     '''
     song = request.json
-    print(song)
+
     name = song["name"]
     artist = song["artist"]
     rating = song["rating"]
+    song_url = song["song_url"]
+    song_image = song["image_url"]
     userId = song["userId"]
-    moodlistId = song["moodlistId"]
-    new_song = Song(name=name, artist=artist, rating=rating, userId=userId, moodlistId=moodlistId)
+    moodlistId = song['moodlistId']
+    new_song = Song(name=name, artist=artist, rating=rating, song_url=song_url, song_image=song_image, moodlistId=moodlistId, userId=userId)
+    print('NEW SOOOOOOOOOOOOOOOOONG', new_song)
+    print(new_song)
     db.session.add(new_song)
     db.session.commit()
-    return {"song": new_song.to_dict()}
+    return new_song.to_dict()
 
 
 
@@ -57,17 +61,10 @@ def newSong():
 #         return current_song.to_dict()
 
 @song_routes.route("/delete/<int:songId>", methods=["DELETE"])
-def removeSonge(songId):
+def removeSong(songId):
     print('BACKEND SONG ID...............', songId)
     deleted_song = Song.query.filter(Song.id == songId).first()
     print(deleted_song)
     db.session.delete(deleted_song)
     db.session.commit()
     return deleted_song.to_dict()
-
-
-"""pass in song id
-
-    url = `api/songs/delete/${songId}`
-    pass in id of song to url and as the payload
-"""

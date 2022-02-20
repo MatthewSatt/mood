@@ -23,7 +23,7 @@ class Song(db.Model):
             'artist': self.artist,
             'rating': self.rating,
             'song_url': self.song_url,
-            'song_img': self.song_image,
+            'song_image': self.song_image,
             'userId': self.userId,
             'moodlistId': self.moodlistId
         }

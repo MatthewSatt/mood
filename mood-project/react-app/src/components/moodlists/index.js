@@ -69,7 +69,7 @@ const Moodlists = () => {
           {moodlists?.map((mood) => (
             <>
               <div className="moodboxes">
-                <Link to={`/moodlists/${mood.id}`}>
+                <Link className="textformoodlists"to={`/moodlists/${mood.id}`}>
                   <div className="eachmoodlist" key={mood?.id}>
                     <p id="moodname">{mood?.name}</p>
                   </div>
@@ -113,7 +113,7 @@ const Moodlists = () => {
                 </div>
               </div>
             </>
-          )).reverse()}
+          )).sort()}
         </div>
       </div>
     </>

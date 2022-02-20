@@ -25,6 +25,30 @@ export const loadMoodSongs = (moodlistId) => async (dispatch) => {
 const GET_SONG = 'songs/GET_SONG';
 //-------------------------------------------------------------------//
 const ADD_SONG = 'songs/ADD_SONG';
+
+export const addS = (payload) => {
+    return {
+        type: ADD_SONG,
+        payload
+    }
+}
+export const addSong = (song) => async (dispatch) =>{
+    const res = await fetch(`/api/songs/new`, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(
+            song,
+        )
+    })
+    if (res.ok){
+        const newsong = await res.json();
+        dispatch(addS(newsong))
+        return newsong
+    }
+}
+
+
+
 //-------------------------------------------------------------------//
 const EDIT_SONG = 'songs/EDIT_SONG';
 //-------------------------------------------------------------------//
@@ -58,6 +82,8 @@ export default function songReducer(state = initialState, action) {
     switch(action.type) {
         case LOAD_SONGS:
             return action.payload
+        case ADD_SONG:
+            return [...state, action.payload];
         case REMOVE_SONG:
                 return state.filter((song) => song.id !== action.song.id);
 

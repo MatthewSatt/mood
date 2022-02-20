@@ -39,7 +39,6 @@ export const addMoodList = (mood) => async (dispatch) =>{
     })
     if (res.ok){
         const newMood = await res.json();
-        console.log('NEW MOOD', newMood.mood)
         dispatch(addMood(newMood.mood))
         return newMood
     }

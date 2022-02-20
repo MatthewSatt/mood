@@ -29,8 +29,8 @@
 }
 
 .eachsong:hover{
-    height:30%;
-    width: 90%;
+    height:10%;
+    width: 80%;
     transition: 1s;
     box-shadow: 0px 0px 10px 5px rgb(0, 38, 255);
     color: black;
@@ -40,7 +40,6 @@
 
 .eachsong:hover p {
     cursor: pointer;
-    font-size: larger;
 }
 
 
