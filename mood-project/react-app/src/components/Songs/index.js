@@ -73,6 +73,7 @@ const Songs = () => {
 
   const handleDelete = async (e) => {
     e.preventDefault();
+    console.log("REMOVE THE ID OF THE THE SONG", e.target.id);
     await dispatch(removeMoodSong(e.target.id));
     return;
   };
@@ -175,9 +176,24 @@ const Songs = () => {
               {song.song_url}
             </p>
             <div className="songuseroptions">
+
+
+
+
+
+
+
+
               <button id={song.id} onClick={handlePlay} className="playsong">
                 TODO:Play Button
               </button>
+
+
+
+
+
+
+
 
               <button
                 id={song.id}
@@ -185,13 +201,27 @@ const Songs = () => {
                 className="deletesong"
               >
                 Delete Song
-
-
-
               </button>
+
+
+
+
+
+
+
+
+
               <button id={song.id} onClick={handleEdit} className="editsong">
                 TODO:Edit Song
               </button>
+
+
+
+
+
+
+
+
             </div>
           </div>
         )).reverse()}
