@@ -23,13 +23,14 @@ const Moodlists = () => {
 
   const [name, setName] = useState("");
   const [color, setColor] = useState("");
+  const [x, setX] = useState("")
 
 
 
   const handleEdit = (e) => {
     e.preventDefault();
     const newmoodlist = {
-      "id": +e.target.id,
+      "id": x,
       'name': name,
       'color': color,
     }
@@ -44,12 +45,13 @@ const Moodlists = () => {
 
   const handleShowModalData = (e) => {
     e.preventDefault();
-    moodlists.filter(moodlist => {
-      if (moodlist.id === +e.target.id) {
-        setColor(moodlist.color)
-        setName(moodlist.name)
-      }
-    })
+    setX(+e.currentTarget.id)
+    // moodlists.filter(moodlist => {
+    //   if (moodlist.id === +e.currentTarget.id) {
+    //     setColor(moodlist.color)
+    //     setName(moodlist.name)
+    //   }
+    // })
     setShowEditModal(true)
   }
 
@@ -83,10 +85,10 @@ const Moodlists = () => {
                     Delete
                   </button>
 
-                  <button id={mood.id} className='moodlistedit-delete' onClick={handleShowModalData}>Edit</button>
+                  <button id={mood.id} className='moodlistedit-delete' onClick={(e) => handleShowModalData(e)}>Edit</button>
                   {showEditModal && (
                     <Modal onClose={() => setShowEditModal(false)}>
-                      <form className="edit">
+                      <form className="edit" onSubmit={handleEdit}>
                         <h1 id="loginheader">Edit</h1>
                         <label>
                           <input
@@ -106,14 +108,14 @@ const Moodlists = () => {
                             onChange={(e) => setColor(e.target.value)}
                           />
                         </label>
-                        <button id={mood.id} className="loginbutton" type="submit" onClick={handleEdit}>Edit</button>
+                        <button className="loginbutton" type="submit">Edit</button>
                       </form>
                     </Modal>
                   )}
                 </div>
               </div>
             </>
-          )).sort()}
+          )).reverse()}
         </div>
       </div>
     </>
