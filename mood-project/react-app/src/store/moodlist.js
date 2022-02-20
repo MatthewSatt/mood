@@ -65,7 +65,6 @@ export const editMoodlist = (moodlist) => async (dispatch) =>{
     })
     if (res.ok){
         const changedMood = await res.json();
-        console.log('FRONTENDDDDDDDDDDDD', changedMood)
         dispatch(editMood(changedMood))
         return changedMood
     }
@@ -80,7 +79,6 @@ const deleteMood = (moodlist) => {
     }
 }
 export const deleteMoodlist = (id) => async (dispatch) => {
-    console.log("IDDDDDDDD FROM STORE", id)
     const res = await fetch(`/api/moodlists/${id}/delete`, {
         method: 'DELETE',
         headers: {'Content-Type': 'application/json'}
@@ -105,7 +103,6 @@ export default function moodlistReducer(state = initialState, action) {
         case REMOVE_MOODLIST:
             return state.filter((moodlist) => moodlist.id !== action.payload.id);
         case EDIT_MOODLIST:
-            console.log('REDUCERRRRRRRRR', state)
             return{
                 ...state,
                 [action.payload.id]: action.payload

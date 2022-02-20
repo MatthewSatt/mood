@@ -62,7 +62,6 @@ export const removeSong = (song) => {
 }
 
 export const removeMoodSong = (songId) => async (dispatch) => {
-    console.log("STOOORRRRE SONG ID", songId)
     const res = await fetch(`/api/songs/delete/${songId}`, {
         method: 'DELETE',
         headers: {'Content-Type': 'application/json'}

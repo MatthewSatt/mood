@@ -46,12 +46,6 @@ const Moodlists = () => {
   const handleShowModalData = (e) => {
     e.preventDefault();
     setX(+e.currentTarget.id)
-    // moodlists.filter(moodlist => {
-    //   if (moodlist.id === +e.currentTarget.id) {
-    //     setColor(moodlist.color)
-    //     setName(moodlist.name)
-    //   }
-    // })
     setShowEditModal(true)
   }
 

@@ -73,7 +73,6 @@ const Songs = () => {
 
   const handleDelete = async (e) => {
     e.preventDefault();
-    console.log("REMOVE THE ID OF THE THE SONG", e.target.id);
     await dispatch(removeMoodSong(e.target.id));
     return;
   };

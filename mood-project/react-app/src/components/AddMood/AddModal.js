@@ -7,7 +7,6 @@ import { addMoodList} from "../../store/moodlist";
 
 function AddForm({ setShowModal, showModal }) {
     const userId = useSelector(state => state.session.user.id)
-    console.log('............USERID',userId)
     const dispatch = useDispatch();
     const [name, setName] = useState("");
     const [color, setColor] = useState("");
