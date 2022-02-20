@@ -30,37 +30,42 @@ const Songs = () => {
   return (
     <div className="songscontainer">
       <div className="moodlist-songs">
+
         <h1 className="moodlistsongtitle">Moodlist Name</h1>
         <div className="addsongbutton">Add Song</div>
         {songs.map((song, i) => (
           <div className="eachsong" songId={song.id} key={song.id}>
+            <div className="titleandartist">
             <p song={song} key={song.name}>
-              <span className="songlabelstitle">Title </span>
+              {/* <span className="songlabelstitle">Title </span> */}
               {song.name}
             </p>
             <p song={song}>
-              <span className="songlabelsartist">Artist </span>
+              {/* <span className="songlabelsartist">Artist </span> */}
               {song.artist}
             </p>
+            </div>
             <p song={song}>
-              <span className="songlabelsrating">Rating </span>
+              {/* <span className="songlabelsrating">Rating </span> */}
               {song.rating}
             </p>
-            <p>
-              <span className="songlabelsimage">Image </span>
+            <p className="songimage">
+              {/* <span className="songlabelsimage">Image </span> */}
               {song.image_url}
             </p>
             <p>
-              <span className="songlabelslink">SongLink </span>
+              {/* <span className="songlabelslink">SongLink </span> */}
               {song.song_url}
             </p>
-            <div>Play Button</div>
-            {/* <div><DeleteSong /></div>
-            <div><EditSong /></div> */}
-            <div id={song.id} onClick={handleDelete}>
-              Delete Song
+            <div className="songuseroptions">
+            <div className="playsong">Play Button</div>
+              {/* <div><DeleteSong /></div>
+              <div><EditSong /></div> */}
+              <div id={song.id} onClick={handleDelete} className="deletesong">
+                Delete Song
+              </div>
+              <div id={song.id} className="editsong">Edit Song</div>
             </div>
-            <div>Edit Song</div>
           </div>
         ))}
       </div>

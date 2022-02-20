@@ -9,7 +9,7 @@ import {
   deleteMoodlist,
 } from "../../store/moodlist";
 import AddFormModal from "../AddMood";
-import EditFormModal from "../EditMoodlist";
+
 
 import "./moodlists.css";
 
@@ -71,7 +71,7 @@ const Moodlists = () => {
               <div className="moodboxes">
                 <Link to={`/moodlists/${mood.id}`}>
                   <div className="eachmoodlist" key={mood?.id}>
-                    <p id="moodname">{mood?.name} <br/> {mood.id}</p>
+                    <p id="moodname">{mood?.name}</p>
                   </div>
                 </Link>
                 <div className="buttons-for-moodlists">
