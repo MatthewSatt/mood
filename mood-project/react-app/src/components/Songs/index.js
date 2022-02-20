@@ -14,6 +14,7 @@ import "./Songs.css";
 // TODO: add search all songs feature
 // TODO: figure out the color wheel
 // TODO: play music
+// TODO: add an easter egg
 
 
 
