@@ -6,6 +6,17 @@ import { Modal } from "../../context/Modal";
 import { addSong } from "../../store/songs";
 import "./Songs.css";
 
+// TODO: Get single moodlist for song page
+// TODO: complete edit functionality
+// TODO: get songs to play
+// TODO: error validations on front and backend
+// TODO: update styles
+// TODO: add search all songs feature
+// TODO: figure out the color wheel
+// TODO: play music
+
+
+
 const Songs = () => {
   const dispatch = useDispatch();
   const songs = useSelector((state) => state.songs);
@@ -14,11 +25,11 @@ const Songs = () => {
 
   const [addSongModal, setAddSongModal] = useState(false);
   const [editModal, setEditModal] = useState(false);
-  const [name, setName] = useState('Song Title')
-  const [artist, setArtist] = useState('Artist')
+  const [name, setName] = useState("")
+  const [artist, setArtist] = useState("")
   const [rating, setRating] = useState(0)
-  const [image, setImage] = useState("Image")
-  const [url, setUrl] = useState("Song url")
+  const [image, setImage] = useState("")
+  const [url, setUrl] = useState("")
 
   useEffect(() => {
     dispatch(loadMoodSongs(moodlistId.moodId));
@@ -38,7 +49,6 @@ const Songs = () => {
   };
 
   const handleAdd = async (e) => {
-    console.log('....................HANDLE ADD')
     const x = Number(moodlistId['moodId'])
     e.preventDefault();
     const song = {
@@ -52,6 +62,7 @@ const Songs = () => {
     }
     await dispatch(addSong(song))
     setAddSongModal(false);
+    dispatch(loadMoodSongs(moodlistId.moodId))
   };
 
   const handleEdit = async (e) => {
@@ -89,6 +100,7 @@ const Songs = () => {
               <label>
                 <input
                   className="songinfo"
+                  placeholder="title"
                   type="text"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
@@ -97,6 +109,7 @@ const Songs = () => {
               <label>
                 <input
                   className="songinfo"
+                  placeholder="artist"
                   type="text"
                   value={artist}
                   onChange={(e) => setArtist(e.target.value)}
@@ -105,6 +118,7 @@ const Songs = () => {
               <label>
                 <input
                   className="songinfo"
+                  placeholder="rating"
                   type="text"
                   value={rating}
                   onChange={(e) => setRating(e.target.value)}
@@ -113,6 +127,7 @@ const Songs = () => {
               <label>
                 <input
                   className="songinfo"
+                  placeholder="image"
                   type="text"
                   value={image}
                   onChange={(e) => setImage(e.target.value)}
@@ -121,6 +136,7 @@ const Songs = () => {
               <label>
                 <input
                   className="songinfo"
+                  placeholder="url"
                   type="text"
                   value={url}
                   onChange={(e) => setUrl(e.target.value)}
@@ -174,11 +190,11 @@ const Songs = () => {
 
               </button>
               <button id={song.id} onClick={handleEdit} className="editsong">
-                Edit Song
+                TODO:Edit Song
               </button>
             </div>
           </div>
-        ))}
+        )).reverse()}
       </div>
     </div>
   );
