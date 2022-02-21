@@ -9,8 +9,6 @@ import {
   deleteMoodlist,
 } from "../../store/moodlist";
 import AddFormModal from "../AddMood";
-
-
 import "./moodlists.css";
 
 const Moodlists = () => {
@@ -20,7 +18,6 @@ const Moodlists = () => {
   const [showModal, setShowModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
   const user = useSelector((state) => state.session.user)
-
   const [name, setName] = useState("");
   const [color, setColor] = useState("");
   const [x, setX] = useState("")
