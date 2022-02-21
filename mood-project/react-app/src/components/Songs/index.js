@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { loadMoodSongs, removeMoodSong } from "../../store/songs";
 import { Modal } from "../../context/Modal";
-import { addSong } from "../../store/songs";
+import { addSong, editSong } from "../../store/songs";
 import "./Songs.css";
 
 // TODO: Get single moodlist for song page
@@ -24,13 +24,95 @@ const Songs = () => {
   const user = useSelector((state) => state.session.user.id);
   const moodlistId = useParams();
 
+
+{/* --------------------------ADD----------------------------------------------- */}
+
   const [addSongModal, setAddSongModal] = useState(false);
-  const [editModal, setEditModal] = useState(false);
   const [name, setName] = useState("")
   const [artist, setArtist] = useState("")
   const [rating, setRating] = useState(0)
   const [image, setImage] = useState("")
   const [url, setUrl] = useState("")
+
+  const handleAdd = async (e) => {
+    const y = Number(moodlistId['moodId'])
+    e.preventDefault();
+    const song = {
+      "name": name,
+      "artist": artist,
+      "rating": rating,
+      "image_url": image,
+      "song_url": url,
+      "moodlistId": y,
+      "userId": user
+    }
+    await dispatch(addSong(song))
+    setAddSongModal(false);
+    dispatch(loadMoodSongs(moodlistId.moodId))
+  };
+
+
+
+
+
+{/* --------------------------EDIT----------------------------------------------- */}
+
+  const [editSongModal, setEditSongModal] = useState("")
+  const [x, setX] = useState("")
+  const [editName, setEditName] = useState("")
+  const [editArtist, setEditArtist] = useState("")
+  const [editRating, setEditRating] = useState(0)
+  const [editImage, setEditImage] = useState("")
+  const [editUrl, setEditUrl] = useState("")
+
+  const handleShowModalData = (e) => {
+    e.preventDefault();
+    setX(+e.currentTarget.id)
+    setEditSongModal(true)
+  }
+  const handleEdit = async (e) => {
+    e.preventDefault();
+    const song = {
+      "id": x,
+      "name": editName,
+      "artist": editArtist,
+      "rating": editRating,
+      "image_url": editImage,
+      "song_url": editUrl,
+      "moodlistId": Number(moodlistId['moodId']),
+      "userId": user
+    }
+    await dispatch(editSong(song))
+    setEditSongModal(false);
+    // dispatch(loadMoodSongs(moodlistId.moodId))
+  };
+
+
+{/* --------------------------DELETE----------------------------------------------- */}
+
+const handleDelete = async (e) => {
+  e.preventDefault();
+  console.log("REMOVE THE ID OF THE THE SONG", e.target.id);
+  await dispatch(removeMoodSong(e.target.id));
+  return;
+};
+
+
+
+
+
+
+{/* --------------------------PLAY SONG----------------------------------------------- */}
+const handlePlay = (e) => {
+  e.preventDefault();
+  console.log("PLAY THIS THE THE IDDDDDDDD", e.target.id);
+};
+
+
+
+
+{/* --------------------------USEEFFECTS---------------------------------------------- */}
+
 
   useEffect(() => {
     dispatch(loadMoodSongs(moodlistId.moodId));
@@ -44,49 +126,17 @@ const Songs = () => {
     dispatch(addSong)
   }, [dispatch])
 
-  const handlePlay = async (e) => {
-    e.preventDefault();
-    console.log("PLAY THIS THE THE IDDDDDDDD", e.target.id);
-  };
+ useEffect(() => {
+   dispatch(editSong())
+ }, [dispatch])
 
-  const handleAdd = async (e) => {
-    const x = Number(moodlistId['moodId'])
-    e.preventDefault();
-    const song = {
-      "name": name,
-      "artist": artist,
-      "rating": rating,
-      "image_url": image,
-      "song_url": url,
-      "moodlistId": x,
-      "userId": user
-    }
-    await dispatch(addSong(song))
-    setAddSongModal(false);
-    dispatch(loadMoodSongs(moodlistId.moodId))
-  };
 
-  const handleEdit = async (e) => {
-    e.preventDefault();
-    console.log("EDIT THIS THE THE IDDDDDDDD", e.target.id);
-  };
-
-  const handleDelete = async (e) => {
-    e.preventDefault();
-    console.log("REMOVE THE ID OF THE THE SONG", e.target.id);
-    await dispatch(removeMoodSong(e.target.id));
-    return;
-  };
+//---------------------ADD  -------------------------------------------------------------
 
   return (
     <div className="songscontainer">
       <div className="moodlist-songs">
         <h1 className="moodlistsongtitle">Moodlist Name</h1>
-
-
-
-
-          {/* FIXME: ADD SONG COMPLETE ----------------------------------------------------------------- */}
         <button
           value={addSongModal}
           onClick={(e) => setAddSongModal(true)}
@@ -149,7 +199,7 @@ const Songs = () => {
 )}
 
 
-
+{/* --------------------------ENDOFADD---------------------------------------------- */}
 
         {songs.map((song, i) => (
           <div className="eachsong" id={song.id} key={song.id}>
@@ -177,13 +227,7 @@ const Songs = () => {
             </p>
             <div className="songuseroptions">
 
-
-
-
-
-
-
-
+{/* --------------------------PLAYBUTTON----------------------------------------------- */}
               <button id={song.id} onClick={handlePlay} className="playsong">
                 TODO:Play Button
               </button>
@@ -192,7 +236,7 @@ const Songs = () => {
 
 
 
-
+{/* --------------------------DELETE----------------------------------------------- */}
 
 
               <button
@@ -205,22 +249,71 @@ const Songs = () => {
 
 
 
+{/* --------------------------EDIT---------------------------------------------- */}
 
 
+        <button
+          id={song.id}
+          className="editsong"
+          onClick={(e) => handleShowModalData(e)}
+        >
+          Edit Song
+        </button>
+        {editSongModal && (
+          <Modal onClose={() => setEditSongModal(false)}>
+            <form className="editsongmodel" onSubmit={handleEdit}>
+              <h1 id="addsongtitle">Edit Song Details</h1>
+              <label>
+                <input
+                  className="songinfo"
+                  placeholder="title"
+                  type="text"
+                  value={editName}
+                  onChange={(e) => setEditName(e.target.value)}
+                />
+              </label>
+              <label>
+                <input
+                  className="songinfo"
+                  placeholder="artist"
+                  type="text"
+                  value={editArtist}
+                  onChange={(e) => setEditArtist(e.target.value)}
+                />
+              </label>
+              <label>
+                <input
+                  className="songinfo"
+                  placeholder="rating"
+                  type="text"
+                  value={editRating}
+                  onChange={(e) => setEditRating(Number(e.target.value))}
+                />
+              </label>
+              <label>
+                <input
+                  className="songinfo"
+                  placeholder="image"
+                  type="text"
+                  value={editImage}
+                  onChange={(e) => setEditImage(e.target.value)}
+                />
+              </label>
+              <label>
+                <input
+                  className="songinfo"
+                  placeholder="url"
+                  type="text"
+                  value={editUrl}
+                  onChange={(e) => setEditUrl(e.target.value)}
+                />
+              </label>
+              <button className="modaleditsong" type="submit">Edit</button>
+            </form>
+          </Modal>
+)}
 
-
-
-
-              <button id={song.id} onClick={handleEdit} className="editsong">
-                TODO:Edit Song
-              </button>
-
-
-
-
-
-
-
+{/* ------------------------------------------------------------------------ */}
 
             </div>
           </div>

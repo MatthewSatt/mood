@@ -37,7 +37,6 @@ def newSong():
     userId = song["userId"]
     moodlistId = song['moodlistId']
     new_song = Song(name=name, artist=artist, rating=rating, song_url=song_url, song_image=song_image, moodlistId=moodlistId, userId=userId)
-    print('NEW SOOOOOOOOOOOOOOOOONG', new_song)
     print(new_song)
     db.session.add(new_song)
     db.session.commit()
@@ -45,24 +44,24 @@ def newSong():
 
 
 
-# @song_routes.route("edit")
-# def changeSong():
-#         '''
-#         Passes in Song.Id
+@song_routes.route("/edit", methods=["PUT"])
+def changeSong():
+    data = request.json
+    song = Song.query.get(data['id'])
+    song.name = data['name']
+    song.artist = data['artist']
+    song.rating = data['rating']
+    song.song_url = data['song_url']
+    song.song_image = data['image_url']
+    song.userId = data['userId']
+    song.moodlistId = data['moodlistId']
+    db.session.commit()
 
-#         '''
-#         data = request.json
-#         # form = EditSongForm()
-#         current_song = Song.query.get(id)
-#         current_song.body = data['body']
-#         # data.form['body']
+    return song.to_dict()
 
-#         db.session.commit()
-#         return current_song.to_dict()
 
 @song_routes.route("/delete/<int:songId>", methods=["DELETE"])
 def removeSong(songId):
-    print('BACKEND SONG ID...............', songId)
     deleted_song = Song.query.filter(Song.id == songId).first()
     print(deleted_song)
     db.session.delete(deleted_song)

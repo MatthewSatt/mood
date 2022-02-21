@@ -1,8 +1,8 @@
 const LOAD_SONGS = 'song/loadSongs';
 // const GET_ONE_SONG = 'song/oneSong'
 // const ADD_SONG = 'song/addSongs';
-// const UPDATE_SONG = 'song/updateSongs'
-// const REMOVE_SONG = 'song/removeSongs'
+const UPDATE_SONG = 'song/updateSongs'
+
 
 
 export const loadSongs = (payload) => { // returned from server
@@ -51,6 +51,34 @@ export const addSong = (song) => async (dispatch) =>{
 
 //-------------------------------------------------------------------//
 const EDIT_SONG = 'songs/EDIT_SONG';
+
+export const editS = (payload) => {
+    return {
+        type: EDIT_SONG,
+        payload,
+    }
+}
+
+export const editSong = (song) => async (dispatch) => {
+    console.log('Store song', song)
+    const res = await fetch(`/api/songs/edit`, {
+        method: "PUT",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(
+            song,
+        )
+    })
+    if(res.ok) {
+        console.log("UPDATED SONG SUCCESSFUL!")
+        const updatedSong = await res.json()
+        console.log(updatedSong)
+        dispatch(editS(updatedSong))
+        return updatedSong
+    }
+}
+
+
+
 //-------------------------------------------------------------------//
 const REMOVE_SONG = 'songs/REMOVE_SONG';
 
@@ -85,6 +113,11 @@ export default function songReducer(state = initialState, action) {
             return [...state, action.payload];
         case REMOVE_SONG:
                 return state.filter((song) => song.id !== action.song.id);
+        case EDIT_SONG:
+            return newState = [
+                ...state,
+                action.payload.id = action.payload
+            ]
 
         default:
             return state

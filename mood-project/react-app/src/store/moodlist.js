@@ -79,6 +79,7 @@ const deleteMood = (moodlist) => {
     }
 }
 export const deleteMoodlist = (id) => async (dispatch) => {
+
     const res = await fetch(`/api/moodlists/${id}/delete`, {
         method: 'DELETE',
         headers: {'Content-Type': 'application/json'}
