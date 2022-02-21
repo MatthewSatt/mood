@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { loadMoodSongs, removeMoodSong } from "../../store/songs";
 import { Modal } from "../../context/Modal";
-import { addSong, editSong } from "../../store/songs";
+import { editSong } from "../../store/songs";
 import './Songs.css'
 import AddSongForm from "../AddSong";
 

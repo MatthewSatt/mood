@@ -1,7 +1,4 @@
 const LOAD_SONGS = 'song/loadSongs';
-// const GET_ONE_SONG = 'song/oneSong'
-// const ADD_SONG = 'song/addSongs';
-const UPDATE_SONG = 'song/updateSongs'
 
 
 
@@ -22,7 +19,7 @@ export const loadMoodSongs = (moodlistId) => async (dispatch) => {
     }
 }
 //-------------------------------------------------------------------//
-const GET_SONG = 'songs/GET_SONG';
+// const GET_SONG = 'songs/GET_SONG';
 //-------------------------------------------------------------------//
 const ADD_SONG = 'songs/ADD_SONG';
 
@@ -114,7 +111,7 @@ export default function songReducer(state = initialState, action) {
         case REMOVE_SONG:
                 return state.filter((song) => song.id !== action.song.id);
         case EDIT_SONG:
-            // WHY ARE YOU LIKE THIS 
+            // WHY ARE YOU LIKE THIS
             return newState = [
                 ...state,
                 action.payload.id = action.payload

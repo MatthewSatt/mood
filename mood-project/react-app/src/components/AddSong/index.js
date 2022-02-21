@@ -9,8 +9,8 @@ import { addSong } from "../../store/songs";
 
 function AddSongForm({ addSongModal, setAddSongModal }) {
   const dispatch = useDispatch()
-  const songs = useSelector((state) => state.songs);
-  const user = useSelector((state) => state.session.user.id);
+  // const songs = useSelector((state) => state.songs);
+  const userId = useSelector((state) => state.session.user.id);
   const moodlistId = useParams();
 
 
@@ -30,7 +30,7 @@ function AddSongForm({ addSongModal, setAddSongModal }) {
       "image_url": image,
       "song_url": url,
       "moodlistId": x,
-      "userId": user
+      "userId": userId
     }
     await dispatch(addSong(song))
     setAddSongModal(false);
@@ -38,7 +38,7 @@ function AddSongForm({ addSongModal, setAddSongModal }) {
 
   useEffect(() => {
     dispatch(addSong)
-  }, [dispatch, name, artist, rating, image, url])
+  }, [dispatch, name, artist, rating, image, url, userId])
 
 
 

@@ -61,7 +61,7 @@ const Moodlists = () => {
         <div className="moodlistcontent">
           {moodlists?.map((mood) => (
             <>
-              <div className="moodboxes">
+              <div className="moodboxes" key={mood.id}>
                 <Link className="textformoodlists"to={`/moodlists/${mood.id}`}>
                   <div className="eachmoodlist" key={mood?.id}>
                     <p id="moodname">{mood?.name}</p>

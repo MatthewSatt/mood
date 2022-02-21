@@ -23,10 +23,10 @@ function AddForm({ setShowModal, showModal }) {
     await dispatch(addMoodList(newmoodlist))
     setShowModal(false)
   };
-  
+
   useEffect(() => {
     dispatch(addMoodList)
-  }, [name, color])
+  }, [dispatch, name, color])
 
   return (
 
