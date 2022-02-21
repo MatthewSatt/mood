@@ -114,6 +114,7 @@ export default function songReducer(state = initialState, action) {
         case REMOVE_SONG:
                 return state.filter((song) => song.id !== action.song.id);
         case EDIT_SONG:
+            // WHY ARE YOU LIKE THIS 
             return newState = [
                 ...state,
                 action.payload.id = action.payload
