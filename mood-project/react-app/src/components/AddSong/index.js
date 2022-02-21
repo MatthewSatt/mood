@@ -6,24 +6,19 @@ import { useParams } from "react-router-dom";
 import { addSong } from "../../store/songs";
 
 
-function AddSongModal() {
+
+function AddSongForm({ addSongModal, setAddSongModal }) {
   const dispatch = useDispatch()
   const songs = useSelector((state) => state.songs);
   const user = useSelector((state) => state.session.user.id);
   const moodlistId = useParams();
 
-  const [addSongModal, setAddSongModal] = useState(false);
-  // const [editModal, setEditModal] = useState(false);
+
   const [name, setName] = useState("")
   const [artist, setArtist] = useState("")
   const [rating, setRating] = useState(0)
   const [image, setImage] = useState("")
   const [url, setUrl] = useState("")
-
-  useEffect(() => {
-    dispatch(addSong)
-  }, [dispatch])
-
 
   const handleAdd = async (e) => {
     const x = Number(moodlistId['moodId'])
@@ -37,11 +32,18 @@ function AddSongModal() {
       "moodlistId": x,
       "userId": user
     }
+    await dispatch(addSong(song))
+    setAddSongModal(false);
   }
+
+  useEffect(() => {
+    dispatch(addSong)
+  }, [dispatch, name, artist, rating, image, url])
+
+
 
   return (
     <>
-        {addSongModal && (
           <Modal onClose={() => setAddSongModal(false)}>
             <form className="addsongmodel">
               <h1 id="addsongtitle">Add Song</h1>
@@ -93,9 +95,8 @@ function AddSongModal() {
               <button onClick={handleAdd} className="modaladdsong" type="submit">Add</button>
             </form>
           </Modal>
-      )}
     </>
   );
 }
 
-export default AddSongModal;
+export default AddSongForm;

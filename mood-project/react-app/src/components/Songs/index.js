@@ -4,7 +4,8 @@ import { useParams } from "react-router-dom";
 import { loadMoodSongs, removeMoodSong } from "../../store/songs";
 import { Modal } from "../../context/Modal";
 import { addSong, editSong } from "../../store/songs";
-import "./Songs.css";
+import './Songs.css'
+import AddSongForm from "../AddSong";
 
 // TODO: Get single moodlist for song page
 // TODO: complete edit functionality
@@ -28,36 +29,7 @@ const Songs = () => {
 {/* --------------------------ADD----------------------------------------------- */}
 
   const [addSongModal, setAddSongModal] = useState(false);
-  const [name, setName] = useState("")
-  const [artist, setArtist] = useState("")
-  const [rating, setRating] = useState(0)
-  const [image, setImage] = useState("")
-  const [url, setUrl] = useState("")
-
-  const handleAdd = async (e) => {
-    const y = Number(moodlistId['moodId'])
-    e.preventDefault();
-    const song = {
-      "name": name,
-      "artist": artist,
-      "rating": rating,
-      "image_url": image,
-      "song_url": url,
-      "moodlistId": y,
-      "userId": user
-    }
-    await dispatch(addSong(song))
-    setAddSongModal(false);
-    dispatch(loadMoodSongs(moodlistId.moodId))
-  };
-
-
-
-
-
-{/* --------------------------EDIT----------------------------------------------- */}
-
-  const [editSongModal, setEditSongModal] = useState("")
+  const [editSongModal, setEditSongModal] = useState(false)
   const [x, setX] = useState("")
   const [editName, setEditName] = useState("")
   const [editArtist, setEditArtist] = useState("")
@@ -84,11 +56,8 @@ const Songs = () => {
     }
     await dispatch(editSong(song))
     setEditSongModal(false);
-    // dispatch(loadMoodSongs(moodlistId.moodId))
+    dispatch(loadMoodSongs(moodlistId.moodId))
   };
-
-
-{/* --------------------------DELETE----------------------------------------------- */}
 
 const handleDelete = async (e) => {
   e.preventDefault();
@@ -100,9 +69,6 @@ const handleDelete = async (e) => {
 
 
 
-
-
-{/* --------------------------PLAY SONG----------------------------------------------- */}
 const handlePlay = (e) => {
   e.preventDefault();
   console.log("PLAY THIS THE THE IDDDDDDDD", e.target.id);
@@ -111,27 +77,11 @@ const handlePlay = (e) => {
 
 
 
-{/* --------------------------USEEFFECTS---------------------------------------------- */}
-
-
   useEffect(() => {
     dispatch(loadMoodSongs(moodlistId.moodId));
-  }, [dispatch]);
-
-  useEffect(() => {
-    dispatch(removeMoodSong);
-  }, [dispatch]);
-
-  useEffect(() => {
-    dispatch(addSong)
-  }, [dispatch])
-
- useEffect(() => {
-   dispatch(editSong())
- }, [dispatch])
+  }, [dispatch, moodlistId.moodId]);
 
 
-//---------------------ADD  -------------------------------------------------------------
 
   return (
     <div className="songscontainer">
@@ -145,62 +95,8 @@ const handlePlay = (e) => {
           Add Song
         </button>
         {addSongModal && (
-          <Modal onClose={() => setAddSongModal(false)}>
-            <form className="addsongmodel">
-              <h1 id="addsongtitle">Add Song</h1>
-              <label>
-                <input
-                  className="songinfo"
-                  placeholder="title"
-                  type="text"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                />
-              </label>
-              <label>
-                <input
-                  className="songinfo"
-                  placeholder="artist"
-                  type="text"
-                  value={artist}
-                  onChange={(e) => setArtist(e.target.value)}
-                />
-              </label>
-              <label>
-                <input
-                  className="songinfo"
-                  placeholder="rating"
-                  type="text"
-                  value={rating}
-                  onChange={(e) => setRating(e.target.value)}
-                />
-              </label>
-              <label>
-                <input
-                  className="songinfo"
-                  placeholder="image"
-                  type="text"
-                  value={image}
-                  onChange={(e) => setImage(e.target.value)}
-                />
-              </label>
-              <label>
-                <input
-                  className="songinfo"
-                  placeholder="url"
-                  type="text"
-                  value={url}
-                  onChange={(e) => setUrl(e.target.value)}
-                />
-              </label>
-              <button onClick={handleAdd} className="modaladdsong" type="submit">Add</button>
-            </form>
-          </Modal>
-)}
-
-
-{/* --------------------------ENDOFADD---------------------------------------------- */}
-
+          <AddSongForm addSongModal={addSongModal} setAddSongModal={setAddSongModal}/>
+        )}
         {songs.map((song, i) => (
           <div className="eachsong" id={song.id} key={song.id}>
             <div className="titleandartist">

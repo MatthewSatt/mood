@@ -1,5 +1,5 @@
 import './AddModel.css'
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addMoodList} from "../../store/moodlist";
 
@@ -23,6 +23,10 @@ function AddForm({ setShowModal, showModal }) {
     await dispatch(addMoodList(newmoodlist))
     setShowModal(false)
   };
+  
+  useEffect(() => {
+    dispatch(addMoodList)
+  }, [name, color])
 
   return (
 
