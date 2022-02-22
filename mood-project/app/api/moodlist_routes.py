@@ -19,6 +19,7 @@ def get_all_moodlists(id):
 @login_required
 def create_new_moodlist(): # pass in the payload
     mood = request.json['mood']
+
     # print('MOOOOOOOOOD', mood)
     name = mood["name"]
     color = mood["color"]
@@ -34,7 +35,6 @@ def create_new_moodlist(): # pass in the payload
 def edit_moodlist():
     '''this route passes in the new moodlist data AND the moodlist id'''
     data = request.json
-    print('KKKKKKKKKKKKKKKKKKKKKKKKK', data)
     moodlist = Moodlist.query.get(data['id'])
     # print('.......................................', moodlist.to_dict())
     moodlist.name = data['name']

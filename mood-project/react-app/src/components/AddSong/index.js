@@ -7,13 +7,13 @@ import './AddSong.css'
 
 function AddSongForm({ setAddSongModal }) {
   const dispatch = useDispatch();
-  // const songs = useSelector((state) => state.songs);
+  const songs = useSelector((state) => state.songs);
   const userId = useSelector((state) => state.session.user.id);
   const moodlistId = useParams();
 
   const [name, setName] = useState("");
   const [artist, setArtist] = useState("");
-  const [rating, setRating] = useState(1);
+  const [rating, setRating] = useState(0);
   const [image, setImage] = useState("");
   const [url, setUrl] = useState("");
   const [songErrors, setSongErrors] = useState([]);
@@ -30,8 +30,6 @@ function AddSongForm({ setAddSongModal }) {
     if (rating > 10) songErrors.push("Song rating must be 10 or less");
     setSongErrors(songErrors);
   }, [name, artist, rating]);
-
-  console.log(rating)
 
 
   const handleAdd = async (e) => {
@@ -67,10 +65,9 @@ function AddSongForm({ setAddSongModal }) {
           <div className="addsongform">
           <h1 id="addsongtitle">Add Song</h1>
           <label>
-            Name
+            Title
             <input
               className="songinfo"
-              placeholder="title"
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}

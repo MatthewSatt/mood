@@ -52,6 +52,10 @@ function App() {
           <HomePage />
         </Route>
 
+        <Route path="">
+          <h1>Page does not exist</h1>
+        </Route>
+
       </Switch>
     </BrowserRouter>
   );
