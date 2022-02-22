@@ -19,6 +19,15 @@ const Moodlists = () => {
   const [color, setColor] = useState("");
   const [x, setX] = useState("");
 
+
+  useEffect(() => {
+    dispatch(loadUserMoods(userId));
+  }, [dispatch, showEditModal, showModal]);
+
+
+
+
+
   const handleEdit = (e) => {
     e.preventDefault();
     const newmoodlist = {
@@ -31,9 +40,6 @@ const Moodlists = () => {
     setShowEditModal(false);
   };
 
-  useEffect(() => {
-    dispatch(loadUserMoods(userId));
-  }, [dispatch, showEditModal, showModal]);
 
   const handleShowModalData = (e) => {
     e.preventDefault();
