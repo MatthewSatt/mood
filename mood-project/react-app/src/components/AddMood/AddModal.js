@@ -45,7 +45,7 @@ function AddForm({ setShowModal }) {
           })}
       </ul>
 
-      <h1 id="loginheader">New mood</h1>
+      <h1 id="loginheader">Add Mood</h1>
       <label>
         <input
           className="nameinput"
