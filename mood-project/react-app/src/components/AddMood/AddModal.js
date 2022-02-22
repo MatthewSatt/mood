@@ -10,7 +10,7 @@ function AddForm({ setShowModal }) {
   const userId = useSelector((state) => state.session.user.id);
   const dispatch = useDispatch();
   const [name, setName] = useState("");
-  const [color, setColor] = useState('')
+  const [color, setColor] = useState('red')
   const [errors, setErrors] = useState([]);
 
   useEffect(() => {
@@ -58,9 +58,9 @@ function AddForm({ setShowModal }) {
       <select
         className="colorinput"
         value={color}
-        onClick={(e) => setColor(e.target.value)}
+        onChange={(e) => setColor(e.target.value)}
       >
-        <option className="redstyle" value="red">
+        <option className="REDstyle" value="red">
           Red
           </option>
         <option className="greenstyle" value="green">

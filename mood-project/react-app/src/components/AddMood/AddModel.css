@@ -73,23 +73,3 @@ border: 1px solid #000000;
     transition: 5s;
 }
 
-
-.redstyle{
-    background-color: red;
-}
-
-.greenstyle{
-    background-color: green;
-}
-
-.bluestyle{
-    background-color: blue;
-}
-
-.style{
-    background-color: purple;
-}
-
-.blackstyle{
-    background-color: black;
-}

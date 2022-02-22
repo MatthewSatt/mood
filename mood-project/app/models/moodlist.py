@@ -7,7 +7,7 @@ class Moodlist(db.Model):
     __tablename__ = 'moodlists'
 
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(40), nullable=False, unique=True)
+    name = db.Column(db.String(40), nullable=False)
     color = db.Column(db.String(40))
     userId = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
 

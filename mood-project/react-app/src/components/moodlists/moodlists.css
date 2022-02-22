@@ -23,7 +23,8 @@
     height: auto;
    border: 2px solid blue;
    margin: 20px;
-   width: 25%;
+   width: 300px;
+   size-adjust: auto;
    background-color: rgb(255, 70, 70);
 }
 
@@ -76,4 +77,25 @@
 
 .textformoodlists{
     text-decoration: none;
+}
+
+
+.REDstyle{
+    background-color: red;
+}
+
+.greenstyle{
+    background-color: green;
+}
+
+.bluestyle{
+    background-color: blue;
+}
+
+.purplestyle{
+    background-color: purple;
+}
+
+.blackstyle{
+    background-color: black;
 }

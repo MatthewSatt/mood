@@ -3,35 +3,35 @@ from app.models import db, Moodlist
 
 def seed_moodlist():
     moodlist1= Moodlist(
-        name='Aggressive', color='Yellow', userId=1)
+        name='Aggressive', color='red', userId=1)
     moodlist2 = Moodlist(
-        name='Confident', color='Red', userId=1)
+        name='Confident', color='green', userId=1)
     moodlist3= Moodlist(
-        name='Gentle', color='Blue', userId=1)
+        name='Gentle', color='blue', userId=1)
     moodlist4= Moodlist(
-        name='Epic', color='Orange', userId=1)
+        name='Epic', color='purple', userId=1)
     moodlist5 = Moodlist(
-        name='Dramatic', color='Green', userId=1)
+        name='Dramatic', color='black', userId=1)
     moodlist6= Moodlist(
-        name='Relaxed', color='Pink', userId=1)
+        name='Relaxed', color='red', userId=1)
     moodlist7= Moodlist(
-        name='Nostalgic', color='Silver', userId=1)
+        name='Nostalgic', color='green', userId=1)
     moodlist8 = Moodlist(
-        name='Melodic', color='White', userId=1)
+        name='Melodic', color='blue', userId=1)
     moodlist9= Moodlist(
-        name='Meditative', color='Purple', userId=1)
+        name='Meditative', color='purple', userId=1)
     moodlist10= Moodlist(
-        name='Gloomy', color='Brown', userId=1)
+        name='Gloomy', color='black', userId=1)
     moodlist11 = Moodlist(
-        name='Driving', color='Black', userId=1)
+        name='Driving', color='brown', userId=1)
     moodlist12= Moodlist(
-        name='Sad', color='Tan', userId=1)
+        name='Sad', color='red', userId=1)
     moodlist13= Moodlist(
-        name='Happy', color='Green', userId=1)
+        name='Happy', color='green', userId=1)
     moodlist14 = Moodlist(
-        name='Scary', color='Red', userId=1)
+        name='Scary', color='blue', userId=1)
     moodlist15= Moodlist(
-        name='Annoyed', color='White', userId=1)
+        name='Annoyed', color='purple', userId=1)
 
 
 
