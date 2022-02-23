@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, NavLink } from "react-router-dom";
 import { loadMoodSongs, removeMoodSong } from "../../store/songs";
 import { Modal } from "../../context/Modal";
 import { editSong, playSong } from "../../store/songs";
 import "./Songs.css";
+import ReactAudioPlayer from "react-audio-player";
 import AddSongForm from "../AddSong";
-
 
 const Songs = () => {
   const dispatch = useDispatch();
@@ -20,6 +20,7 @@ const Songs = () => {
 
   const [addSongModal, setAddSongModal] = useState(false);
   const [editSongModal, setEditSongModal] = useState(false);
+  const [play, setPlay] = useState(false);
   const [x, setX] = useState("");
   const [editName, setEditName] = useState("");
   const [editArtist, setEditArtist] = useState("");
@@ -36,8 +37,7 @@ const Songs = () => {
       editSongErrors.push("Name must not be shorter than 3 characters");
     if (editArtist.length > 20)
       editSongErrors.push("I said an artist not a book");
-    if (editArtist.length < 1)
-      editSongErrors.push("Must include an artist");
+    if (editArtist.length < 1) editSongErrors.push("Must include an artist");
     if (editRating < 0) editSongErrors.push("Song rating must be at least 0");
     if (editRating > 10) editSongErrors.push("Song rating must be 10 or less");
     setEditSongErrors(editSongErrors);
@@ -80,13 +80,8 @@ const Songs = () => {
 
   const handlePlay = (e) => {
     e.preventDefault();
-    const songId = e.target.id
-    dispatch(playSong(songId))
-    return;
+    setPlay(true);
   };
-  {
-    /* ------------------------------------------------------------------------ */
-  }
 
   useEffect(() => {
     dispatch(loadMoodSongs(moodlistId.moodId));
@@ -110,7 +105,7 @@ const Songs = () => {
           />
         )}
         {songs
-          .map((song, i) => (
+          .map((song) => (
             <div className="eachsong" id={song.id} key={song.id}>
               <div className="titleandartist">
                 <p song={song} key={song.name}>
@@ -136,8 +131,20 @@ const Songs = () => {
               </p>
               <div className="songuseroptions">
                 {/* --------------------------PLAYBUTTON----------------------------------------------- */}
-                <button id={song.id} onClick={handlePlay} className="playsong">
-                  TODO:Play Button
+                <button
+                  value={song.id}
+                  onClick={(e) => setPlay(e.target.value)}
+                  className="playsong"
+                >
+                      <div className="songdetails" key={song.id}>
+                        <ReactAudioPlayer
+                          className='music'
+                          src={song.song_url}
+                          controls
+                          key={song.song_url}
+                      />
+                      {song.song_url}
+                      </div>
                 </button>
 
                 {/* --------------------------DELETE----------------------------------------------- */}
@@ -219,7 +226,11 @@ const Songs = () => {
                           onChange={(e) => setEditUrl(e.target.value)}
                         />
                       </label>
-                      <button disabled={editSongErrors.length > 0 ? true : false} className="modaleditsong" type="submit">
+                      <button
+                        disabled={editSongErrors.length > 0 ? true : false}
+                        className="modaleditsong"
+                        type="submit"
+                      >
                         Change
                       </button>
                     </form>
