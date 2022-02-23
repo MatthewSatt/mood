@@ -14,7 +14,7 @@ function AddSongForm({ setAddSongModal }) {
   const [name, setName] = useState("");
   const [artist, setArtist] = useState("");
   const [rating, setRating] = useState(0);
-  const [image, setImage] = useState("");
+  // const [image, setImage] = useState("");
   const [url, setUrl] = useState("");
   const [songErrors, setSongErrors] = useState([]);
 
@@ -28,8 +28,9 @@ function AddSongForm({ setAddSongModal }) {
     if (artist.length < 1) songErrors.push("Must include an artist");
     if (rating < 0) songErrors.push("Song rating must be at least 0");
     if (rating > 10) songErrors.push("Song rating must be 10 or less");
+    if(!(url.endsWith(".mp3") || url.endsWith(".mp4")) && (url.length > 0)) songErrors.push('Song link must end with .mp3 or .mp4')
     setSongErrors(songErrors);
-  }, [name, artist, rating]);
+  }, [name, artist, rating, url]);
 
 
   const handleAdd = async (e) => {
@@ -39,7 +40,7 @@ function AddSongForm({ setAddSongModal }) {
       name: name,
       artist: artist,
       rating: Number(rating),
-      image_url: image,
+      // image_url: image,
       song_url: url,
       moodlistId: y,
       userId: userId,
@@ -48,9 +49,9 @@ function AddSongForm({ setAddSongModal }) {
     setAddSongModal(false);
   };
 
-  // useEffect(() => {
-  //   dispatch(addSong);
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(addSong);
+  }, [dispatch]);
 
   return (
     <>
@@ -90,16 +91,6 @@ function AddSongForm({ setAddSongModal }) {
               type="number"
               value={rating}
               onChange={(e) => setRating(e.target.value)}
-            />
-          </label>
-          Image
-          <label>
-            <input
-              className="songinfo"
-              placeholder="Optional"
-              type="text"
-              value={image}
-              onChange={(e) => setImage(e.target.value)}
             />
           </label>
           Song Link

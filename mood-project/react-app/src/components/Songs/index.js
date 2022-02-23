@@ -21,13 +21,13 @@ const Songs = () => {
 
   const [addSongModal, setAddSongModal] = useState(false);
   const [editSongModal, setEditSongModal] = useState(false);
-  const [play, setPlay] = useState(false);
+  // const [play, setPlay] = useState(false);
   const [x, setX] = useState("");
   const [editName, setEditName] = useState("");
   const [editArtist, setEditArtist] = useState("");
   const [editRating, setEditRating] = useState(0);
-  const [editImage, setEditImage] = useState("");
-  const [editUrl, setEditUrl] = useState("");
+  // const [editImage, setEditImage] = useState("");
+  // const [editUrl, setEditUrl] = useState("");
   const [editSongErrors, setEditSongErrors] = useState([]);
 
   useEffect(() => {
@@ -56,8 +56,8 @@ const Songs = () => {
       name: editName,
       artist: editArtist,
       rating: editRating,
-      image_url: editImage,
-      song_url: editUrl,
+      // image_url: editImage,
+      // song_url: editUrl,
       moodlistId: Number(moodlistId["moodId"]),
       userId: user,
     };
@@ -79,10 +79,10 @@ const Songs = () => {
     /* --------------------------Play----------------------------------------------- */
   }
 
-  const handlePlay = (e) => {
-    e.preventDefault();
-    setPlay(true);
-  };
+  // const handlePlay = (e) => {
+  //   e.preventDefault();
+  //   setPlay(true);
+  // };
 
   useEffect(() => {
     dispatch(loadMoodSongs(moodlistId.moodId));
@@ -91,7 +91,7 @@ const Songs = () => {
   return (
     <div className="songscontainer">
       <div className="moodlist-songs">
-        <h1 className="moodlistsongtitle">Moodlist Name</h1>
+        <h1 className="moodlistsongtitle">Songs</h1>
         <button
           value={addSongModal}
           onClick={(e) => setAddSongModal(true)}
@@ -118,9 +118,10 @@ const Songs = () => {
                   {song.artist}
                 </p>
               </div>
+              <h3>Rating</h3>
+               <h2>{song.rating}</h2>
               <p song={song}>
                 {/* <span className="songlabelsrating">Rating </span> */}
-                {song.rating}
               </p>
               <p className="songimage">
                 {/* <span className="songlabelsimage">Image </span> */}
@@ -197,7 +198,7 @@ const Songs = () => {
                           }
                         />
                       </label>
-                      <label>
+                      {/* <label>
                         Image
                         <input
                           className="songinfo"
@@ -216,7 +217,7 @@ const Songs = () => {
                           value={editUrl}
                           onChange={(e) => setEditUrl(e.target.value)}
                         />
-                      </label>
+                      </label> */}
                       <button
                         disabled={editSongErrors.length > 0 ? true : false}
                         className="modaleditsong"
@@ -232,7 +233,7 @@ const Songs = () => {
               </div>
             </div>
           ))
-          .reverse()}
+          .sort()}
       </div>
     </div>
   );

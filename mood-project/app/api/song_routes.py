@@ -23,10 +23,10 @@ def newSong():
     artist = song["artist"]
     rating = song["rating"]
     song_url = song["song_url"]
-    song_image = song["image_url"]
+    # song_image = song["image_url"]
     userId = song["userId"]
     moodlistId = song['moodlistId']
-    new_song = Song(name=name, artist=artist, rating=rating, song_url=song_url, song_image=song_image, moodlistId=moodlistId, userId=userId)
+    new_song = Song(name=name, artist=artist, rating=rating, song_url=song_url, moodlistId=moodlistId, userId=userId)
     print(new_song)
     db.session.add(new_song)
     db.session.commit()
@@ -41,8 +41,8 @@ def changeSong():
     song.name = data['name']
     song.artist = data['artist']
     song.rating = data['rating']
-    song.song_url = data['song_url']
-    song.song_image = data['image_url']
+    # song.song_url = data['song_url']
+    # song.song_image = data['image_url']
     song.userId = data['userId']
     song.moodlistId = data['moodlistId']
     db.session.commit()

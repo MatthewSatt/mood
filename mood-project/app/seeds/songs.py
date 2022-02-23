@@ -15,8 +15,6 @@ def seed_songs():
     song6 = Song(
         name="It's Time", artist='Imagine Dragons', rating=10, song_url="https://res.cloudinary.com/matthewsatterwhite/video/upload/v1645637061/Imagine_Dragons_-_It_s_Time_Lyrics_e6bv1b.mp3", userId=1, moodlistId=1)
     song7 = Song(
-        name='Crank That', artist='Soulja Boy', song_url="https://res.cloudinary.com/matthewsatterwhite/video/upload/v1645637394/Soulja_Boy_-_Crank_That_Lyrics_Now_Watch_Me_You_Crank_That_Soulja_Boy___Tiktok_Song_zpvd1j.mp3", rating=2, userId=1, moodlistId=1)
-    song8 = Song(
         name='Despacito', artist='Luic Fonsi', song_url="https://res.cloudinary.com/matthewsatterwhite/video/upload/v1645637555/Luis_Fonsi_Despacito_Lyrics___Lyric_Video_ft._Daddy_Yankee_iea59a.mp3", rating=2, userId=1, moodlistId=1)
 
     db.session.add(song1)
@@ -26,7 +24,6 @@ def seed_songs():
     db.session.add(song5)
     db.session.add(song6)
     db.session.add(song7)
-    db.session.add(song8)
     db.session.commit()
 
 def undo_seeds():
