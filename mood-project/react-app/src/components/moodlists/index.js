@@ -22,22 +22,22 @@ const Moodlists = () => {
 
   useEffect(() => {
     dispatch(loadUserMoods(userId));
-  }, [dispatch, showEditModal, showModal]);
+  }, [dispatch, showEditModal, showModal, userId]);
 
 
 
 
 
-  const handleEdit = (e) => {
+  const handleEdit = async (e) => {
     e.preventDefault();
     const newmoodlist = {
       id: x,
       name: name,
       color: color,
     };
-    dispatch(editMoodlist(newmoodlist));
-    dispatch(loadUserMoods(userId));
+    await dispatch(editMoodlist(newmoodlist));
     setShowEditModal(false);
+    await dispatch(loadUserMoods(userId));
   };
 
 
@@ -135,7 +135,7 @@ const Moodlists = () => {
                 </div>
               </>
             ))
-            .reverse()}
+            }
         </div>
       </div>
     </>
