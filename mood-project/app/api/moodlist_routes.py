@@ -5,6 +5,15 @@ from app.forms import AddMoodForm, EditMoodForm
 
 moodlist_routes = Blueprint("moodlists", __name__)
 
+def validation_errors_to_error_messages(validation_errors):
+    """
+    Simple function that turns the WTForms validation errors into a simple list
+    """
+    errorMessages = []
+    for field in validation_errors:
+        for error in validation_errors[field]:
+            errorMessages.append(f'{field} : {error}')
+    return errorMessages
 
 
 @moodlist_routes.route("/<int:id>")
@@ -18,23 +27,25 @@ def get_all_moodlists(id):
 @moodlist_routes.route("/new", methods=['POST'])
 @login_required
 def create_new_moodlist(): # pass in the payload
-    mood = request.json['mood']
-
-    # print('MOOOOOOOOOD', mood)
-    name = mood["name"]
-    color = mood["color"]
-    userId = mood["userId"]
-    new_moodlist = Moodlist(name=name, color=color, userId=userId)
-    db.session.add(new_moodlist)
-    db.session.commit()
-    print(new_moodlist.to_dict())
-    return {"mood": new_moodlist.to_dict()}
+    # data = request.json
+    form = AddMoodForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        name = form.data["name"]
+        color = form.data["color"]
+        userId = form.data["userId"]
+        new_moodlist = Moodlist(name=name, color=color, userId=userId)
+        db.session.add(new_moodlist)
+        db.session.commit()
+        return {"mood": new_moodlist.to_dict()}
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 @moodlist_routes.route("/edit", methods=["PUT"])
 # @login_required
 def edit_moodlist():
     '''this route passes in the new moodlist data AND the moodlist id'''
     data = request.json
+    form = EditMoodForm()
     moodlist = Moodlist.query.get(data['id'])
     # print('.......................................', moodlist.to_dict())
     moodlist.name = data['name']

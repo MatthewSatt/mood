@@ -33,9 +33,9 @@ export const addMoodList = (mood) => async (dispatch) =>{
     const res = await fetch(`/api/moodlists/new`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({
-            mood,
-        })
+        body: JSON.stringify(
+            mood
+        )
     })
     if (res.ok){
         const newMood = await res.json();
