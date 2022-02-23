@@ -3,19 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { loadMoodSongs, removeMoodSong } from "../../store/songs";
 import { Modal } from "../../context/Modal";
-import { editSong } from "../../store/songs";
+import { editSong, playSong } from "../../store/songs";
 import "./Songs.css";
 import AddSongForm from "../AddSong";
 
-// TODO: Get single moodlist for song page
-// TODO: complete edit functionality
-// TODO: get songs to play
-// TODO: error validations on front and backend
-// TODO: update styles
-// TODO: add search all songs feature
-// TODO: figure out the color wheel
-// TODO: play music
-// TODO: add an easter egg
 
 const Songs = () => {
   const dispatch = useDispatch();
@@ -75,24 +66,31 @@ const Songs = () => {
   };
 
   {
-    /* --------------------------Edit----------------------------------------------- */
+    /* --------------------------Delete----------------------------------------------- */
   }
 
   const handleDelete = async (e) => {
     e.preventDefault();
-    console.log("REMOVE THE ID OF THE THE SONG", e.target.id);
     await dispatch(removeMoodSong(e.target.id));
     return;
   };
+  {
+    /* --------------------------Play----------------------------------------------- */
+  }
 
   const handlePlay = (e) => {
     e.preventDefault();
-    console.log("PLAY THIS THE THE IDDDDDDDD", e.target.id);
+    const songId = e.target.id
+    dispatch(playSong(songId))
+    return;
   };
+  {
+    /* ------------------------------------------------------------------------ */
+  }
 
   useEffect(() => {
     dispatch(loadMoodSongs(moodlistId.moodId));
-  }, [dispatch, moodlistId.moodId]);
+  }, [dispatch]);
 
   return (
     <div className="songscontainer">

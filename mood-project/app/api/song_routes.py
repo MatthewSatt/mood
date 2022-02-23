@@ -17,16 +17,6 @@ def getMoodlistSongs(moodlistId): # pass in MOODLIST.Id ONLY
 
 @song_routes.route("/new", methods=['POST'])
 def newSong():
-    '''
-    Passes in object:
-    {
-            'name': self.name,
-            'artist': self.artist,
-            'rating': self.rating,
-            'song_url': self.song_url,
-            'song_image': self.song_image
-    }
-    '''
     song = request.json
 
     name = song["name"]
@@ -67,3 +57,12 @@ def removeSong(songId):
     db.session.delete(deleted_song)
     db.session.commit()
     return deleted_song.to_dict()
+
+
+
+
+@song_routes.route("/play/<int:songId>")
+def playSong(songId):
+    song = Song.query.filter(Song.id == songId).first()
+    print('SONNGGGGGGGGGGGGGGGG', song.to_dict())
+    return song.to_dict()
