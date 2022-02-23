@@ -5,7 +5,6 @@ import { loadMoodSongs, removeMoodSong } from "../../store/songs";
 import { Modal } from "../../context/Modal";
 import { editSong, playSong } from "../../store/songs";
 import "./Songs.css";
-import ReactAudioPlayer from "react-audio-player";
 import AddSongForm from "../AddSong";
 import Player from "../SongPlayer";
 

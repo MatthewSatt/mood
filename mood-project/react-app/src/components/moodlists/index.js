@@ -27,7 +27,7 @@ const Moodlists = () => {
 
 
 
-
+// MOOD component
   const handleEdit = async (e) => {
     e.preventDefault();
     const newmoodlist = {
@@ -36,10 +36,11 @@ const Moodlists = () => {
       color: color,
     };
     await dispatch(editMoodlist(newmoodlist));
+
     setShowEditModal(false);
     await dispatch(loadUserMoods(userId));
   };
-
+// mood component
 
   const handleShowModalData = (e) => {
     e.preventDefault();
@@ -62,6 +63,8 @@ const Moodlists = () => {
         <div className="moodlistcontent">
           {moodlists
             ?.map((mood) => (
+
+              //mood component
               <>
                 <div className={`moodboxes ${mood.color}style`} key={mood.id}>
                   <Link
