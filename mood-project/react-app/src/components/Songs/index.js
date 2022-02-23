@@ -131,13 +131,10 @@ const Songs = () => {
               </p>
               <div className="songuseroptions">
                 {/* --------------------------PLAYBUTTON----------------------------------------------- */}
-                <button
-                  value={song.id}
-                  onClick={(e) => setPlay(e.target.value)}
-                  className="playsong"
-                >
+
                       <div className="songdetails" key={song.id}>
                         <ReactAudioPlayer
+                          id={song.id}
                           className='music'
                           src={song.song_url}
                           controls
@@ -145,7 +142,7 @@ const Songs = () => {
                       />
                       {song.song_url}
                       </div>
-                </button>
+
 
                 {/* --------------------------DELETE----------------------------------------------- */}
 
