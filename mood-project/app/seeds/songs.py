@@ -3,21 +3,21 @@ from app.models import db, Song
 
 def seed_songs():
     song1 = Song(
-         name='California', artist='Blink-182', rating=7, userId=1, moodlistId=1)
+         name='Bored to Death', artist='Blink-182', song_url='https://res.cloudinary.com/matthewsatterwhite/video/upload/v1645634742/blink-182_-_Bored_To_Death_Official_Video_uohps1.mp4', rating=7, userId=1, moodlistId=1)
     song2 = Song(
-         name='Hells Bells', artist='ACDC', rating=3, userId=1, moodlistId=1)
+         name='Nothing Inside', artist='MGK', song_url='https://res.cloudinary.com/matthewsatterwhite/video/upload/v1645635424/Machine_Gun_Kelly_Ft._Iann_Dior_-_nothing_inside_Official_Audio_ksjfxm.mp4', rating=3, userId=1, moodlistId=1)
     song3 = Song(
-        name='Demons', artist='Imagine Dragons', rating=9, userId=1, moodlistId=1)
+        name='Demons', artist='Imagine Dragons', rating=9,  song_url='https://res.cloudinary.com/matthewsatterwhite/video/upload/v1645635817/Demons_-_Imagine_Dragons_gc5tcu.mp4', userId=1, moodlistId=1)
     song4 = Song(
-        name='Despacito', artist='Luis Fonsi', rating=2, userId=1, moodlistId=1)
+        name='Warriyo', artist='Mortals', rating=2, song_url='https://res.cloudinary.com/matthewsatterwhite/video/upload/v1645635285/Warriyo_-_Mortals_feat._Laura_Brehm_NCS_Release_yullsu.mp4', userId=1, moodlistId=1)
     song5 = Song(
-        name='Bohemian Rhapsody', artist='Queen', rating=8, userId=1, moodlistId=1)
+        name='The Black Parade', artist='MCR', song_url="https://res.cloudinary.com/matthewsatterwhite/video/upload/v1645636620/Welcome_To_The_Black_Parade_-_My_Chemical_Romance_Lyrics_gpfjlu.mp3", rating=8, userId=1, moodlistId=1)
     song6 = Song(
-        name='Billy Jean', artist='Micheal Jackson', rating=2, userId=1, moodlistId=1)
+        name="It's Time", artist='Imagine Dragons', rating=10, song_url="https://res.cloudinary.com/matthewsatterwhite/video/upload/v1645637061/Imagine_Dragons_-_It_s_Time_Lyrics_e6bv1b.mp3", userId=1, moodlistId=1)
     song7 = Song(
-        name='Rolling in the deep', artist='Adele', rating=2, userId=1, moodlistId=1)
+        name='Crank That', artist='Soulja Boy', song_url="https://res.cloudinary.com/matthewsatterwhite/video/upload/v1645637394/Soulja_Boy_-_Crank_That_Lyrics_Now_Watch_Me_You_Crank_That_Soulja_Boy___Tiktok_Song_zpvd1j.mp3", rating=2, userId=1, moodlistId=1)
     song8 = Song(
-        name='Somebody that I Used to Know', artist='Gotye', rating=2, userId=1, moodlistId=1)
+        name='Despacito', artist='Luic Fonsi', song_url="https://res.cloudinary.com/matthewsatterwhite/video/upload/v1645637555/Luis_Fonsi_Despacito_Lyrics___Lyric_Video_ft._Daddy_Yankee_iea59a.mp3", rating=2, userId=1, moodlistId=1)
 
     db.session.add(song1)
     db.session.add(song2)

@@ -3,7 +3,7 @@ from app.models import db, Moodlist
 
 def seed_moodlist():
     moodlist1= Moodlist(
-        name='Aggressive', color='red', userId=1)
+        name='Happy', color='red', userId=1)
     moodlist2 = Moodlist(
         name='Confident', color='green', userId=1)
     moodlist3= Moodlist(
@@ -27,7 +27,7 @@ def seed_moodlist():
     moodlist12= Moodlist(
         name='Sad', color='red', userId=1)
     moodlist13= Moodlist(
-        name='Happy', color='green', userId=1)
+        name='Bored', color='green', userId=1)
     moodlist14 = Moodlist(
         name='Scary', color='blue', userId=1)
     moodlist15= Moodlist(

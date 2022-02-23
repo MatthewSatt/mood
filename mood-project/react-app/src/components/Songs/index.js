@@ -7,6 +7,7 @@ import { editSong, playSong } from "../../store/songs";
 import "./Songs.css";
 import ReactAudioPlayer from "react-audio-player";
 import AddSongForm from "../AddSong";
+import Player from "../SongPlayer";
 
 const Songs = () => {
   const dispatch = useDispatch();
@@ -123,24 +124,17 @@ const Songs = () => {
               </p>
               <p className="songimage">
                 {/* <span className="songlabelsimage">Image </span> */}
-                {song.image_url}
+                {/* {song.image_url} */}
               </p>
               <p>
                 {/* <span className="songlabelslink">SongLink </span> */}
-                {song.song_url}
+                {/* {song.song_url} */}
               </p>
               <div className="songuseroptions">
                 {/* --------------------------PLAYBUTTON----------------------------------------------- */}
 
                       <div className="songdetails" key={song.id}>
-                        <ReactAudioPlayer
-                          id={song.id}
-                          className='music'
-                          src={song.song_url}
-                          controls
-                          key={song.song_url}
-                      />
-                      {song.song_url}
+                        <Player prop={song.song_url}/>
                       </div>
 
 
