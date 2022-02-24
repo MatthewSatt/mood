@@ -11,20 +11,18 @@ import "./moodlists.css";
 const Moodlists = () => {
   const dispatch = useDispatch();
   const moodlists = useSelector((state) => Object.values(state.moodlists));
+
   const userId = useSelector((state) => state.session.user.id);
   const [showModal, setShowModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
   const user = useSelector((state) => state.session.user);
-  const [name, setName] = useState("");
-  const [color, setColor] = useState("");
+  const [editName, setEditName] = useState("")
+  const [editColor, setEditColor] = useState("")
   const [x, setX] = useState("");
-
 
   useEffect(() => {
     dispatch(loadUserMoods(userId));
   }, [dispatch, showEditModal, showModal, userId]);
-
-
 
 
 // MOOD component
@@ -32,8 +30,8 @@ const Moodlists = () => {
     e.preventDefault();
     const newmoodlist = {
       id: x,
-      name: name,
-      color: color,
+      name: editName,
+      color: editColor,
     };
     await dispatch(editMoodlist(newmoodlist));
 
@@ -42,7 +40,11 @@ const Moodlists = () => {
   };
 // mood component
 
-  const handleShowModalData = (e) => {
+  const handleShowModalData = (moodId, mood) => (e) => {
+    console.log("999999999", moodId, mood)
+    // setMoodList(mood)
+    setEditColor(mood.color)
+    setEditName(mood.name)
     e.preventDefault();
     setX(+e.currentTarget.id);
     setShowEditModal(true);
@@ -87,7 +89,7 @@ const Moodlists = () => {
                     <button
                       id={mood.id}
                       className="moodlistedit-delete"
-                      onClick={(e) => handleShowModalData(e)}
+                      onClick={handleShowModalData(mood.id, mood)}
                     >
                       Edit
                     </button>
@@ -100,14 +102,14 @@ const Moodlists = () => {
                               className="userinput"
                               placeholder="New Mood"
                               type="text"
-                              value={name}
-                              onChange={(e) => setName(e.target.value)}
+                              value={editName}
+                              onChange={(e) => setEditName(e.target.value)}
                             />
                           </label>
                           <select
                             className="colorinput"
-                            value={color}
-                            onChange={(e) => setColor(e.target.value)}
+                            value={editColor}
+                            onChange={(e) => setEditColor(e.target.value)}
                           >
                             <option className="REDstyle" value="red">
                               Red
@@ -145,7 +147,3 @@ const Moodlists = () => {
   );
 };
 export default Moodlists;
-
-// const updateUserData = useEffect(() => {
-//   dispatch(loadUserMoods(userId));
-// }, [dispatch]);
