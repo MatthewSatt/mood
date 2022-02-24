@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, NavLink } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { loadMoodSongs, removeMoodSong } from "../../store/songs";
 import { Modal } from "../../context/Modal";
-import { editSong, playSong } from "../../store/songs";
+import { editSong } from "../../store/songs";
 import "./Songs.css";
 import AddSongForm from "../AddSong";
 import Player from "../SongPlayer";
@@ -20,14 +20,15 @@ const Songs = () => {
 
   const [addSongModal, setAddSongModal] = useState(false);
   const [editSongModal, setEditSongModal] = useState(false);
-  // const [play, setPlay] = useState(false);
-  const [x, setX] = useState("");
+  const [editSongErrors, setEditSongErrors] = useState([]);
+  const [editId, setEditId] = useState("");
   const [editName, setEditName] = useState("");
+  const [editColor, setEditColor] = useState("")
   const [editArtist, setEditArtist] = useState("");
   const [editRating, setEditRating] = useState(0);
-  // const [editImage, setEditImage] = useState("");
-  // const [editUrl, setEditUrl] = useState("");
-  const [editSongErrors, setEditSongErrors] = useState([]);
+  const [editMoodlistId, setEditMoodlistId] = useState("")
+  const [editUrl, setEditUrl] = useState("")
+  const [editUserId, setEditUserId] = useState("")
 
   useEffect(() => {
     const editSongErrors = [];
@@ -41,22 +42,26 @@ const Songs = () => {
     if (editRating < 0) editSongErrors.push("Song rating must be at least 0");
     if (editRating > 10) editSongErrors.push("Song rating must be 10 or less");
     setEditSongErrors(editSongErrors);
-  }, [editName, editArtist, editRating]);
+  }, [editName, editArtist, editRating, editUserId, moodlistId]);
 
-  const handleShowModalData = (e) => {
+  const handleShowModalData = (song) => async (e) => {
     e.preventDefault();
-    setX(+e.currentTarget.id);
+    setEditId(song.id);
+    setEditName(song.name)
+    setEditArtist(song.artist)
+    setEditColor(song.color)
+    setEditMoodlistId(song.moodlistId)
+    setEditUserId(song.userId)
+    setEditUrl(song.song_url)
     setEditSongModal(true);
   };
   const handleEdit = async (e) => {
     e.preventDefault();
     const song = {
-      id: x,
+      id: editId,
       name: editName,
       artist: editArtist,
       rating: editRating,
-      // image_url: editImage,
-      // song_url: editUrl,
       moodlistId: Number(moodlistId["moodId"]),
       userId: user,
     };
@@ -109,37 +114,17 @@ const Songs = () => {
             <div className="eachsong" id={song.id} key={song.id}>
               <div className="titleandartist">
                 <p song={song} key={song.name}>
-                  {/* <span className="songlabelstitle">Title </span> */}
                   {song.name}
                 </p>
-                <p song={song}>
-                  {/* <span className="songlabelsartist">Artist </span> */}
-                  {song.artist}
-                </p>
+                <p song={song}>{song.artist}</p>
               </div>
-              <h3>Rating</h3>
-               <h2>{song.rating}</h2>
-              <p song={song}>
-                {/* <span className="songlabelsrating">Rating </span> */}
-              </p>
-              <p className="songimage">
-                {/* <span className="songlabelsimage">Image </span> */}
-                {/* {song.image_url} */}
-              </p>
-              <p>
-                {/* <span className="songlabelslink">SongLink </span> */}
-                {/* {song.song_url} */}
-              </p>
+              <h3>Rating: </h3>
+              <h2>{song.rating}</h2>
+
               <div className="songuseroptions">
-                {/* --------------------------PLAYBUTTON----------------------------------------------- */}
-
-                      <div className="songdetails" key={song.id}>
-                        <Player prop={song.song_url}/>
-                      </div>
-
-
-                {/* --------------------------DELETE----------------------------------------------- */}
-
+                <div className="songdetails" key={song.id}>
+                  <Player prop={song.song_url} />
+                </div>
                 <button
                   id={song.id}
                   onClick={handleDelete}
@@ -147,13 +132,10 @@ const Songs = () => {
                 >
                   Delete Song
                 </button>
-
-                {/* --------------------------EDIT---------------------------------------------- */}
-
                 <button
                   id={song.id}
                   className="editsong"
-                  onClick={(e) => handleShowModalData(e)}
+                  onClick={handleShowModalData(song)}
                 >
                   Edit Song
                 </button>
@@ -197,26 +179,6 @@ const Songs = () => {
                           }
                         />
                       </label>
-                      {/* <label>
-                        Image
-                        <input
-                          className="songinfo"
-                          placeholder="Optional"
-                          type="text"
-                          value={editImage}
-                          onChange={(e) => setEditImage(e.target.value)}
-                        />
-                      </label>
-                      <label>
-                        Song Link
-                        <input
-                          className="songinfo"
-                          placeholder="Optional"
-                          type="text"
-                          value={editUrl}
-                          onChange={(e) => setEditUrl(e.target.value)}
-                        />
-                      </label> */}
                       <button
                         disabled={editSongErrors.length > 0 ? true : false}
                         className="modaleditsong"
