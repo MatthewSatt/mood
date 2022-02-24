@@ -25,7 +25,6 @@ const Moodlists = () => {
   }, [dispatch, showEditModal, showModal, userId]);
 
 
-// MOOD component
   const handleEdit = async (e) => {
     e.preventDefault();
     const newmoodlist = {
@@ -38,14 +37,12 @@ const Moodlists = () => {
     setShowEditModal(false);
     await dispatch(loadUserMoods(userId));
   };
-// mood component
+
 
   const handleShowModalData = (moodId, mood) => (e) => {
-    console.log("999999999", moodId, mood)
-    // setMoodList(mood)
+    e.preventDefault();
     setEditColor(mood.color)
     setEditName(mood.name)
-    e.preventDefault();
     setX(+e.currentTarget.id);
     setShowEditModal(true);
   };

@@ -7,14 +7,13 @@ import './AddSong.css'
 
 function AddSongForm({ setAddSongModal }) {
   const dispatch = useDispatch();
-  const songs = useSelector((state) => state.songs);
+  // const songs = useSelector((state) => state.songs);
   const userId = useSelector((state) => state.session.user.id);
   const moodlistId = useParams();
 
   const [name, setName] = useState("");
   const [artist, setArtist] = useState("");
   const [rating, setRating] = useState(0);
-  // const [image, setImage] = useState("");
   const [url, setUrl] = useState("");
   const [songErrors, setSongErrors] = useState([]);
 
@@ -40,7 +39,6 @@ function AddSongForm({ setAddSongModal }) {
       name: name,
       artist: artist,
       rating: Number(rating),
-      // image_url: image,
       song_url: url,
       moodlistId: y,
       userId: userId,

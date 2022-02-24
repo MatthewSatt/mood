@@ -6,6 +6,16 @@ from app.forms import AddSongForm, EditSongForm
 song_routes = Blueprint("songs", __name__)
 
 
+def validation_errors_to_error_messages(validation_errors):
+    """
+    Simple function that turns the WTForms validation errors into a simple list
+    """
+    errorMessages = []
+    for field in validation_errors:
+        for error in validation_errors[field]:
+            errorMessages.append(f'{field} : {error}')
+    return errorMessages
+
 # GET ALL SONGS FOR SPECFIC MOOD LIST
 @song_routes.route("/moodlists/<int:moodlistId>")
 def getMoodlistSongs(moodlistId): # pass in MOODLIST.Id ONLY
@@ -17,20 +27,23 @@ def getMoodlistSongs(moodlistId): # pass in MOODLIST.Id ONLY
 
 @song_routes.route("/new", methods=['POST'])
 def newSong():
-    song = request.json
+    form = AddSongForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
 
-    name = song["name"]
-    artist = song["artist"]
-    rating = song["rating"]
-    song_url = song["song_url"]
-    # song_image = song["image_url"]
-    userId = song["userId"]
-    moodlistId = song['moodlistId']
-    new_song = Song(name=name, artist=artist, rating=rating, song_url=song_url, moodlistId=moodlistId, userId=userId)
-    print(new_song)
-    db.session.add(new_song)
-    db.session.commit()
-    return new_song.to_dict()
+
+    if form.validate_on_submit():
+        name = form.data["name"]
+        artist = form.data["artist"]
+        rating = form.data["rating"]
+        song_url = form.data["song_url"]
+        userId = form.data["userId"]
+        moodlistId = form.data['moodlistId']
+        new_song = Song(name=name, artist=artist, rating=rating, song_url=song_url, moodlistId=moodlistId, userId=userId)
+        print(new_song)
+        db.session.add(new_song)
+        db.session.commit()
+        return new_song.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
 
