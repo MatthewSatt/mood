@@ -27,7 +27,6 @@ export const playS = (songId) => {
 };
 
 export const playSong = (songId) => async (dispatch) => {
-    console.log("STORE SONGID--------------", songId)
     const res = await fetch(`/api/songs/play/${songId}`);
     if (res.ok) {
       const songs = await res.json();
@@ -74,9 +73,7 @@ export const editSong = (song) => async (dispatch) => {
     body: JSON.stringify(song),
   });
   if (res.ok) {
-    console.log("UPDATED SONG SUCCESSFUL!");
     const updatedSong = await res.json();
-    console.log(updatedSong);
     dispatch(editS(updatedSong));
     return updatedSong;
   }

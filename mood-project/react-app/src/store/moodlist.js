@@ -55,7 +55,6 @@ export const editMood = (payload) => {
 }
 
 export const editMoodlist = (moodlist) => async (dispatch) =>{
-    console.log("MOOOOOOOOOODLIST", moodlist)
     const res = await fetch(`/api/moodlists/edit`, {
         method: 'PUT',
         headers: {'Content-Type': 'application/json'},

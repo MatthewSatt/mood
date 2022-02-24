@@ -12,12 +12,11 @@ import "./moodlists.css";
 const Moodlists = () => {
   const dispatch = useDispatch();
   const moodlists = useSelector((state) => Object.values(state.moodlists));
-  // const songs = useSelector((state) => state.songs)
+
 
   const userId = useSelector((state) => state.session.user.id);
   const [showModal, setShowModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
-  // const user = useSelector((state) => state.session.user);
   const [editName, setEditName] = useState("")
   const [editColor, setEditColor] = useState("")
   const [x, setX] = useState("");
@@ -52,11 +51,6 @@ const Moodlists = () => {
 
   const handleDelete = async (e) => {
     e.preventDefault();
-    // const songChecker = songs.map(song => song.moodlistId)
-    // if(songChecker.includes(e.target.id)) {
-    //   alert("You can't delete moods with songs inside.")
-    //   return
-    // }
     const id = e.target.id;
     dispatch(deleteMoodlist(id));
   };
@@ -70,8 +64,6 @@ const Moodlists = () => {
         <div className="moodlistcontent">
           {moodlists
             ?.map((mood) => (
-
-              //mood component
               <>
                 <div className={`moodboxes ${mood.color}style`} key={mood.id}>
                   <Link

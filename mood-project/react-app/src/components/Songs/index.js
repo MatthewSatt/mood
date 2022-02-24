@@ -14,20 +14,14 @@ const Songs = () => {
   const user = useSelector((state) => state.session.user.id);
   const moodlistId = useParams();
 
-  {
-    /* --------------------------Edit----------------------------------------------- */
-  }
 
   const [addSongModal, setAddSongModal] = useState(false);
   const [editSongModal, setEditSongModal] = useState(false);
   const [editSongErrors, setEditSongErrors] = useState([]);
   const [editId, setEditId] = useState("");
   const [editName, setEditName] = useState("");
-  const [editColor, setEditColor] = useState("")
   const [editArtist, setEditArtist] = useState("");
   const [editRating, setEditRating] = useState(0);
-  const [editMoodlistId, setEditMoodlistId] = useState("")
-  const [editUrl, setEditUrl] = useState("")
   const [editUserId, setEditUserId] = useState("")
 
   useEffect(() => {
@@ -49,10 +43,7 @@ const Songs = () => {
     setEditId(song.id);
     setEditName(song.name)
     setEditArtist(song.artist)
-    setEditColor(song.color)
-    setEditMoodlistId(song.moodlistId)
     setEditUserId(song.userId)
-    setEditUrl(song.song_url)
     setEditSongModal(true);
   };
   const handleEdit = async (e) => {
@@ -70,23 +61,13 @@ const Songs = () => {
     dispatch(loadMoodSongs(moodlistId.moodId));
   };
 
-  {
-    /* --------------------------Delete----------------------------------------------- */
-  }
 
   const handleDelete = async (e) => {
     e.preventDefault();
     await dispatch(removeMoodSong(e.target.id));
     return;
   };
-  {
-    /* --------------------------Play----------------------------------------------- */
-  }
 
-  // const handlePlay = (e) => {
-  //   e.preventDefault();
-  //   setPlay(true);
-  // };
 
   useEffect(() => {
     dispatch(loadMoodSongs(moodlistId.moodId));
@@ -189,8 +170,6 @@ const Songs = () => {
                     </form>
                   </Modal>
                 )}
-
-                {/* ------------------------------------------------------------------------ */}
               </div>
             </div>
           ))
