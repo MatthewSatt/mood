@@ -42,9 +42,9 @@ const LoginForm = () => {
   return (
     <form onSubmit={onLogin} className="loginuserform">
       <div className="loginuserformcontent">
-        <div className="loginerrors">
+        <div className="loginerrorsss">
           {errors.map((error, ind) => (
-            <div className="loginerror" key={ind}>
+            <div className="loginerrorsss" key={ind}>
               {error}
             </div>
           ))}
@@ -78,7 +78,7 @@ const LoginForm = () => {
             <button id="loginbutton" type="submit">
               Login
             </button>
-            <button id="loginbutton" onClick={handleDemo}>
+            <button id="logindemobutton" onClick={handleDemo}>
               Demo
             </button>
           </div>

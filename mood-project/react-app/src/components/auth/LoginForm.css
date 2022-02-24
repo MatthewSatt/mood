@@ -79,3 +79,18 @@
 .loginerror {
     margin: 5px;
 }
+
+
+#logindemobutton{
+    margin-top: 10%;
+    background-color: rgb(255, 70, 70);
+    color: white;
+    display: flex;
+    text-decoration: none;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    width: 100px;
+    border-radius: 15px;
+    border: 2px solid black;
+}
