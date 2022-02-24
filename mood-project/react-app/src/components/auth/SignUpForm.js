@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
@@ -22,6 +22,15 @@ const SignUpForm = () => {
       }
     }
   };
+useEffect(() => {
+  const errors = []
+  if(username.length <= 5) errors.push("Username must have a length of five or more")
+  if(username.length > 30) errors.push("Username must be less than 30")
+  if((!(email.includes("@")) || !(email.endsWith(".com"))))errors.push("Must be a valid email.")
+  if(password.length < 5) errors.push("You must have a longer password")
+  if(repeatPassword !== password) errors.push("Passwords don't match")
+  setErrors(errors)
+}, [username, password, email, password, repeatPassword])
 
   const updateUsername = (e) => {
     setUsername(e.target.value);
@@ -38,6 +47,8 @@ const SignUpForm = () => {
   const updateRepeatPassword = (e) => {
     setRepeatPassword(e.target.value);
   };
+
+
 
   if (user) {
     return <Redirect to='/' />;
@@ -99,7 +110,7 @@ const SignUpForm = () => {
           required={true}
         ></input>
       </div>
-      <button id="loginbutton2" type='submit'>Sign Up</button>
+      <button disabled={errors.length > 0 ? true : false }id="loginbutton2" type='submit'>Sign Up</button>
       </div>
     </form>
   );

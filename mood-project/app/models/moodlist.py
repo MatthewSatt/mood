@@ -1,3 +1,4 @@
+from tkinter import CASCADE
 from app.models.db import db
 
 
@@ -12,7 +13,7 @@ class Moodlist(db.Model):
     userId = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
 
     user = db.relationship("User", back_populates="moodlist")
-    song = db.relationship("Song", back_populates="moodlist")
+    song = db.relationship("Song", back_populates="moodlist", cascade="all, delete")
 
     def to_dict(self):
         return {
@@ -21,3 +22,4 @@ class Moodlist(db.Model):
             'color': self.color,
             "userId": self.userId
         }
+        
