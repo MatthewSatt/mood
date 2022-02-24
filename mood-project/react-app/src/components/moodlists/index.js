@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Modal } from "../../context/Modal";
 import { Link } from "react-router-dom";
 import { editMoodlist } from "../../store/moodlist";
+// {import { loadMoodSongs } from "../../store/songs";}
 
 import { loadUserMoods, deleteMoodlist } from "../../store/moodlist";
 import AddFormModal from "../AddMood";
@@ -11,14 +12,16 @@ import "./moodlists.css";
 const Moodlists = () => {
   const dispatch = useDispatch();
   const moodlists = useSelector((state) => Object.values(state.moodlists));
+  // const songs = useSelector((state) => state.songs)
 
   const userId = useSelector((state) => state.session.user.id);
   const [showModal, setShowModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
-  const user = useSelector((state) => state.session.user);
+  // const user = useSelector((state) => state.session.user);
   const [editName, setEditName] = useState("")
   const [editColor, setEditColor] = useState("")
   const [x, setX] = useState("");
+
 
   useEffect(() => {
     dispatch(loadUserMoods(userId));
@@ -47,8 +50,13 @@ const Moodlists = () => {
     setShowEditModal(true);
   };
 
-  const handleDelete = (e) => {
+  const handleDelete = async (e) => {
     e.preventDefault();
+    // const songChecker = songs.map(song => song.moodlistId)
+    // if(songChecker.includes(e.target.id)) {
+    //   alert("You can't delete moods with songs inside.")
+    //   return
+    // }
     const id = e.target.id;
     dispatch(deleteMoodlist(id));
   };
@@ -56,9 +64,9 @@ const Moodlists = () => {
     <>
       <div className="moodlists">
         <h1 className="moodlistheader">Moodlists</h1>
-        <a id="addamood">
+        <div id="addamood">
           <AddFormModal setShowModal={setShowModal} showModal={showModal} />
-        </a>
+        </div>
         <div className="moodlistcontent">
           {moodlists
             ?.map((mood) => (
