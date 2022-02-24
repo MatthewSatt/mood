@@ -1,3 +1,14 @@
+.addsongform{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+
+
+
 .errors {
     display: flex;
     justify-content: center;
@@ -5,8 +16,8 @@
     align-items: center;
     color: red;
     font-weight: bold;
+
 }
 .errors li {
-    margin-bottom: 50px;
     display: inline;
 }

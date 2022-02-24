@@ -95,3 +95,24 @@
     color: red;
     font-family: bold;
 }
+
+
+.editsongform {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.editsongform input {
+    height: 20px;
+}
+
+
+.addmoodmodel {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}

@@ -129,9 +129,12 @@ const Songs = () => {
                             return <li key={error}>{error}</li>;
                           })}
                       </ul>
+                      <div className='editsongform'>
                       <h1 id="addsongtitle">Edit Song Details</h1>
-                      <label>
+                      <div>
                         Title
+                      </div>
+                      <label>
                         <input
                           className="songinfo"
                           type="text"
@@ -139,8 +142,10 @@ const Songs = () => {
                           onChange={(e) => setEditName(e.target.value)}
                         />
                       </label>
-                      <label>
                         Artist
+                      <label>
+                        <div>
+                        </div>
                         <input
                           className="songinfo"
                           type="text"
@@ -148,9 +153,8 @@ const Songs = () => {
                           onChange={(e) => setEditArtist(e.target.value)}
                         />
                       </label>
-
-                      <label>
                         Rating
+                      <label>
                         <input
                           className="songinfo"
                           type="number"
@@ -167,13 +171,14 @@ const Songs = () => {
                       >
                         Change
                       </button>
+                      </div>
                     </form>
                   </Modal>
                 )}
               </div>
             </div>
           ))
-          .sort()}
+          .reverse()}
       </div>
     </div>
   );

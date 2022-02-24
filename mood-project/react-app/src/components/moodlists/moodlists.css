@@ -101,3 +101,11 @@
 .blackstyle{
     background-color: black;
 }
+
+.editmoodform {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}

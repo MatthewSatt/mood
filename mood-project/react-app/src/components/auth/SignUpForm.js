@@ -26,7 +26,7 @@ useEffect(() => {
   const errors = []
   if(username.length <= 5) errors.push("Username must have a length of five or more")
   if(username.length > 30) errors.push("Username must be less than 30")
-  if((!(email.includes("@")) || !(email.endsWith(".com"))))errors.push("Must be a valid email.")
+  if((!(email.includes("@"))))errors.push("Must be a valid email.")
   if(password.length < 5) errors.push("You must have a longer password")
   if(repeatPassword !== password) errors.push("Passwords don't match")
   setErrors(errors)

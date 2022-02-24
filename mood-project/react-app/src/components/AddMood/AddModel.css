@@ -73,3 +73,11 @@ border: 1px solid #000000;
     transition: 5s;
 }
 
+.nameinput {
+    margin-bottom: 5px;
+    font-size: large;
+}
+
+.colorinput {
+    font-size: large;
+}

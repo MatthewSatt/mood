@@ -12,7 +12,7 @@ import "./moodlists.css";
 const Moodlists = () => {
   const dispatch = useDispatch();
   const moodlists = useSelector((state) => Object.values(state.moodlists));
-  
+
 
 
   const userId = useSelector((state) => state.session.user.id);
@@ -94,10 +94,11 @@ const Moodlists = () => {
                     {showEditModal && (
                       <Modal onClose={() => setShowEditModal(false)}>
                         <form className="edit" onSubmit={handleEdit}>
+                          <div className="editmoodform">
                           <h1 id="loginheader">Edit Mood</h1>
                           <label>
                             <input
-                              className="userinput"
+                              className="nameinput"
                               placeholder="New Mood"
                               type="text"
                               value={editName}
@@ -126,11 +127,11 @@ const Moodlists = () => {
                             </option>
                           </select>
                           <button
-                            className="loginbutton"
                             type="submit"
                           >
                             Confirm
                           </button>
+                          </div>
                         </form>
                       </Modal>
                     )}

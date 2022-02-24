@@ -63,8 +63,11 @@ function AddSongForm({ setAddSongModal }) {
           </ul>
           <div className="addsongform">
           <h1 id="addsongtitle">Add Song</h1>
-          <label>
+          <div>
             Title
+
+          </div>
+          <label>
             <input
               className="songinfo"
               type="text"
@@ -72,8 +75,10 @@ function AddSongForm({ setAddSongModal }) {
               onChange={(e) => setName(e.target.value)}
             />
           </label>
-          <label>
+          <div>
             Artist
+          </div>
+          <label>
             <input
               className="songinfo"
               type="text"
@@ -81,8 +86,10 @@ function AddSongForm({ setAddSongModal }) {
               onChange={(e) => setArtist(e.target.value)}
             />
           </label>
-          <label>
+          <div>
             Rating
+          </div>
+          <label>
             <input
               className="songinfo"
               placeholder="rating"
@@ -91,7 +98,9 @@ function AddSongForm({ setAddSongModal }) {
               onChange={(e) => setRating(e.target.value)}
             />
           </label>
+          <div>
           Song Link
+          </div>
           <label>
             <input
               className="songinfo"

@@ -44,7 +44,7 @@ function AddForm({ setShowModal }) {
             return <li key={error}>{error}</li>;
           })}
       </ul>
-
+        <div className="addmoodmodel">
       <h1 id="loginheader">Add Mood</h1>
       <label>
         <input
@@ -83,6 +83,7 @@ function AddForm({ setShowModal }) {
       >
         Add
       </button>
+      </div>
     </form>
   );
 }
