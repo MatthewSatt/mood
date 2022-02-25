@@ -22,6 +22,12 @@ const Moodlists = () => {
   const [editColor, setEditColor] = useState("")
   const [x, setX] = useState("");
 
+  const [editErrors, setErrors] = useState([])
+  useEffect(() => {
+    const editErrors = []
+    if (editName.length > 15) editErrors.push("The new name is too long")
+    setErrors(editErrors)
+  }, [editName])
 
   useEffect(() => {
     dispatch(loadUserMoods(userId));
@@ -94,6 +100,12 @@ const Moodlists = () => {
                     {showEditModal && (
                       <Modal onClose={() => setShowEditModal(false)}>
                         <form className="edit" onSubmit={handleEdit}>
+                        <ul className="errors">
+                            {editErrors.length > 0 &&
+                              editErrors.map((error) => {
+                                return <li key={error}>{error}</li>;
+                              })}
+                          </ul>
                           <div className="editmoodform">
                           <h1 id="loginheader">Edit Mood</h1>
                           <label>
@@ -127,6 +139,7 @@ const Moodlists = () => {
                             </option>
                           </select>
                           <button
+                          disabled={editErrors.length > 0 ? true : false}
                             type="submit"
                           >
                             Confirm
