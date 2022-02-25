@@ -4,35 +4,42 @@
     justify-content: center;
     align-items: center;
     background-color: white;
-    margin-top: 5%;
+    margin-top: 2%;
 }
 
 .loginuserformcontent {
-    border-radius: 30px;
-    background-color: salmon;
-    padding :100px;
-    margin-bottom: 10%;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: whitesmoke;
+    /* padding :100px; */
+    width: 350px;
 }
 
-.loginuserform input {
-    height: 40px;
-    text-align: center;
-    font-size: 20px;
-}
-
-.emailcontainer {
-    margin-top: 30px;
+.loginformcontainer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 20px;
+    padding-top: 10px;
+}
+.loginpageheader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    color: white;
+    height: 100px;
+}
+
+#logindirection {
+    margin-top: 5px;
+    margin-bottom: 10px;
 }
 
 
 .passwordcontainer {
     display: flex;
-    flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
 
@@ -40,31 +47,50 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 20px;
 }
 
-#labelforemail{
-    font-size: 30px;
+.emailinput input{
+    margin-top: 10px;
+    height: 30px;
+    width: 220px;
+    margin-bottom: 10px;
 }
 
+.passwordcontainer input {
+    margin-top: 5px;
+    height: 30px;
+    width: 220px;
+}
 
 #loginbutton{
-    margin-top: 10%;
-    background-color: rgb(255, 70, 70);
+    margin-top: 8px;
     color: white;
-    display: flex;
-    text-decoration: none;
-    justify-content: center;
-    align-items: center;
-    height: 100px;
-    width: 100px;
-    border-radius: 15px;
-    border: 2px solid black;
+    height: 40px;
+    width: 220px;
+    border-radius: 4px;
+    border: 1px solid black;
+    font-family: bold;
+    background-color: rgb(250, 32, 32);
+}
+
+#logindemobutton {
+    margin-top: 8px;
+    color: white;
+    height: 40px;
+    width: 220px;
+    border-radius: 4px;
+    border: 1px solid black;
+    background-color: rgb(250, 32, 32);
 }
 
 #loginbutton:hover{
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
+#logindemobutton:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
 
 .loginerrors{
     font-weight: bolder;
@@ -76,21 +102,16 @@
 }
 
 
-.loginerror {
+.loginerrorsss {
+    display: flex;
+    font-weight: bold;
+    flex-direction: column;
+    align-items: center;
+    color: red;
     margin: 5px;
 }
 
 
-#logindemobutton{
-    margin-top: 10%;
-    background-color: rgb(255, 70, 70);
-    color: white;
-    display: flex;
-    text-decoration: none;
-    justify-content: center;
-    align-items: center;
-    height: 100px;
-    width: 100px;
-    border-radius: 15px;
-    border: 2px solid black;
+#loginlogo {
+    margin-top: 40px;
 }

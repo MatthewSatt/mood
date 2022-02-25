@@ -42,6 +42,7 @@ const LoginForm = () => {
   return (
     <form onSubmit={onLogin} className="loginuserform">
       <div className="loginuserformcontent">
+        <div className="loginpageheader">mood</div>
         <div className="loginerrorsss">
           {errors.map((error, ind) => (
             <div className="loginerrorsss" key={ind}>
@@ -49,31 +50,31 @@ const LoginForm = () => {
             </div>
           ))}
         </div>
+        <div className="loginformcontainer">
+          <h4 id="logindirection">Login to your account</h4>
         <div className="emailcontainer">
-          <div>
-            <label id="labelforemail" htmlFor="email">
-              Email
-            </label>
-          </div>
+          <div className="emailinput">
           <input
             name="email"
+            placeholder="Email"
             type="text"
             value={email}
             onChange={updateEmail}
           />
+          </div>
         </div>
-        <div>
+
           <div className="passwordcontainer">
             <label id="labelforemail" htmlFor="password">
-              Password
             </label>
-          </div>
           <input
             name="password"
+            placeholder="Password"
             type="password"
             value={password}
             onChange={updatePassword}
-          />
+            />
+            </div>
           <div className="loginbuttoncontainer">
             <button id="loginbutton" type="submit">
               Login
