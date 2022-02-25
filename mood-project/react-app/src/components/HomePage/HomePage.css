@@ -1,23 +1,25 @@
 .homepagebuttons {
     /* height: 100vh; */
-    margin-top: 100px;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
+    margin: 5px;
+
 }
 
 
 
 .homepagelogin {
+    margin: 10px;
     background-color: rgb(255, 70, 70);
     color: white;
     display: flex;
     text-decoration: none;
     justify-content: center;
     align-items: center;
-    height: 400px;
-    width: 400px;
-    border-radius: 15px;
+    height: 200px;
+    width: 200px;
+    border-radius: 40px;
     border: 2px solid black;
 
 }
@@ -26,15 +28,16 @@
 
 
 .homepagesignup{
+    margin: 10px;
     background-color: rgb(255, 70, 70);
     color: white;
     text-decoration: none;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 400px;
-    width: 400px;
-    border-radius: 15px;
+    height: 200px;
+    width: 200px;
+    border-radius: 40px;
     border: 2px solid black;
 
 }
@@ -46,4 +49,61 @@
 }
 .homepagesignup:hover{
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+
+.personallinks {
+    display: inline-flex;
+    margin: 5px;
+    bottom: 0;
+    padding: 5px;
+}
+
+.moodhome {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    height: 60vh;
+}
+
+#homepagetitle {
+    font-size: 100px;
+}
+
+.homepagefooter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: black;
+    height: 10vw;
+}
+
+#github{
+    margin-left: 20px;
+    text-decoration: none;
+    color: white;
+    padding: 8px;
+    border: solid white 1px;
+    border-radius: 5px;
+
+}
+
+#linkedin {
+    margin-right: 20px;
+    text-decoration: none;
+    color: white;
+    padding: 8px;
+    border: solid white 1px;
+    border-radius: 5px;
+}
+
+#github:hover {
+    margin-bottom: 10px;
+    transition: 0.5s;
+}
+
+#linkedin:hover {
+    margin-bottom: 10px;
+    transition: 0.5s;
 }

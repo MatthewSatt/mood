@@ -24,7 +24,7 @@ const SignUpForm = () => {
   };
 useEffect(() => {
   const errors = []
-  if(username.length < 5) errors.push("Username must be greater than 5")
+  if(username.length < 5) errors.push("Username must be at least 5 characters")
   if(username.length > 30) errors.push("Username must be less than 30")
   if((!(email.includes("@"))))errors.push("Must be a valid email.")
   if(password.length < 5) errors.push("You must have a longer password")
