@@ -43,6 +43,7 @@ const Songs = () => {
     setEditId(song.id);
     setEditName(song.name)
     setEditArtist(song.artist)
+    setEditRating(song.rating)
     setEditUserId(song.userId)
     setEditSongModal(true);
   };
@@ -158,9 +159,11 @@ const Songs = () => {
                         <input
                           className="songinfo"
                           type="number"
+                          min={0}
+                          max={10}
                           value={editRating}
                           onChange={(e) =>
-                            setEditRating(Number(e.target.value))
+                            setEditRating(e.target.value)
                           }
                         />
                       </label>

@@ -94,6 +94,8 @@ function AddSongForm({ setAddSongModal }) {
               className="songinfo"
               placeholder="rating"
               type="number"
+              min={0}
+              max={10}
               value={rating}
               onChange={(e) => setRating(e.target.value)}
             />
