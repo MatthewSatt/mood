@@ -57,60 +57,53 @@ useEffect(() => {
   return (
     <form onSubmit={onSignUp} className='signupuserform'>
       <div className='signupuser'>
-      <div className='loginerrors'>
+        <div className='signupusercontent'>
+      <div className="signinpageheader">mood</div>
+        <h4 id="signupdirection">Create your account</h4>
+      <div className='loginerrorsss'>
         {errors.map((error, ind) => (
           <div className='loginerror' key={ind}>{error}</div>
         ))}
       </div>
-      <div>
-        <div className='namecontainer'>
-        <label>User Name</label>
-        </div>
+      <div className='signupinputfield'>
         <input
           type='text'
+          placeholder='Username'
           name='username'
           onChange={updateUsername}
           value={username}
         ></input>
       </div>
-      <div>
-        <div className='namecontainer'>
-          <div>
-            <label>Email</label>
-          </div>
-        </div>
+      <div className='signupinputfield'>
         <input
           type='text'
+          placeholder='Email'
           name='email'
           onChange={updateEmail}
           value={email}
         ></input>
       </div>
-      <div className='namecontainer'>
-        <div>
-          <label>Password</label>
-        </div>
-        </div>
+      <div className='signupinputfield'>
         <input
           type='password'
+          placeholder='Password'
           name='password'
           onChange={updatePassword}
           value={password}
           ></input>
-      <div>
-          <div className='namecontainer'>
-            <label>Repeat Password</label>
-
-          </div>
+        </div>
+      <div className='signupinputfield'>
         <input
           type='password'
+          placeholder='Repeat Password'
           name='repeat_password'
           onChange={updateRepeatPassword}
           value={repeatPassword}
           required={true}
         ></input>
       </div>
-      <button disabled={errors.length > 0 ? true : false }id="loginbutton2" type='submit'>Sign Up</button>
+      <button disabled={errors.length > 0 ? true : false }id="signupbutton" type='submit'>Sign Up</button>
+      </div>
       </div>
     </form>
   );

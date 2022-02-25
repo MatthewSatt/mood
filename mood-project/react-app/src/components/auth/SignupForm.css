@@ -1,22 +1,22 @@
 .signupuser {
-    margin-top: 5%;
-    margin-left: 20%;
-    margin-right: 20%;
     display: flex;
-    border-radius: 30px;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: salmon;
-    padding: 30px;
-
+    background-color: white;
+    margin-top: 2%;
 
 }
-
-.signupuser input {
-    height: 40px;
-    text-align: center;
-    font-size: 20px;
+.signupusercontent {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: whitesmoke;
+    /* padding :100px; */
+    width: 350px;
 }
 
 
@@ -47,4 +47,43 @@
 .namecontainer {
     display: flex;
     justify-content: center;
+}
+
+.signupinputfield input {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    height: 30px;
+    width: 220px;
+    margin-bottom: 10px;
+}
+
+
+.signinpageheader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    color: white;
+    height: 100px;
+    width: 350px;
+}
+
+
+#signupbutton {
+    margin-top: 8px;
+    color: white;
+    height: 40px;
+    width: 220px;
+    border-radius: 4px;
+    border: 1px solid black;
+    font-family: bold;
+    background-color: rgb(250, 32, 32);
+    margin-bottom: 20px;
+}
+
+#signupdirection {
+    margin-top: 5px;
+    margin-bottom: 10px;
 }
