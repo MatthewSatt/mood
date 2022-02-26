@@ -21,7 +21,6 @@ mood is an application where users can store and organize their music into moods
 
 ## Key Functionalities 
 
-Posts, Comments, and Search 
 mood allows users to create different moods to store songs.
 
   * Moods: Users can create, read, update, and delete moods.
