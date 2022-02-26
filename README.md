@@ -132,6 +132,6 @@ This project was developed by a single developer (Matthew Satterwhite).
 
 ## Future Features:
 
-• I would like to incorperate a profile page for each user where others can view the current users highest rated songs.
+• I would like to include a profile page for each user where others can view the current users highest rated songs.
 
 • Allows users to add a profile picture to their account.
