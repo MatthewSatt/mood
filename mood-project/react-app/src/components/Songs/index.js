@@ -12,6 +12,7 @@ const Songs = () => {
   const dispatch = useDispatch();
   const songs = useSelector((state) => state.songs);
   const user = useSelector((state) => state.session.user.id);
+  const moodlists = useSelector((state) => Object.values(state.moodlists))
   const moodlistId = useParams();
 
 
@@ -74,117 +75,121 @@ const Songs = () => {
     dispatch(loadMoodSongs(moodlistId.moodId));
   }, [dispatch]);
 
-  return (
-    <div className="songscontainer">
-      <div className="moodlist-songs">
-        <h1 className="moodlistsongtitle">Songs</h1>
-        <button
-          value={addSongModal}
-          onClick={(e) => setAddSongModal(true)}
-          className="addsongbutton"
-        >
-          Add Song
-        </button>
-        {addSongModal && (
-          <AddSongForm
-            addSongModal={addSongModal}
-            setAddSongModal={setAddSongModal}
-          />
-        )}
-        {songs
-          .map((song) => (
-            <div className="eachsong" id={song.id} key={song.id}>
-              <div className="titleandartist">
-                <p song={song} key={song.name}>
-                  {song.name}
-                </p>
-                <p song={song}>{song.artist}</p>
-              </div>
-              <h3>Rating: </h3>
-              <h2>{song.rating}</h2>
 
-              <div className="songuseroptions">
-                <div className="songdetails" key={song.id}>
-                  <Player prop={song.song_url} />
+  if(user === songs[0]?.userId || moodlists[0]?.userId === user) {
+    return (
+      <div className="songscontainer">
+        <div className="moodlist-songs">
+          <h1 className="moodlistsongtitle">Songs</h1>
+          <button
+            value={addSongModal}
+            onClick={(e) => setAddSongModal(true)}
+            className="addsongbutton"
+          >
+            Add Song
+          </button>
+          {addSongModal && (
+            <AddSongForm
+              addSongModal={addSongModal}
+              setAddSongModal={setAddSongModal}
+            />
+          )}
+          {songs
+            .map((song) => (
+              <div className="eachsong" id={song.id} key={song.id}>
+                <div className="titleandartist">
+                  <p song={song} key={song.name}>
+                    {song.name}
+                  </p>
+                  <p song={song}>{song.artist}</p>
                 </div>
-                <button
-                  id={song.id}
-                  onClick={handleDelete}
-                  className="deletesong"
-                >
-                  Delete Song
-                </button>
-                <button
-                  id={song.id}
-                  className="editsong"
-                  onClick={handleShowModalData(song)}
-                >
-                  Edit Song
-                </button>
-                {editSongModal && (
-                  <Modal onClose={() => setEditSongModal(false)}>
-                    <form className="editsongmodel" onSubmit={handleEdit}>
-                      <ul className="errors">
-                        {editSongErrors.length > 0 &&
-                          editSongErrors.map((error) => {
-                            return <li key={error}>{error}</li>;
-                          })}
-                      </ul>
-                      <div className='editsongform'>
-                      <h1 id="addsongtitle">Edit Song Details</h1>
-                      <div>
-                        Title
-                      </div>
-                      <label>
-                        <input
-                          className="songinfo"
-                          type="text"
-                          value={editName}
-                          onChange={(e) => setEditName(e.target.value)}
-                        />
-                      </label>
-                        Artist
-                      <label>
-                        <div>
-                        </div>
-                        <input
-                          className="songinfo"
-                          type="text"
-                          value={editArtist}
-                          onChange={(e) => setEditArtist(e.target.value)}
-                        />
-                      </label>
-                        Rating
-                      <label>
-                        <input
-                          className="songinfo"
-                          type="number"
-                          min={1}
-                          max={10}
-                          value={editRating}
-                          onChange={(e) =>
-                            setEditRating(e.target.value)
-                          }
-                        />
-                      </label>
-                      <button
-                        disabled={editSongErrors.length > 0 ? true : false}
-                        className="modaleditsong"
-                        type="submit"
-                      >
-                        Change
-                      </button>
-                      </div>
-                    </form>
-                  </Modal>
-                )}
-              </div>
-            </div>
-          ))
-          .reverse()}
-      </div>
-    </div>
-  );
-};
+                <h3>Rating: </h3>
+                <h2>{song.rating}</h2>
 
+                <div className="songuseroptions">
+                  <div className="songdetails" key={song.id}>
+                    <Player prop={song.song_url} />
+                  </div>
+                  <button
+                    id={song.id}
+                    onClick={handleDelete}
+                    className="deletesong"
+                  >
+                    Delete Song
+                  </button>
+                  <button
+                    id={song.id}
+                    className="editsong"
+                    onClick={handleShowModalData(song)}
+                  >
+                    Edit Song
+                  </button>
+                  {editSongModal && (
+                    <Modal onClose={() => setEditSongModal(false)}>
+                      <form className="editsongmodel" onSubmit={handleEdit}>
+                        <ul className="errors">
+                          {editSongErrors.length > 0 &&
+                            editSongErrors.map((error) => {
+                              return <li key={error}>{error}</li>;
+                            })}
+                        </ul>
+                        <div className='editsongform'>
+                        <h1 id="addsongtitle">Edit Song Details</h1>
+                        <div>
+                          Title
+                        </div>
+                        <label>
+                          <input
+                            className="songinfo"
+                            type="text"
+                            value={editName}
+                            onChange={(e) => setEditName(e.target.value)}
+                          />
+                        </label>
+                          Artist
+                        <label>
+                          <div>
+                          </div>
+                          <input
+                            className="songinfo"
+                            type="text"
+                            value={editArtist}
+                            onChange={(e) => setEditArtist(e.target.value)}
+                          />
+                        </label>
+                          Rating
+                        <label>
+                          <input
+                            className="songinfo"
+                            type="number"
+                            min={1}
+                            max={10}
+                            value={editRating}
+                            onChange={(e) =>
+                              setEditRating(e.target.value)
+                            }
+                          />
+                        </label>
+                        <button
+                          disabled={editSongErrors.length > 0 ? true : false}
+                          className="modaleditsong"
+                          type="submit"
+                        >
+                          Change
+                        </button>
+                        </div>
+                      </form>
+                    </Modal>
+                  )}
+                </div>
+              </div>
+            ))
+            .reverse()}
+        </div>
+      </div>
+    );
+  };
+  return <h1>Not Authorized</h1>
+}
+// return <h1>Not Authorized</h1>
 export default Songs;
