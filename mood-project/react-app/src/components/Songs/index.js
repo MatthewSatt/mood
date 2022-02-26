@@ -21,7 +21,7 @@ const Songs = () => {
   const [editId, setEditId] = useState("");
   const [editName, setEditName] = useState("");
   const [editArtist, setEditArtist] = useState("");
-  const [editRating, setEditRating] = useState(0);
+  const [editRating, setEditRating] = useState(1);
   const [editUserId, setEditUserId] = useState("")
 
   useEffect(() => {
@@ -33,7 +33,7 @@ const Songs = () => {
     if (editArtist.length > 20)
       editSongErrors.push("I said an artist not a book");
     if (editArtist.length < 1) editSongErrors.push("Must include an artist");
-    if (editRating < 0) editSongErrors.push("Song rating must be at least 0");
+    if (editRating < 0) editSongErrors.push("Song rating must be at least 1");
     if (editRating > 10) editSongErrors.push("Song rating must be 10 or less");
     setEditSongErrors(editSongErrors);
   }, [editName, editArtist, editRating, editUserId, moodlistId]);
@@ -159,7 +159,7 @@ const Songs = () => {
                         <input
                           className="songinfo"
                           type="number"
-                          min={0}
+                          min={1}
                           max={10}
                           value={editRating}
                           onChange={(e) =>

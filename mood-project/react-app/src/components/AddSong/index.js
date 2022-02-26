@@ -13,7 +13,7 @@ function AddSongForm({ setAddSongModal }) {
 
   const [name, setName] = useState("");
   const [artist, setArtist] = useState("");
-  const [rating, setRating] = useState(0);
+  const [rating, setRating] = useState(1);
   const [url, setUrl] = useState("");
   const [songErrors, setSongErrors] = useState([]);
 
@@ -26,7 +26,7 @@ function AddSongForm({ setAddSongModal }) {
     if (artist.length > 20) songErrors.push("I said an artist not a book");
     if (artist.length < 1) songErrors.push("Must include an artist");
     if (rating < 0) songErrors.push("Song rating must be at least 0");
-    if (rating > 10) songErrors.push("Song rating must be 10 or less");
+    if (rating > 10) songErrors.push("Song rating must be between 1 and 10");
     if(!(url.endsWith(".mp3") || url.endsWith(".mp4")) && (url.length > 0)) songErrors.push('Song link must end with .mp3 or .mp4')
     setSongErrors(songErrors);
   }, [name, artist, rating, url]);
@@ -94,7 +94,7 @@ function AddSongForm({ setAddSongModal }) {
               className="songinfo"
               placeholder="rating"
               type="number"
-              min={0}
+              min={1}
               max={10}
               value={rating}
               onChange={(e) => setRating(e.target.value)}
