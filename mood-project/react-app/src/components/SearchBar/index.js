@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import {Link} from 'react-router-dom'
 import { searchSongs } from '../../store/songs'
 import {useHistory} from 'react-router-dom'
 
@@ -18,42 +19,38 @@ function SearchBar() {
 
 
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        history.push("/")
-    }
-
     useEffect( async () => {
         let errors = []
-        const songs = await dispatch(searchSongs())
-        const eachSong = songs.map(song => song.name) // => ['Bored to Death', 'Nothing Inside', 'Demons', 'Warriyo', 'The Black Parade', "It's Time", 'Despacito']
-        eachSong.forEach(item => {
-            if(item.includes(search) && !(errors.includes(item)) && search.length > 0) {
+        const songsObj = await dispatch(searchSongs())
+        // const eachSong = songs.map(song => song.name) // => ['Bored to Death', 'Nothing Inside', 'Demons', 'Warriyo', 'The Black Parade', "It's Time", 'Despacito']
+        songsObj.forEach(item => {
+            if(item.name.includes(search) && !(errors.includes(item)) && search.length > 0) {
                 errors.push(item)
+
             }
 
         })
         setErrors(errors)
     }, [search])
-
+    console.log(typeof(errors))
+    console.log(errors)
 
   return (
-    <form onSubmit={handleSubmit}>
+      <div className='searchbar'>
         <input
         placeholder='Search Songs'
         value={search}
         onChange={(e) => setSearch(e.target.value)}
         >
         </input>
-        <ul className='dropdown'>
-
-        {errors && errors.map(error => (
-            <li key={error.id}>
-                {error}
+        <ul className='songoptionscontainer'>
+        {errors.length > 0 && errors.map(error => (
+            <li className='eachsongoption' key={error.id}>
+               <Link className='linktosongs' to={`songs/${error.id}`}>{error.name}</Link>
             </li>
         ))}
         </ul>
-    </form>
+  </div>
   )
 }
 
