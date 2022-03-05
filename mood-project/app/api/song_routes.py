@@ -16,6 +16,14 @@ def validation_errors_to_error_messages(validation_errors):
             errorMessages.append(f'{field} : {error}')
     return errorMessages
 
+
+
+@song_routes.route("/search")
+def searchSongs():
+    songs = Song.query.all()
+    return jsonify(list(song.to_dict() for song in songs))
+
+
 # GET ALL SONGS FOR SPECFIC MOOD LIST
 @song_routes.route("/moodlists/<int:moodlistId>")
 def getMoodlistSongs(moodlistId): # pass in MOODLIST.Id ONLY
@@ -77,5 +85,4 @@ def removeSong(songId):
 @song_routes.route("/play/<int:songId>")
 def playSong(songId):
     song = Song.query.filter(Song.id == songId).first()
-    print('SONNGGGGGGGGGGGGGGGG', song.to_dict())
     return song.to_dict()

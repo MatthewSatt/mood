@@ -3,6 +3,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
+import SearchBar from '../SearchBar';
 import './NavBar.css'
 
 const NavBar = () => {
@@ -17,9 +18,15 @@ const NavBar = () => {
         </li>
         <h1 className='title'>mood</h1>
         {user &&
+        <div className='logged-in-nav'>
+        <li className='searchbox'>
+          <SearchBar />
+        </li>
+
         <li className='logout-button'>
           <LogoutButton />
         </li>
+        </div>
         }
       </ul>
     </nav>

@@ -1,0 +1,14 @@
+.searchbox {
+    margin-right: 50px;
+
+}
+
+.searchbox input {
+    min-height: 30px;
+    min-width: 300px;
+}
+
+
+.dropdown {
+    color: white;
+}
