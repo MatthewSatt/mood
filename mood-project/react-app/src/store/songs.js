@@ -16,6 +16,23 @@ export const loadMoodSongs = (moodlistId) => async (dispatch) => {
     return songs;
   }
 };
+
+//-------------------------------------------------------------------//
+const GET_ONE_SONG = 'song/GET_ONE_SONG'
+
+const getOneS = (songId) => ({
+  type: GET_ONE_SONG,
+  songId
+})
+
+export const getOneSong = (songId) => async (dispatch) => {
+  const res = await fetch(`/api/songs/one/${songId}`)
+  if(res.ok) {
+    const song = await res.json()
+    dispatch(getOneS(song))
+    return song
+  }
+}
 //-------------------------------------------------------------------//
 const PLAY_SONG = "songs/PLAY_SONG";
 
@@ -107,7 +124,7 @@ const SEARCH_SONGS = 'songs/SEARCH_SONGS'
 
 const searchS = () => {
   return {
-    type: searchSongs,
+    type: SEARCH_SONGS,
   };
 };
 
@@ -124,6 +141,8 @@ const initialState = [];
 export default function songReducer(state = initialState, action) {
   let newState;
   switch (action.type) {
+    case GET_ONE_SONG:
+      return [...state, action.songId]
     case LOAD_SONGS:
       return action.payload;
     case ADD_SONG:
@@ -135,9 +154,6 @@ export default function songReducer(state = initialState, action) {
       return (newState = [...state, (action.payload.id = action.payload)]);
     case PLAY_SONG:
         return action.song
-    case SEARCH_SONGS:
-      return [...state]
-
 
     default:
       return state;

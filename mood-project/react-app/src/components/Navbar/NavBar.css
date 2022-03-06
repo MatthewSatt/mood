@@ -17,11 +17,6 @@
 
 }
 
-.logoutbuttondiv {
-    display: flex;
-    background-color: red;
-
-}
 
 .title {
     font-weight: bold;
@@ -39,8 +34,14 @@
 
 .logged-in-nav {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
-    /* margin-right: 600px; */
+    width: 50%;
+    margin-right: 5%;
 
+
+}
+
+.searchbox input {
+    max-width: 300px;
 }

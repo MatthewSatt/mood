@@ -11,6 +11,7 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import Songs from './components/Songs'
 import MoodLists from './components/Moodlists'
 import { authenticate } from './store/session';
+import OneSong from './components/OneSong';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -42,6 +43,10 @@ function App() {
 
         <ProtectedRoute path='/moodlists/:moodId' exact={true} >
           <Songs />
+        </ProtectedRoute>
+
+        <ProtectedRoute path='/songs/:songId' exact={true} >
+          <OneSong />
         </ProtectedRoute>
 
         <ProtectedRoute path='/' exact={true} >

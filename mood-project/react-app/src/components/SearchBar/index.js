@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import {Link} from 'react-router-dom'
+import {Link, Redirect} from 'react-router-dom'
 import { searchSongs } from '../../store/songs'
 import {useHistory} from 'react-router-dom'
 
@@ -13,18 +13,21 @@ function SearchBar() {
     const [errors, setErrors] = useState([])
 
 
-    // const thesongs = finalResultData.filter(word =>{
-    //     return (word[0].includes(searchTerm.toUpperCase()) || word[1].toUpperCase().includes(searchTerm.toUpperCase()))
-    // })
+    useEffect(() => {
+        if(errors.length === 0) {
+            return
+        } else {
+            history.push('/')
+        }
+    }, [errors])
 
 
 
     useEffect( async () => {
         let errors = []
         const songsObj = await dispatch(searchSongs())
-        // const eachSong = songs.map(song => song.name) // => ['Bored to Death', 'Nothing Inside', 'Demons', 'Warriyo', 'The Black Parade', "It's Time", 'Despacito']
         songsObj.forEach(item => {
-            if(item.name.includes(search) && !(errors.includes(item)) && search.length > 0) {
+            if(item.name.includes(search) && !(errors.includes(item)) && search.length > 0 && errors.length < 5) {
                 errors.push(item)
 
             }
@@ -32,8 +35,7 @@ function SearchBar() {
         })
         setErrors(errors)
     }, [search])
-    console.log(typeof(errors))
-    console.log(errors)
+
 
   return (
       <div className='searchbar'>
@@ -46,7 +48,7 @@ function SearchBar() {
         <ul className='songoptionscontainer'>
         {errors.length > 0 && errors.map(error => (
             <li className='eachsongoption' key={error.id}>
-               <Link className='linktosongs' to={`songs/${error.id}`}>{error.name}</Link>
+               <Link onClick={() => setSearch("")} className='linktosongs' to={`songs/${error.id}`}>{error.name}-{error.artist}</Link>
             </li>
         ))}
         </ul>

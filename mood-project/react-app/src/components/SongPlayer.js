@@ -11,7 +11,7 @@ const Player = ({ prop }) => {
       layout="stacked"
       customProgressBarSection={[]}
       customControlsSection={["MAIN_CONTROLS", "VOLUME_CONTROLS"]}
-      autoPlayAfterSrcChange={true}
+      autoPlayAfterSrcChange={false}
     />
   )
 };

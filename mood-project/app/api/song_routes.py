@@ -86,3 +86,9 @@ def removeSong(songId):
 def playSong(songId):
     song = Song.query.filter(Song.id == songId).first()
     return song.to_dict()
+
+
+@song_routes.route("/one/<int:songId>")
+def getOneSong(songId):
+    song = Song.query.get(songId)
+    return song.to_dict()

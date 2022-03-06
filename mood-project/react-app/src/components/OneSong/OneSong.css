@@ -1,0 +1,15 @@
+.onesong {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.onesongtitle {
+    font-size: 80px;
+}
+
+.player {
+    width: 1000px;
+    background-color: blue;
+}
