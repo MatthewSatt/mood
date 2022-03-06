@@ -13,7 +13,7 @@ const Player = ({ prop }) => {
       className='songplayer'
       customProgressBarSection={[]}
       customControlsSection={["MAIN_CONTROLS", "VOLUME_CONTROLS"]}
-      autoPlayAfterSrcChange={false}
+      autoPlayAfterSrcChange={true}
     />
   )
 };

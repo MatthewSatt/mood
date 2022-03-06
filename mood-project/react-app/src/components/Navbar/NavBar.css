@@ -45,3 +45,7 @@
 .searchbox input {
     max-width: 300px;
 }
+
+.logout-button {
+    margin-top: 30px;
+}
