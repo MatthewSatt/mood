@@ -45,7 +45,7 @@ function App() {
           <Songs />
         </ProtectedRoute>
 
-        <ProtectedRoute path='/songs/:songId' exact={true} >
+        <ProtectedRoute exact path='/songs/:songId' >
           <OneSong />
         </ProtectedRoute>
 

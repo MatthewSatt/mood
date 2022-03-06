@@ -15,8 +15,11 @@ def seed_songs():
     song6 = Song(
         name="It's Time", artist='Imagine Dragons', rating=10, song_url="https://res.cloudinary.com/matthewsatterwhite/video/upload/v1645637061/Imagine_Dragons_-_It_s_Time_Lyrics_e6bv1b.mp3", userId=1, moodlistId=1)
     song7 = Song(
-        name='Despacito', artist='Luic Fonsi', song_url="https://res.cloudinary.com/matthewsatterwhite/video/upload/v1645637555/Luis_Fonsi_Despacito_Lyrics___Lyric_Video_ft._Daddy_Yankee_iea59a.mp3", rating=2, userId=1, moodlistId=1)
-
+        name='Despacito', artist='Luis Fonsi', song_url="https://res.cloudinary.com/matthewsatterwhite/video/upload/v1645637555/Luis_Fonsi_Despacito_Lyrics___Lyric_Video_ft._Daddy_Yankee_iea59a.mp3", rating=2, userId=1, moodlistId=1)
+    song8 = Song(
+        name='Holiday', artist='Greenday', song_url="https://res.cloudinary.com/matthewsatterwhite/video/upload/v1646537937/Green_Day_-_Holiday_Audio_dmdgnp.mp3", song_image="https://i.ytimg.com/vi/l2hA8g1cNvQ/hqdefault.jpg", rating=2, userId=1, moodlistId=1)
+    song9 = Song(
+        name='Get Low', artist='Lil Jon', song_image="https://i.ytimg.com/vi/ZN43UoyAbwg/hqdefault.jpg", song_url="https://res.cloudinary.com/matthewsatterwhite/video/upload/v1646539628/Lil_Jon_The_East_Side_Boyz_-_Get_Low_feat._Ying_Yang_Twins_Official_Audio_suxdlq.mp3", rating=2, userId=1, moodlistId=1)
     db.session.add(song1)
     db.session.add(song2)
     db.session.add(song3)
@@ -24,7 +27,10 @@ def seed_songs():
     db.session.add(song5)
     db.session.add(song6)
     db.session.add(song7)
+    db.session.add(song8)
+    db.session.add(song9)
     db.session.commit()
+
 
 def undo_seeds():
     db.session.execute('TRUNCATE songs RESTART IDENTITY CASCADE;')

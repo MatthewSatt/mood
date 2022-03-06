@@ -110,20 +110,23 @@ const Songs = () => {
                   <div className="songdetails" key={song.id}>
                     <Player prop={song.song_url} />
                   </div>
+                  <div className="songcrudbuttons">
                   <button
                     id={song.id}
                     onClick={handleDelete}
-                    className="deletesong"
+                    className="songeditdeletebuttons"
                   >
                     Delete Song
                   </button>
+
                   <button
                     id={song.id}
-                    className="editsong"
+                    className="songeditdeletebuttons"
                     onClick={handleShowModalData(song)}
                   >
                     Edit Song
                   </button>
+                  </div>
                   {editSongModal && (
                     <Modal onClose={() => setEditSongModal(false)}>
                       <form className="editsongmodel" onSubmit={handleEdit}>

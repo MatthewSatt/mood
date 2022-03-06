@@ -27,8 +27,10 @@ useEffect(async () => {
       <div>
       <h1 className='onesongartist'>{song.artist}</h1>
       </div>
+      <img className='songimage' src={song.song_image}></img>
       <div className='player'>
         <Player className='player' prop={song.song_url} />
+  
       </div>
     </div>
   )

@@ -1,9 +1,10 @@
+
 .searchbar {
   position: absolute;
 }
 
 .searchbox input {
-  display: flex;
+  display: inherit;
   justify-content: center;
   min-width: 300px;
   min-height: 30px;

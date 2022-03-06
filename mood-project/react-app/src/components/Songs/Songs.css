@@ -116,3 +116,28 @@
     flex-direction: column;
     align-items: center;
 }
+
+.songcrudbuttons {
+    width: 300px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.songeditdeletebuttons {
+    display: flex;
+    align-self: auto;
+    display: flex;
+    font-size: 20px;
+    justify-content: space-evenly;
+    height: 100%;
+    width: 100%;
+    margin: 10px;
+    border-radius: 10px;
+    background-color: transparent;
+    border: 1px solid white;
+    color: white;
+    padding: 3px;
+    cursor: pointer;
+}
+

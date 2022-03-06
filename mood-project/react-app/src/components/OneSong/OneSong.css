@@ -1,8 +1,10 @@
 .onesong {
+    background-color: whitesmoke;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    height: 79vh;
 }
 
 .onesongtitle {
@@ -10,6 +12,14 @@
 }
 
 .player {
+    display: flex;
     width: 1000px;
-    background-color: blue;
+    position: sticky;
+    top: 1000px;
+   background-color: rgb(184, 214, 228);
+   border-radius: 20px;
+}
+
+.songimage {
+    border-radius: 40px;
 }
