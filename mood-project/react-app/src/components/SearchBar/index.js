@@ -14,12 +14,12 @@ function SearchBar() {
 
 
     useEffect(() => {
-        if(errors.length === 0) {
+        if(search.length <= 0) {
             return
         } else {
             history.push('/')
         }
-    }, [errors])
+    }, [search])
 
 
 

@@ -142,7 +142,7 @@ export default function songReducer(state = initialState, action) {
   let newState;
   switch (action.type) {
     case GET_ONE_SONG:
-      return [...state, action.songId]
+      return state.filter((song) => song.id === action.songId);
     case LOAD_SONGS:
       return action.payload;
     case ADD_SONG:
