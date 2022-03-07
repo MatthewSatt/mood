@@ -40,6 +40,7 @@ function SearchBar() {
   return (
       <div className='searchbar'>
         <input
+        className='searchit'
         placeholder='Search Songs'
         value={search}
         onChange={(e) => setSearch(e.target.value)}
@@ -47,7 +48,7 @@ function SearchBar() {
         </input>
         <ul className='songoptionscontainer'>
         {errors.length > 0 && errors.map(error => (
-            <li className='eachsongoption' key={error.id}>
+            <li className='eachsongoption searchit' key={error.id}>
                <Link onClick={() => setSearch("")} className='linktosongs' to={`songs/${error.id}`}>{error.name}-{error.artist}</Link>
             </li>
         ))}

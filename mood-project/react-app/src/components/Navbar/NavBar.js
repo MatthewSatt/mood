@@ -10,26 +10,25 @@ const NavBar = () => {
   const user = useSelector((state) => state.session.user);
   return (
     <nav className='navbar'>
-      <ul className='navbar-main'>
-        <li className='home-page-logo'>
+      <div className='navbar-main'>
+        <div className='home-page-logo'>
           <NavLink to='/' exact={true} activeClassName='active'>
            <img className="moodlogoimage" alt='whatever' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQE04ozIKvVCBiRbRYzCBhr6w5AInT7-ue1GA&usqp=CAU" />
           </NavLink>
-        </li>
+        </div>
+        <div className='searchbox'>
+          <SearchBar />
+        </div>
         <h1 className='title'>mood</h1>
         {user &&
         <div className='logged-in-nav'>
-        <li className='searchbox'>
-          <SearchBar />
 
-        </li>
-
-        <li className='logout-button'>
+        <div className='logout-button'>
           <LogoutButton />
-        </li>
+        </div>
         </div>
         }
-      </ul>
+      </div>
     </nav>
   );
 }

@@ -2,6 +2,7 @@
 .navbar-main {
     display: flex;
     text-decoration: none;
+
     list-style: none;
     list-style-type: none;
     justify-content: space-between;
@@ -47,5 +48,10 @@
 }
 
 .logout-button {
+    margin-left: 50%;
     margin-top: 30px;
+}
+
+.searchit {
+    margin-left: 230%;
 }
