@@ -27,7 +27,7 @@ function SearchBar() {
         let errors = []
         const songsObj = await dispatch(searchSongs())
         songsObj.forEach((item) => {
-            if((item.name.toLowerCase().includes(search) || item.artist.toLowerCase().includes(search)) && (!(errors.includes(item)) && search.length > 0 && errors.length < 5)){
+            if((item.name.includes(search) || item.artist.includes(search)) && (!(errors.includes(item)) && search.length > 0 && errors.length < 5)){
                 errors.push(item)
 
             }

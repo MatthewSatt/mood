@@ -16,9 +16,11 @@ const NavBar = () => {
            <img className="moodlogoimage" alt='whatever' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQE04ozIKvVCBiRbRYzCBhr6w5AInT7-ue1GA&usqp=CAU" />
           </NavLink>
         </div>
+        {user && (
         <div className='searchbox'>
           <SearchBar />
         </div>
+        )}
         <h1 className='title'>mood</h1>
         {user &&
         <div className='logged-in-nav'>

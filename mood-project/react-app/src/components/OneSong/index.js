@@ -28,9 +28,16 @@ useEffect(async () => {
       <h1 className='onesongartist'>{song.artist}</h1>
       </div>
       <img className='songimage' src={song.song_image}></img>
+      {song.song_url !== '' &&(
       <div className='player'>
         <Player className='player' prop={song.song_url} />
-  
+      </div>
+      )}
+      <div>
+      {!song.song_url && (
+        <h1 className='errors'>Error with mp3 file</h1>
+  )}
+
       </div>
     </div>
   )
