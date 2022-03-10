@@ -1,10 +1,11 @@
+
 .loginuserform {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: white;
-    margin-top: 2%;
+    z-index: 1;
 }
 
 .loginuserformcontent {
@@ -12,14 +13,16 @@
     border-radius: 5px;
     background-color: whitesmoke;
     /* padding :100px; */
-    width: 350px;
+    width: 24.50%;
+    margin-right: 2px;
+    z-index: 1;
+    margin-top: 10%;
 }
 
 .loginformcontainer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 10px;
 }
 .loginpageheader {
     display: flex;
@@ -27,12 +30,9 @@
     justify-content: center;
     background-color: black;
     color: white;
-    height: 100px;
-}
-
-#logindirection {
-    margin-top: 5px;
-    margin-bottom: 10px;
+    height: 80px;
+    margin: 0px;
+    font-size: 50px;
 }
 
 
@@ -71,7 +71,7 @@
     border-radius: 4px;
     border: 1px solid black;
     font-family: bold;
-    background-color: rgb(250, 32, 32);
+    background-color: black;
 }
 
 #logindemobutton {
@@ -81,7 +81,7 @@
     width: 220px;
     border-radius: 4px;
     border: 1px solid black;
-    background-color: rgb(250, 32, 32);
+    background-color: black;
 }
 
 #loginbutton:hover{
@@ -114,4 +114,100 @@
 
 #loginlogo {
     margin-top: 40px;
+}
+
+  .container {
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    position: absolute;
+    z-index: 0;
+  }
+
+.white {
+    position: relative;
+    background: rgb(214, 214, 214);
+    width: 20%;
+    height: 600px;
+    margin: 0 2px;
+  }
+
+  .white.black:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    background: rgb(17, 11, 11);
+    right: -25%;
+    width: 50%;
+    height: 50%;
+    z-index: 2;
+  }
+
+.coverkeys {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 10px;
+    z-index: 3;
+    position: relative; top: -15px;
+}
+#leftkey{
+    background-color: black;
+    height: 80px;
+    width: 19.5%;
+}
+#middlekey {
+    background-color: black;
+    height: 80px;
+    width: 19.5%;
+}
+
+#rightkey{
+    background-color: black;
+    height: 80px;
+    width: 19.5%;
+
+}
+
+#key1:hover{
+ background-color: #f96365;
+ transition: 0.5s;
+}
+#key2:hover{
+    background-color:  #90be6d;
+    transition: 0.5s;
+}
+#key3:hover{
+    background-color: #277da1;
+    transition: 0.5s;
+}
+#key4:hover{
+    background-color:  #8849b5;
+    transition: 0.5s;
+}
+#key5:hover{
+    background-color:  #f8961e;
+    transition: 0.5s;
+}
+#key6:hover{
+    background-color: #f96365;
+    transition: 0.5s;
+}
+#key7:hover{
+    background-color: #90be6d;
+    transition: 0.5s;
+}
+#key8:hover{
+    background-color: #277da1;
+    transition: 0.5s;
+}
+#key9:hover{
+    background-color: #8849b5;
+    transition: 0.5s;
+}
+#key10:hover{
+    background-color: #f8961e;
+    transition: 0.5s;
+
+
 }

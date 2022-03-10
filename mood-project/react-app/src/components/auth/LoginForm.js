@@ -40,6 +40,19 @@ const LoginForm = () => {
   }
 
   return (
+    <>
+     <div class="container">
+    <div class="key white black" id='key1' ><h3></h3></div>
+    <div class="key white black" id='key2'><h3></h3></div>
+    <div class="key white" id='key3'><h3></h3></div>
+    <div class="key white black" id='key4'><h3></h3></div>
+    <div class="key white black" id='key5' ><h3></h3></div>
+    <div class="key white black" id='key6'><h3></h3></div>
+    <div class="key white" id='key7'><h3></h3></div>
+    <div class="key white black" id='key8' ><h3></h3></div>
+    <div class="key white black" id='key9'><h3></h3></div>
+    <div class="key white" id='key10'><h3 id='key10'></h3></div>
+   </div>
     <form onSubmit={onLogin} className="loginuserform">
       <div className="loginuserformcontent">
         <div className="loginpageheader">mood</div>
@@ -51,6 +64,11 @@ const LoginForm = () => {
           ))}
         </div>
         <div className="loginformcontainer">
+          <div className="coverkeys">
+            <div id="leftkey"></div>
+            <div id="middlekey"></div>
+            <div id='rightkey'></div>
+            </div>
           <h4 id="logindirection">Login to your account</h4>
         <div className="emailcontainer">
           <div className="emailinput">
@@ -60,7 +78,7 @@ const LoginForm = () => {
             type="text"
             value={email}
             onChange={updateEmail}
-          />
+            />
           </div>
         </div>
 
@@ -86,6 +104,7 @@ const LoginForm = () => {
         </div>
       </div>
     </form>
+            </>
   );
 };
 
