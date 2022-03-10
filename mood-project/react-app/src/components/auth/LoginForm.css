@@ -1,4 +1,11 @@
 
+.container {
+    background-color: grey;
+    height: 20%;
+    width: auto;
+    background-color: color black;
+}
+
 .loginuserform {
     display: flex;
     flex-direction: column;
@@ -11,9 +18,9 @@
 .loginuserformcontent {
     border: 1px solid black;
     border-radius: 5px;
-    background-color: whitesmoke;
-    width: 24.50%;
-    margin-right: 2px;
+    background-color: rgb(149, 149, 149);
+    width: 350px;
+    border: solid 2px white;
     z-index: 1;
     margin-top: 10%;
 }
@@ -116,19 +123,21 @@
 }
 
   .container {
-    width: 100%;
+    width: 100vw;
     display: flex;
     flex-flow: row nowrap;
+    height:80%;
     position: absolute;
     z-index: 0;
   }
 
 .white {
     position: relative;
-    background: rgb(214, 214, 214);
+    background: white;
     width: 20%;
-    height: 600px;
+    height: auto;
     margin: 0 2px;
+
   }
 
   .white.black:after {
@@ -138,39 +147,16 @@
     background: rgb(17, 11, 11);
     right: -25%;
     width: 50%;
-    height: 50%;
+    height: 60%;
     z-index: 2;
+    border-radius: 30px;
   }
 
-.coverkeys {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    margin-bottom: 10px;
-    z-index: 3;
-    position: relative; top: -15px;
-}
-#leftkey{
-    background-color: black;
-    height: 80px;
-    width: 19.5%;
-}
-#middlekey {
-    background-color: black;
-    height: 80px;
-    width: 19.5%;
-}
 
-#rightkey{
-    background-color: black;
-    height: 80px;
-    width: 19.5%;
-
-}
 
 #key1:hover{
  background-color: #f96365;
- transition: 0.25s;
+
 }
 #key2:hover{
     background-color:  #90be6d;
@@ -178,35 +164,35 @@
 }
 #key3:hover{
     background-color: #277da1;
-    transition: 0.25s;
+
 }
 #key4:hover{
     background-color:  #8849b5;
-    transition: 0.25s;
+
 }
 #key5:hover{
     background-color:  #f8961e;
-    transition: 0.25s;
+
 }
 #key6:hover{
     background-color: #f96365;
-    transition: 0.25s;
+
 }
 #key7:hover{
     background-color: #90be6d;
-    transition: 0.25s;
+
 }
 #key8:hover{
     background-color: #277da1;
-    transition: 0.25s;
+
 }
 #key9:hover{
     background-color: #8849b5;
-    transition: 0.25s;
+
 }
 #key10:hover{
     background-color: #f8961e;
-    transition: 0.25s;
+
 
 
 }

@@ -11,14 +11,15 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    justify-content: center;
-    border: 1px solid black;
-    border-radius: 5px;
-    margin-top: 6%;
-    background-color: whitesmoke;
-    /* padding :100px; */
     width: 350px;
     z-index: 0;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: rgb(149, 149, 149);
+    width: 350px;
+    border: solid 2px white;
+    z-index: 1;
+    margin-top: 10%;
 }
 
 
