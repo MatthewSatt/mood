@@ -22,6 +22,8 @@
     max-height: 100px;
     max-width: 100px;
     margin-left: 30px;
+    -webkit-filter: invert(1);
+    filter: invert(1);
 }
 
 
@@ -29,7 +31,7 @@
     font-weight: bold;
     font-size: 80px;
     color: white;
-    margin-right: 50%;
+    margin-right: 45%;
 }
 
 
@@ -54,8 +56,8 @@
 }
 
 .logout-button {
-    margin-left: 50%;
-    margin-top: 30px;
+    margin-left: 60%;
+    margin-top: 35px;
 }
 
 .searchit {
