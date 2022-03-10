@@ -4,7 +4,7 @@
     justify-content: center;
     align-items: center;
     background-color: white;
-    margin-top: 2%;
+
 
 }
 .signupusercontent {
@@ -14,9 +14,11 @@
     justify-content: center;
     border: 1px solid black;
     border-radius: 5px;
+    margin-top: 6%;
     background-color: whitesmoke;
     /* padding :100px; */
     width: 350px;
+    z-index: 0;
 }
 
 
@@ -67,6 +69,7 @@
     background-color: black;
     color: white;
     height: 100px;
+    font-size: 50px;
     width: 350px;
 }
 
@@ -79,11 +82,30 @@
     border-radius: 4px;
     border: 1px solid black;
     font-family: bold;
-    background-color: rgb(250, 32, 32);
+    background-color: black;
     margin-bottom: 20px;
 }
 
 #signupdirection {
     margin-top: 5px;
     margin-bottom: 10px;
+}
+
+.signuperrors {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: underline;
+    font-size: 15px;
+}
+
+.signuperror {
+    padding: 2px;
+}
+.signuperrors {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: underline;
+    font-size: 15px;
 }

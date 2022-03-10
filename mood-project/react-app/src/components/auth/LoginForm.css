@@ -12,7 +12,6 @@
     border: 1px solid black;
     border-radius: 5px;
     background-color: whitesmoke;
-    /* padding :100px; */
     width: 24.50%;
     margin-right: 2px;
     z-index: 1;
@@ -171,43 +170,47 @@
 
 #key1:hover{
  background-color: #f96365;
- transition: 0.5s;
+ transition: 0.25s;
 }
 #key2:hover{
     background-color:  #90be6d;
-    transition: 0.5s;
+    transition: 0.25s;
 }
 #key3:hover{
     background-color: #277da1;
-    transition: 0.5s;
+    transition: 0.25s;
 }
 #key4:hover{
     background-color:  #8849b5;
-    transition: 0.5s;
+    transition: 0.25s;
 }
 #key5:hover{
     background-color:  #f8961e;
-    transition: 0.5s;
+    transition: 0.25s;
 }
 #key6:hover{
     background-color: #f96365;
-    transition: 0.5s;
+    transition: 0.25s;
 }
 #key7:hover{
     background-color: #90be6d;
-    transition: 0.5s;
+    transition: 0.25s;
 }
 #key8:hover{
     background-color: #277da1;
-    transition: 0.5s;
+    transition: 0.25s;
 }
 #key9:hover{
     background-color: #8849b5;
-    transition: 0.5s;
+    transition: 0.25s;
 }
 #key10:hover{
     background-color: #f8961e;
-    transition: 0.5s;
+    transition: 0.25s;
 
 
+}
+
+.loginerrorx {
+    margin-bottom: 15px;
 }
