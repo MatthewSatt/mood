@@ -8,7 +8,7 @@ const HomePage = () => {
     <>
     <div className="moodhome">
       <div className="homebody">
-    <h1 id='homepagetitle'>Welcome to <span>m</span>o<span></span>o<span></span>d<span></span></h1>
+    <h1 id='homepagetitle'>Welcome to <span id='m'>m</span><span id='o'>o</span><span id='o1'>o</span><span id='d'>d</span></h1>
     <h3>Organize and play music with your custom moodlists!</h3>
     <div className="homepagebuttons">
           <NavLink role="button" className="homepagelogin" to="/login" exact={true} activeClassName="active">
