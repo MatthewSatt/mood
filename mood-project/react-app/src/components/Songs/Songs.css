@@ -66,7 +66,9 @@
 
 }
 
-
+#rating {
+    margin-right: 10%;
+}
 
 .playsong{
     padding: 10px;
@@ -140,4 +142,3 @@
     padding: 3px;
     cursor: pointer;
 }
-

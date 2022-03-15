@@ -103,8 +103,8 @@ const Songs = () => {
                   </p>
                   <p song={song}>{song.artist}</p>
                 </div>
-                <h3>Rating: </h3>
-                <h2>{song.rating}</h2>
+
+                <h3>Rating: {song.rating}</h3>
 
                 <div className="songuseroptions">
                   <div className="songdetails" key={song.id}>
