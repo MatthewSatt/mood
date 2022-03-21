@@ -84,7 +84,7 @@ const Songs = () => {
           <button
             value={addSongModal}
             onClick={(e) => setAddSongModal(true)}
-            className="addsongbutton"
+            className="addmoodbutton"
           >
             Add Song
           </button>

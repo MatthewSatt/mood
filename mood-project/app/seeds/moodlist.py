@@ -3,7 +3,7 @@ from app.models import db, Moodlist
 
 def seed_moodlist():
     moodlist1= Moodlist(
-        name='Sample', color='red', userId=1)
+        name='Uplifting', color='red', userId=1)
     moodlist2 = Moodlist(
         name='Happy', color='green', userId=1)
     moodlist3= Moodlist(
@@ -32,6 +32,12 @@ def seed_moodlist():
         name='Scary', color='blue', userId=1)
     moodlist15= Moodlist(
         name='Annoyed', color='purple', userId=1)
+    moodlist16= Moodlist(
+        name='Gloomy', color='black', userId=1)
+    moodlist17 = Moodlist(
+        name='Sleepy', color='brown', userId=1)
+
+
 
 
 
@@ -51,6 +57,8 @@ def seed_moodlist():
     db.session.add(moodlist13)
     db.session.add(moodlist14)
     db.session.add(moodlist15)
+    db.session.add(moodlist16)
+    db.session.add(moodlist17)
     db.session.commit()
 
 def undo_moodlists():

@@ -1,11 +1,12 @@
+
+
 .moodlist-songs {
     display: flex;
     flex-direction: column;
     align-items: center;
     flex-wrap: row;
-    width: 100vw;
-    height: 100vh;
-    background-color: whitesmoke;
+    width: auto;
+    height: auto;
 }
 
 .grow:hover { transform: scale(1.1); }

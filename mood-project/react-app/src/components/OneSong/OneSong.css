@@ -1,11 +1,12 @@
 .onesong {
-    background-color: black;
-    color: white;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 79vh;
+    color: white;
+    background-color: rgb(0, 0, 0);
+    width: 100%;
+    height: 80vh;
 }
 
 .onesongtitle {
