@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, session, request
-from app.models import User, db
+from app.models import User, Moodlist, Song, db
 from app.forms import LoginForm
 from app.forms import SignUpForm
 from flask_login import current_user, login_user, logout_user, login_required
@@ -68,6 +68,29 @@ def sign_up():
             password=form.data['password']
         )
         db.session.add(user)
+        db.session.commit()
+        moodlist_starter1 = Moodlist(
+            name='Happy', color='green', userId=user.id)
+        moodlist_starter2 = Moodlist(
+            name='Sad', color='blue', userId=user.id)
+        moodlist_starter3 = Moodlist(
+            name='Bored', color='purple', userId=user.id)
+        db.session.add(moodlist_starter1)
+        db.session.add(moodlist_starter2)
+        db.session.add(moodlist_starter3)
+        db.session.commit()
+        song_starter_one = Song(name="It's Time", artist='Imagine Dragons', rating=10, song_url="https://res.cloudinary.com/matthewsatterwhite/video/upload/v1645637061/Imagine_Dragons_-_It_s_Time_Lyrics_e6bv1b.mp3", userId=user.id, moodlistId=moodlist_starter1.id)
+        song_starter_two = Song(name='Happy', artist='Pharrell Williams', song_url="https://res.cloudinary.com/matthewsatterwhite/video/upload/v1647847521/Pharrell_Williams_-_Happy_HQ__getmp3.pro_snkhpg.mp3", rating=2, userId=user.id, moodlistId=moodlist_starter1.id)
+        song_starter_three = Song(name='Nothing Inside', artist='MGK', song_url='https://res.cloudinary.com/matthewsatterwhite/video/upload/v1645635424/Machine_Gun_Kelly_Ft._Iann_Dior_-_nothing_inside_Official_Audio_ksjfxm.mp4', rating=3, userId=user.id, moodlistId=moodlist_starter2.id)
+        song_starter_four = Song(name='Demons', artist='Imagine Dragons', rating=9,  song_url='https://res.cloudinary.com/matthewsatterwhite/video/upload/v1645635817/Demons_-_Imagine_Dragons_gc5tcu.mp4', userId=user.id, moodlistId=moodlist_starter2.id)
+        song_starter_five = Song(name='The Black Parade', artist='MCR', song_url="https://res.cloudinary.com/matthewsatterwhite/video/upload/v1645636620/Welcome_To_The_Black_Parade_-_My_Chemical_Romance_Lyrics_gpfjlu.mp3", rating=8, userId=user.id, moodlistId=moodlist_starter3.id)
+        song_starter_six = Song(name='Bored To Death', artist='Blink-182', song_url='https://res.cloudinary.com/matthewsatterwhite/video/upload/v1645634742/blink-182_-_Bored_To_Death_Official_Video_uohps1.mp4', rating=7, userId=user.id, moodlistId=moodlist_starter3.id)
+        db.session.add(song_starter_one)
+        db.session.add(song_starter_two)
+        db.session.add(song_starter_three)
+        db.session.add(song_starter_four)
+        db.session.add(song_starter_five)
+        db.session.add(song_starter_six)
         db.session.commit()
         login_user(user)
         return user.to_dict()
