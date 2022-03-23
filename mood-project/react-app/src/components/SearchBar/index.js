@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import {Link, Redirect} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import { searchSongs } from '../../store/songs'
 import {useHistory} from 'react-router-dom'
 
 import './SearchBar.css'
 
 function SearchBar() {
+    const songs = useSelector(state => state.songs)
+    const moodlists = useSelector(state => state.moodlists)
     const dispatch = useDispatch()
     const history = useHistory()
     const [search, setSearch] = useState([])
@@ -25,14 +27,14 @@ function SearchBar() {
 
 
     useEffect( async () => {
-        const checker = []
+        const filter = []
         let errors = []
         const songsObj = await dispatch(searchSongs())
         songsObj.forEach((item) => {
             if((item.name.includes(search) || item.artist.includes(search)) && (!(errors.includes(item)) && search.length > 0 && errors.length < 8)){
-                if(!(checker.includes(item.name))) {
+                if(!(filter.includes(item.name))) {
                     errors.push(item)
-                    checker.push(item.name)
+                    filter.push(item.name)
                 }
 
 
