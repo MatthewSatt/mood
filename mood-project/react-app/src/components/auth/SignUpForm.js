@@ -10,19 +10,12 @@ const SignUpForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
+  const [showErrors, setShowErrors] = useState(false)
   const user = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
 
-  const onSignUp = async (e) => {
-    e.preventDefault();
-    if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, email, password));
-      if (data) {
-        setErrors(data);
-      }
-    }
-  };
   useEffect(() => {
+    setShowErrors(false)
     const errors = [];
     if (username.length < 5)
       errors.push("Username must be at least 5 characters");
@@ -32,6 +25,21 @@ const SignUpForm = () => {
     if (repeatPassword !== password) errors.push("Passwords don't match");
     setErrors(errors);
   }, [username, password, email, password, repeatPassword]);
+
+
+  const onSignUp = async (e) => {
+    e.preventDefault();
+    if(errors.length){
+      setShowErrors(true)
+    } else {
+      if (password === repeatPassword) {
+        const data = await dispatch(signUp(username, email, password));
+        if (data) {
+          setErrors(data);
+        }
+      }
+    }
+  };
 
   const updateUsername = (e) => {
     setUsername(e.target.value);
@@ -93,7 +101,7 @@ const SignUpForm = () => {
             <div className="signinpageheader">mood</div>
             <h4 id="signupdirection">Create your account</h4>
             <div className="signuperrors">
-              {errors.map((error, ind) => (
+              {showErrors && errors.map((error, ind) => (
                 <div className="signuperror" key={ind}>
                   {error}
                 </div>
@@ -137,7 +145,6 @@ const SignUpForm = () => {
               ></input>
             </div>
             <button
-              disabled={errors.length > 0 ? true : false}
               id="signupbutton"
               type="submit"
             >

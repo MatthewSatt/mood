@@ -24,7 +24,6 @@ const NavBar = () => {
         <h1 className='title'>mood</h1>
         {user &&
         <div className='logged-in-nav'>
-
         <div className='logout-button'>
           <LogoutButton />
         </div>
