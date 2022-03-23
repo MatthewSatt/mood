@@ -13,6 +13,7 @@ function SearchBar() {
     const [errors, setErrors] = useState([])
 
 
+
     useEffect(() => {
         if(search.length <= 0) {
             return
@@ -24,11 +25,16 @@ function SearchBar() {
 
 
     useEffect( async () => {
+        const checker = []
         let errors = []
         const songsObj = await dispatch(searchSongs())
         songsObj.forEach((item) => {
-            if((item.name.includes(search) || item.artist.includes(search)) && (!(errors.includes(item)) && search.length > 0 && errors.length < 5)){
-                errors.push(item)
+            if((item.name.includes(search) || item.artist.includes(search)) && (!(errors.includes(item)) && search.length > 0 && errors.length < 8)){
+                if(!(checker.includes(item.name))) {
+                    errors.push(item)
+                    checker.push(item.name)
+                }
+
 
             }
 
