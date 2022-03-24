@@ -19,6 +19,7 @@ export const loadUserMoods = (id) => async (dispatch) => {
 }
 //-------------------------------------------------------------------//
 // const GET_MOODLIST = 'moodlist/GET_MOODLIST';
+
 //-------------------------------------------------------------------//
 const ADD_MOODLIST = 'moodlist/ADD_MOODLIST';
 

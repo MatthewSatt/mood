@@ -12,6 +12,7 @@ import "./moodlists.css";
 const Moodlists = () => {
   const dispatch = useDispatch();
   const moodlists = useSelector((state) => Object.values(state.moodlists));
+  const user = useSelector(state => state.session.user)
 
 
 
@@ -64,7 +65,7 @@ const Moodlists = () => {
   return (
     <>
       <div className="moodlists">
-        <h1 className="moodlistheader">Moodlists</h1>
+        <h1 className="moodlistheader">{user.username}'s Moodlists</h1>
         <div id="addamood">
           <AddFormModal setShowModal={setShowModal} showModal={showModal} />
         </div>
