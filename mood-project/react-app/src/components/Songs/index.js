@@ -5,6 +5,7 @@ import { loadMoodSongs, removeMoodSong } from "../../store/songs";
 import { Modal } from "../../context/Modal";
 import { editSong } from "../../store/songs";
 import "./Songs.css";
+import { Link } from "react-router-dom";
 import AddSongForm from "../AddSong";
 import Player from "../SongPlayer";
 
@@ -12,9 +13,8 @@ const Songs = () => {
   const dispatch = useDispatch();
   const songs = useSelector((state) => state.songs);
   const user = useSelector((state) => state.session.user.id);
-  const moodlists = useSelector((state) => Object.values(state.moodlists))
+  const moodlists = useSelector((state) => Object.values(state.moodlists));
   const moodlistId = useParams();
-
 
   const [addSongModal, setAddSongModal] = useState(false);
   const [editSongModal, setEditSongModal] = useState(false);
@@ -23,7 +23,7 @@ const Songs = () => {
   const [editName, setEditName] = useState("");
   const [editArtist, setEditArtist] = useState("");
   const [editRating, setEditRating] = useState(1);
-  const [editUserId, setEditUserId] = useState("")
+  const [editUserId, setEditUserId] = useState("");
 
   useEffect(() => {
     const editSongErrors = [];
@@ -42,10 +42,10 @@ const Songs = () => {
   const handleShowModalData = (song) => async (e) => {
     e.preventDefault();
     setEditId(song.id);
-    setEditName(song.name)
-    setEditArtist(song.artist)
-    setEditRating(song.rating)
-    setEditUserId(song.userId)
+    setEditName(song.name);
+    setEditArtist(song.artist);
+    setEditRating(song.rating);
+    setEditUserId(song.userId);
     setEditSongModal(true);
   };
   const handleEdit = async (e) => {
@@ -63,20 +63,17 @@ const Songs = () => {
     dispatch(loadMoodSongs(moodlistId.moodId));
   };
 
-
   const handleDelete = async (e) => {
     e.preventDefault();
     await dispatch(removeMoodSong(e.target.id));
     return;
   };
 
-
   useEffect(() => {
     dispatch(loadMoodSongs(moodlistId.moodId));
   }, [dispatch]);
 
-
-  if(user === songs[0]?.userId || moodlists[0]?.userId === user) {
+  if (user === songs[0]?.userId || moodlists[0]?.userId === user) {
     return (
       <div className="songscontainer">
         <div className="moodlist-songs">
@@ -98,34 +95,50 @@ const Songs = () => {
             .map((song) => (
               <div className="eachsong" id={song.id} key={song.id}>
                 <div className="titleandartist">
-                  <p song={song} key={song.name}>
-                    {song.name}
-                  </p>
-                  <p song={song}>{song.artist}</p>
+                  <Link className="linktosinglesong" to={`/songs/${song.id}`}>
+                    <div className="leftlink">
+                      <div className="songName">
+                        <h2 song={song} key={song.name}>
+                          {song.name}
+                        </h2>
+                      </div>
+                      <div className="songArtist">
+                        <h3 song={song}>{song.artist}</h3>
+                      </div>
+                      <div className="songratingdiv">
+                        {Array(song.rating).fill(<p>⭐️</p>)}
+                      </div>
+                    </div>
+                    <div className="rightlink">
+                      <div className="songImage">
+                        {song.song_image && (
+                          <img id="songlistimage" src={song.song_image}></img>
+                        )}
+                      </div>
+                    </div>
+                  </Link>
                 </div>
-
-                <h3>Rating: {song.rating}</h3>
 
                 <div className="songuseroptions">
                   <div className="songdetails" key={song.id}>
                     <Player prop={song.song_url} />
                   </div>
                   <div className="songcrudbuttons">
-                  <button
-                    id={song.id}
-                    onClick={handleDelete}
-                    className="songeditdeletebuttons"
-                  >
-                    Delete Song
-                  </button>
+                    <button
+                      id={song.id}
+                      onClick={handleDelete}
+                      className="songeditdeletebuttons"
+                    >
+                      Delete Song
+                    </button>
 
-                  <button
-                    id={song.id}
-                    className="songeditdeletebuttons"
-                    onClick={handleShowModalData(song)}
-                  >
-                    Edit Song
-                  </button>
+                    <button
+                      id={song.id}
+                      className="songeditdeletebuttons"
+                      onClick={handleShowModalData(song)}
+                    >
+                      Edit Song
+                    </button>
                   </div>
                   {editSongModal && (
                     <Modal onClose={() => setEditSongModal(false)}>
@@ -136,50 +149,45 @@ const Songs = () => {
                               return <li key={error}>{error}</li>;
                             })}
                         </ul>
-                        <div className='editsongform'>
-                        <h1 id="addsongtitle">Edit Song Details</h1>
-                        <div>
-                          Title
-                        </div>
-                        <label>
-                          <input
-                            className="songinfo"
-                            type="text"
-                            value={editName}
-                            onChange={(e) => setEditName(e.target.value)}
-                          />
-                        </label>
+                        <div className="editsongform">
+                          <h1 id="addsongtitle">Edit Song Details</h1>
+                          <div>Title</div>
+                          <label>
+                            <input
+                              className="songinfo"
+                              type="text"
+                              value={editName}
+                              onChange={(e) => setEditName(e.target.value)}
+                            />
+                          </label>
                           Artist
-                        <label>
-                          <div>
-                          </div>
-                          <input
-                            className="songinfo"
-                            type="text"
-                            value={editArtist}
-                            onChange={(e) => setEditArtist(e.target.value)}
-                          />
-                        </label>
+                          <label>
+                            <div></div>
+                            <input
+                              className="songinfo"
+                              type="text"
+                              value={editArtist}
+                              onChange={(e) => setEditArtist(e.target.value)}
+                            />
+                          </label>
                           Rating
-                        <label>
-                          <input
-                            className="songinfo"
-                            type="number"
-                            min={1}
-                            max={10}
-                            value={editRating}
-                            onChange={(e) =>
-                              setEditRating(e.target.value)
-                            }
-                          />
-                        </label>
-                        <button
-                          disabled={editSongErrors.length > 0 ? true : false}
-                          className="modaleditsong"
-                          type="submit"
-                        >
-                          Change
-                        </button>
+                          <label>
+                            <input
+                              className="songinfo"
+                              type="number"
+                              min={1}
+                              max={10}
+                              value={editRating}
+                              onChange={(e) => setEditRating(e.target.value)}
+                            />
+                          </label>
+                          <button
+                            disabled={editSongErrors.length > 0 ? true : false}
+                            className="modaleditsong"
+                            type="submit"
+                          >
+                            Change
+                          </button>
                         </div>
                       </form>
                     </Modal>
@@ -191,8 +199,8 @@ const Songs = () => {
         </div>
       </div>
     );
-  };
-  return <h1>Not Authorized</h1>
-}
+  }
+  return <h1>Not Authorized</h1>;
+};
 // return <h1>Not Authorized</h1>
 export default Songs;

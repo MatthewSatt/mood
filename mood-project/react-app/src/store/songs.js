@@ -61,6 +61,7 @@ export const addS = (payload) => {
   };
 };
 export const addSong = (song) => async (dispatch) => {
+  console.warn(song)
   const res = await fetch(`/api/songs/new`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },

@@ -14,6 +14,7 @@ function AddSongForm({ setAddSongModal }) {
   const [name, setName] = useState("");
   const [artist, setArtist] = useState("");
   const [rating, setRating] = useState(1);
+  const [image, setImage] = useState("")
   const [url, setUrl] = useState("");
   const [songErrors, setSongErrors] = useState([]);
 
@@ -40,6 +41,7 @@ function AddSongForm({ setAddSongModal }) {
       artist: artist,
       rating: Number(rating),
       song_url: url,
+      song_image: image,
       moodlistId: y,
       userId: userId,
     };
@@ -110,6 +112,18 @@ function AddSongForm({ setAddSongModal }) {
               type="text"
               value={url}
               onChange={(e) => setUrl(e.target.value)}
+              />
+          </label>
+          <div>
+          Song Image
+          </div>
+          <label>
+            <input
+              className="songinfo"
+              placeholder="Optional"
+              type="text"
+              value={image}
+              onChange={(e) => setImage(e.target.value)}
               />
           </label>
           <button disabled={songErrors.length > 0 ? true : false} onClick={handleAdd} className="modaladdsong" type="submit">

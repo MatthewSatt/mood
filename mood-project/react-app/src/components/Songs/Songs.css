@@ -143,3 +143,28 @@
     padding: 3px;
     cursor: pointer;
 }
+
+.titleandartist {
+    text-decoration:none;
+   width: 50vw;
+}
+.songratingdiv {
+    display: flex;
+
+}
+
+.linktosinglesong {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-decoration: none;
+    color: black;
+}
+
+#songlistimage {
+    background-color: rgb(114, 146, 250);
+    max-width: 50%;
+    max-height: 50%;
+    object-fit: contain;
+    margin-left: 50%;
+}
