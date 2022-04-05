@@ -109,13 +109,13 @@ const Songs = () => {
                         {Array(song.rating).fill(<p>⭐️</p>)}
                       </div>
                     </div>
-                    <div className="rightlink">
+                    {/* <div className="rightlink">
                       <div className="songImage">
                         {song.song_image && (
                           <img id="songlistimage" src={song.song_image}></img>
                         )}
                       </div>
-                    </div>
+                    </div> */}
                   </Link>
                 </div>
 

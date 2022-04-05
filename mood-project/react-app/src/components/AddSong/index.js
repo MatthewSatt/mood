@@ -114,7 +114,7 @@ function AddSongForm({ setAddSongModal }) {
               onChange={(e) => setUrl(e.target.value)}
               />
           </label>
-          <div>
+          {/* <div>
           Song Image
           </div>
           <label>
@@ -125,7 +125,7 @@ function AddSongForm({ setAddSongModal }) {
               value={image}
               onChange={(e) => setImage(e.target.value)}
               />
-          </label>
+          </label> */}
           <button disabled={songErrors.length > 0 ? true : false} onClick={handleAdd} className="modaladdsong" type="submit">
             Add
           </button>
