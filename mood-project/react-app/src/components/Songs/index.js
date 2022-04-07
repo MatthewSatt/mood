@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { loadMoodSongs, removeMoodSong } from "../../store/songs";
+import { loadUserMoods } from "../../store/moodlist";
 import { Modal } from "../../context/Modal";
 import { editSong } from "../../store/songs";
 import "./Songs.css";
@@ -15,6 +16,8 @@ const Songs = () => {
   const user = useSelector((state) => state.session.user.id);
   const moodlists = useSelector((state) => Object.values(state.moodlists));
   const moodlistId = useParams();
+  const {moodid} = useParams()
+  const moodName = moodlists.find(name => name.id === +moodlistId.moodId)
 
   const [addSongModal, setAddSongModal] = useState(false);
   const [editSongModal, setEditSongModal] = useState(false);
@@ -77,7 +80,7 @@ const Songs = () => {
     return (
       <div className="songscontainer">
         <div className="moodlist-songs">
-          <h1 className="moodlistsongtitle">Songs</h1>
+          <h1 className="moodlistsongtitle">{moodName?.name} Songs</h1>
           <button
             value={addSongModal}
             onClick={(e) => setAddSongModal(true)}

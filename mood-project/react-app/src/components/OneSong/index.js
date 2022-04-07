@@ -8,6 +8,8 @@ import './OneSong.css'
 
 function OneSong() {
 const songs = useSelector(state => state.songs)
+const moodlists = useSelector(state => state.moodlists)
+const user = useSelector(state => state.session.user)
 const dispatch = useDispatch()
 const {songId} = useParams()
 const [song, setSong] = useState('')
