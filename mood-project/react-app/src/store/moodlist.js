@@ -87,7 +87,7 @@ export const deleteMoodlist = (id) => async (dispatch) => {
     if(res.ok){
         const moodlist = await res.json();
         dispatch(deleteMood(moodlist))
-        return
+        return "Sucess"
     } else {
         return null;
     }

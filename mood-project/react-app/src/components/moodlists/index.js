@@ -58,13 +58,33 @@ const Moodlists = () => {
   };
 
   const handleDelete = async (e) => {
+    console.log('works')
     e.preventDefault();
     const id = e.target.id;
-    dispatch(deleteMoodlist(id));
+    const res = await dispatch(deleteMoodlist(id));
+    if(res) {
+      const div = document.createElement("div")
+      const div2 = document.getElementById("alert")
+      let parentDiv = div2.parentNode
+      parentDiv.insertBefore(div,div2)
+      div.innerText = "Mood successfully Deleted"
+      div.style.color = "white"
+      div.style.backgroundColor = "rgba(229,30,80, 0.9)"
+      div.style.borderRadius = "10px"
+      div.style.position = "fixed"
+      div.style.top = "300px"
+      div.style.right = "20px"
+      div.style.fontSize = "18px"
+      div.style.fontWeight = "400"
+      div.style.padding = "15px"
+      setTimeout(() => div.remove(), 2000)
+    }
+
   };
   return (
     <>
       <div className="moodlists">
+        <div id='alert'></div>
         <h1 className="moodlistheader">{user.username}'s Moodlists</h1>
         <div id="addamood">
           <AddFormModal setShowModal={setShowModal} showModal={showModal} />
